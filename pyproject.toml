@@ -11,8 +11,12 @@ authors = [
     { name = "Flet developer", email = "you@example.com" }
 ]
 dependencies = [
+  "fastapi>=0.119.0",
   "flet==0.28.3",
   "mkdocs>=1.6.1",
+  "postgis>=1.0.4",
+  "postgres>=4.0",
+  "sqlalchemy>=2.0.44",
 ]
 
 [tool.flet]
