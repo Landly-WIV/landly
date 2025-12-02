@@ -1,5 +1,7 @@
 import flet as ft
-import products as pr
+import search as se
+import landingpage as lp
+import maptest as mt
 
 class contentPage():
     def __init__(self, navRow, page, ind, cont):
@@ -7,17 +9,18 @@ class contentPage():
         self.page = page
         self.ind = ind
         self.cont = cont
+        self.seaSta = se.searchState()
 
-def getPage(ind, page, site):
+def getPage(ind, site):
     match ind:
         case 0:
-            return ft.Row()
+            return mt.mapPage(site)
         
         case 1:
-            return pr.showProducts(page, site)
+            return se.shoSea(site)
         
         case 2:
-            return ft.Row()
+            return lp.land()
         
         case 3:
             return ft.Row()
@@ -27,5 +30,10 @@ def getPage(ind, page, site):
 
 
 def updatePage(site):
-    site.cont.content = getPage(site.ind.current, site.page, site)
+    # Reset search state when leaving search page
+    if site.ind.current != 1:
+        site.seaSta.mode = None
+        site.seaSta.seaTex = ""
+    
+    site.cont.content = getPage(site.ind.current, site)
     site.page.update()

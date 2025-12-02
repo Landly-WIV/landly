@@ -25,7 +25,7 @@ def appSite(page):
 
     site = co.contentPage(navRow, page, ind, cont)
 
-    cont.content = co.getPage(ind.current, page, site)
+    cont.content = co.getPage(ind.current, site)
     
     nb.navBar(site)
 
