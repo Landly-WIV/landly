@@ -18,22 +18,22 @@ def land():
         {
             "title": "Herbsternte beginnt",
             "date": "10. Oktober 2024",
-            "image": "https://images.unsplash.com/photo-1464226184485-280280541ee4?w=600&h=300&fit=crop"
+            "image": "https://images.unsplash.com/photo-1569511850437-6dfab062c00b?q=80&w=759&auto=format&fit=crop"
         },
         {
             "title": "Neues Hofladen-Café eröffnet",
             "date": "1. September 2024",
-            "image": "https://images.unsplash.com/photo-1460306855393-0c6688c30566?w=600&h=300&fit=crop"
+            "image": "https://plus.unsplash.com/premium_photo-1674327105074-46dd8319164b?q=80&w=1170&auto=format&fit=crop"
         },
         {
             "title": "Sommerferien-Öffnungszeiten",
             "date": "20. Juli 2024",
-            "image": "https://images.unsplash.com/photo-1477959858617-67f85cf4f1df?w=600&h=300&fit=crop"
+            "image": "https://plus.unsplash.com/premium_photo-1682535209719-839f625f8770?q=80&w=692&auto=format&fit=crop"
         },
         {
             "title": "Frühjahrsmarkt auf dem Hof",
             "date": "5. Mai 2024",
-            "image": "https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=600&h=300&fit=crop"
+            "image": "https://images.unsplash.com/photo-1683511997653-6be0fc990ec9?q=80&w=715&auto=format&fit=crop"
         },
     ]
     

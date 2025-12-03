@@ -12,7 +12,8 @@ authors = [
 ]
 dependencies = [
   "fastapi>=0.119.0",
-  "flet==0.28.3",
+  "flet[all]==0.28.3",
+  "flet-map>=0.1.0",
   "mkdocs>=1.6.1",
   "postgis>=1.0.4",
   "postgres>=4.0",
