@@ -2,6 +2,7 @@ import flet as ft
 import search as se
 import landingpage as lp
 import maptest as mt
+import backend.searchFunctions as sf
 
 class contentPage():
     def __init__(self, navRow, page, ind, cont):
@@ -9,7 +10,7 @@ class contentPage():
         self.page = page
         self.ind = ind
         self.cont = cont
-        self.seaSta = se.searchState()
+        self.seaSta = sf.searchState()
 
 def getPage(ind, site):
     match ind:
@@ -30,10 +31,10 @@ def getPage(ind, site):
 
 
 def updatePage(site):
-    # Reset search state when leaving search page
     if site.ind.current != 1:
         site.seaSta.mode = None
-        site.seaSta.seaTex = ""
     
     site.cont.content = getPage(site.ind.current, site)
     site.page.update()
+
+        
