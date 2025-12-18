@@ -1,23 +1,8 @@
 import flet as ft
-import content as co
 import products as pr
 import farmer as fa
-
-class searchState():
-    def __init__(self):
-        self.mode = None
-        self.seaTex = ""
-        self.selCat = None
-        self.seaEna = False
-        self.seaEnt = 0
-
-def selPro(e, site):
-    site.seaSta.mode = "produkt"
-    co.updatePage(site)
-    
-def selBau(e, site):
-    site.seaSta.mode = "bauer"
-    co.updatePage(site)
+import backend.searchFunctions as sf
+import requests
 
 def seaSel(site):
     header = ft.Text(
@@ -38,7 +23,7 @@ def seaSel(site):
         bgcolor=ft.Colors.GREEN_50,
         padding=30,
         border_radius=10,
-        on_click=lambda e: selPro(e, site),
+        on_click=lambda e: sf.sel(e, site, "produkt"),
         width=0.7 * site.page.width,
         alignment=ft.alignment.center
     )
@@ -55,7 +40,7 @@ def seaSel(site):
         bgcolor=ft.Colors.GREEN_50,
         padding=30,
         border_radius=10,
-        on_click=lambda e: selBau(e, site),
+        on_click=lambda e: sf.sel(e, site, "bauer"),
         width=0.7 * site.page.width,
         alignment=ft.alignment.center
     )
@@ -74,42 +59,43 @@ def seaSel(site):
         expand=True
     )
 
-def bacCli(e, site):
-    site.seaSta.mode = None
-    site.seaSta.seaTex = ""
-    site.seaSta.seaEna = False
-    site.seaSta.seaEnt = 0
-    co.updatePage(site)
+def proSeaMas(site, lab): 
 
-def seaCli(e, site, seaFie, disSli=None):
-    if disSli:
-        site.seaSta.seaEnt = float(disSli.value)
-    site.seaSta.seaTex = seaFie.value
-    site.seaSta.seaEna = True
-    co.updatePage(site)
+    site.page.theme = ft.Theme(
+        slider_theme=ft.SliderTheme(
+            value_indicator_color=ft.Colors.with_opacity(0.0, ft.Colors.WHITE),
+        )
+    )
 
-def proSeaMas(site):   
     seaFie = ft.TextField(
         label="Produktname eingeben",
         prefix_icon=ft.Icons.SEARCH,
+        input_filter=ft.InputFilter("^[A-ZÄÖÜa-zäöüß0-9._-]*$"),
         width=400
     )
+
+    sel = []
+    opt = []
+
+    selRow = ft.Row(
+        controls=sel,
+        width=300,
+        wrap=True)
+
+    for i in lab:
+        opt.append(ft.dropdown.Option(i))
     
     catDro = ft.Dropdown(
         label="Kategorie",
         width=400,
-        options=[
-            ft.dropdown.Option("Gemüse"),
-            ft.dropdown.Option("Obst"),
-            ft.dropdown.Option("Fleisch"),
-            ft.dropdown.Option("Eier"),
-        ]
+        options=opt,
+        on_change=lambda e: sf.selLab(e, site, sel, lab, selRow, catDro)
     )
     
     seaBut = ft.ElevatedButton(
         "Suchen",
         icon=ft.Icons.SEARCH,
-        on_click=lambda e: seaCli(e, site, seaFie),
+        on_click=lambda e: sf.seaCli(e, site, seaFie),
         bgcolor=ft.Colors.GREEN,
         color=ft.Colors.WHITE,
         width=200,
@@ -118,9 +104,38 @@ def proSeaMas(site):
     
     header = ft.Row(
         controls=[
-            ft.IconButton(icon=ft.Icons.ARROW_BACK, on_click=lambda e: bacCli(e, site)),
+            ft.IconButton(icon=ft.Icons.ARROW_BACK, on_click=lambda e: sf.bacCli(e, site)),
             ft.Text("Produkt suchen", theme_style=ft.TextThemeStyle.HEADLINE_SMALL)
         ]
+    )
+
+    priTex = ft.Text(value="Preisspanne 0,00€ - 50,00€")
+
+    priSli = ft.RangeSlider(
+        min=0,
+        max=50,
+        start_value=0,
+        divisions=10,
+        end_value=50,
+        inactive_color=ft.Colors.GREEN_300,
+        active_color=ft.Colors.GREEN_700,
+        overlay_color=ft.Colors.GREEN_100,
+        on_change=lambda e: sf.sliLab(e, priTex, site),
+        label=None
+    )
+
+    disTex = ft.Text(value="Entfernung 50km")
+
+    disSli = ft.Slider(
+        min=0,
+        max=100,
+        value=50,
+        divisions=20,
+        inactive_color=ft.Colors.GREEN_300,
+        active_color=ft.Colors.GREEN_700,
+        overlay_color=ft.Colors.GREEN_100,
+        on_change=lambda e: sf.sliEnt(e, disTex, site),
+        label=None
     )
     
     return ft.Column(
@@ -131,7 +146,15 @@ def proSeaMas(site):
             ft.Row(height=20),
             seaFie,
             ft.Row(height=10),
+            selRow,
+            ft.Row(height=10),
             catDro,
+            ft.Row(height=10),
+            priTex,
+            priSli,
+            ft.Row(height=10),
+            disTex,
+            disSli,
             ft.Row(height=30),
             seaBut
         ],
@@ -143,21 +166,28 @@ def bauSeaMas(site):
     seaFie = ft.TextField(
         label="Bauernname eingeben",
         prefix_icon=ft.Icons.SEARCH,
+        input_filter=ft.InputFilter("^[A-ZÄÖÜa-zäöüß0-9._-]*$"),
         width=400
     )
     
+    disTex = ft.Text(value="Entfernung 50km")
+
     disSli = ft.Slider(
         min=0,
-        max=50,
-        divisions=10,
-        label="Entfernung: {value} km",
-        width=400
+        max=100,
+        value=50,
+        divisions=20,
+        inactive_color=ft.Colors.GREEN_300,
+        active_color=ft.Colors.GREEN_700,
+        overlay_color=ft.Colors.GREEN_100,
+        on_change=lambda e: sf.sliEnt(e, disTex, site),
+        label=None
     )
     
     seaBut = ft.ElevatedButton(
         "Suchen",
         icon=ft.Icons.SEARCH,
-        on_click=lambda e: seaCli(e, site, seaFie, disSli),
+        on_click=lambda e: sf.seaCli(e, site, seaFie, disSli),
         bgcolor=ft.Colors.GREEN,
         color=ft.Colors.WHITE,
         width=200,
@@ -166,7 +196,7 @@ def bauSeaMas(site):
     
     header = ft.Row(
         controls=[
-            ft.IconButton(icon=ft.Icons.ARROW_BACK, on_click=lambda e: bacCli(e, site)),
+            ft.IconButton(icon=ft.Icons.ARROW_BACK, on_click=lambda e: sf.bacCli(e, site)),
             ft.Text("Bauer suchen", theme_style=ft.TextThemeStyle.HEADLINE_SMALL)
         ]
     )
@@ -179,6 +209,7 @@ def bauSeaMas(site):
             ft.Row(height=20),
             seaFie,
             ft.Row(height=10),
+            disTex,
             disSli,
             ft.Row(height=30),
             seaBut
@@ -186,16 +217,83 @@ def bauSeaMas(site):
         horizontal_alignment=ft.CrossAxisAlignment.CENTER,
         scroll=ft.ScrollMode.AUTO
     )
+    
 
 def shoSea(site):
     if site.seaSta.seaEna:
         if site.seaSta.mode == "produkt":
+            
+            # Warten auf DB anbindung !!!
+
+            # url = "http://localhost:8000"
+
+            # res = requests.get(
+            #     f"{url}/api/products", 
+            #     params={
+            #         "search": site.seaSta.seaTex, 
+            #         "kategorie": site.seaSta.seaEnt
+            #     }
+            # )
+            # jsoPro = res.json()
+
+            # lisPro = []
+
+            # for i in jsoPro:
+            #     lisPro.append(fa.farm(
+            #         i["id"],
+            #         i["name"],
+            #         "https://images.unsplash.com/photo-1500382017468-9049fed747ef?w=1200",
+            #         i["adresse"],
+            #         i["oeffnungszeiten"],
+            #         i["telefon"],
+            #         i["email"]))
+                
             return pr.shoPro(site)
+        
         elif site.seaSta.mode == "bauer":
-            return fa.shoBau(site)
+            zwi = 0
+            if fa._bau:
+                zwi = 1
+
+            if site.seaSta.seaRes == False:
+                zwi = 0
+                site.seaSta.seaRes = True
+
+            lisBau = []
+
+            if zwi == 0:
+
+                # Warten auf DB anbindung !!!
+
+                # url = "http://localhost:8000"
+
+                # res = requests.get(
+                #     f"{url}/bauern", 
+                #     params={
+                #         "search": site.seaSta.seaTex, 
+                #         "max_distanz": site.seaSta.seaEnt
+                #     }
+                # )
+                # jsoBau = res.json()
+
+                # for i in jsoBau:
+                #     lisBau.append(fa.farm(
+                #         i["id"],
+                #         i["name"],
+                #         "https://images.unsplash.com/photo-1500382017468-9049fed747ef?w=1200",
+                #         i["adresse"],
+                #         i["oeffnungszeiten"],
+                #         i["telefon"],
+                #         i["email"],
+                #         i["distanz"]))
+                
+                return fa.shoBau(site, lisBau)
+            else:
+                return fa.shoBau(site, fa._bau)
     
     if site.seaSta.mode == "produkt":
-        return proSeaMas(site)
+        lab = sf.getLab()
+        return proSeaMas(site, lab)
     elif site.seaSta.mode == "bauer":
         return bauSeaMas(site)
     

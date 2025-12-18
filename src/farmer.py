@@ -2,36 +2,55 @@ import flet as ft
 import content as co
 import products as pr
 
+
+# _bau = None
+
+# def getBau():
+#     global _bau
+#     if _bau is None:
+#         _bau = [
+#             farm(
+#                 "Birkenhof Schmidt",
+#                 "https://images.unsplash.com/photo-1500382017468-9049fed747ef?w=1200",
+#                 "Dorfstraße 23, 12345 Grünwald",
+#                 "Mo-Fr: 8:00-18:00\nSa: 8:00-14:00\nSo: Geschlossen",
+#                 "+49 123 456789",
+#                 "info@birkenhof-schmidt.de")
+#         ]
+
+#     return _bau
+
 _bau = None
 
-def getBau():
+def setBau(lisBau):
     global _bau
     if _bau is None:
-        _bau = [
-            farm(
-                "Birkenhof Schmidt",
-                "https://images.unsplash.com/photo-1500382017468-9049fed747ef?w=1200",
-                "Dorfstraße 23, 12345 Grünwald",
-                "Mo-Fr: 8:00-18:00\nSa: 8:00-14:00\nSo: Geschlossen",
-                "+49 123 456789",
-                "info@birkenhof-schmidt.de")
-        ]
+        _bau = lisBau
 
+    zwi = 0
+    for i in _bau:
+        if i.ope:
+            zwi += 1
+
+    if zwi == 0:
+        _bau = lisBau
+            
     return _bau
 
 class farm():
-    def __init__(self, name, banner_image, address, opening_hours, phone, email):
-        self.ind = 1
+    def __init__(self, ind, name, banner_image, address, opening_hours, phone, email, distanze):
+        self.ind = ind
         self.name = name
         self.banner_image = banner_image
         self.address = address
         self.opening_hours = opening_hours
         self.phone = phone
         self.email = email
+        self.distanze = distanze
         self.ope = False
 
-    def opeBau(self):
-        for p in getBau():
+    def opeBau(self, lisBau):
+        for p in lisBau:
             p.ope = False
         self.ope = True
 
@@ -42,6 +61,7 @@ def bacCli(e, site):
     site.seaSta.mode = None
     site.seaSta.seaTex = ""
     site.seaSta.seaEna = False
+    site.seaSta.seaRes = False
     co.updatePage(site)
 
 def seaCli(e, site, seaFie):
@@ -49,8 +69,8 @@ def seaCli(e, site, seaFie):
     site.seaSta.seaEna = True
     co.updatePage(site)
 
-def cliBau(site, bau):
-    bau.opeBau()
+def cliBau(site, bau, lisBau):
+    bau.opeBau(lisBau)
     co.updatePage(site)
 
 def bauSit(bau, site):
@@ -237,27 +257,17 @@ def bauSit(bau, site):
         scroll=ft.ScrollMode.AUTO,
     )
 
-def bauSeaRes(bauLis, site):    
-    seaTer = site.seaSta.seaTex.lower().strip()
-    seaEnt = site.seaSta.seaEnt
+def bauSeaRes(lisBau, site):
 
-    if seaTer:
-        filBau = [bau for bau in bauLis if seaTer in bau.name.lower()]
-    else:
-        filBau = [bau for bau in bauLis]
-
-    #if seaEnt:
-    #    filBau = [(i, name) for i, name in filBau if seaEnt >= pr._ent[i]]
-    
     header = ft.Row(
         controls=[
             ft.IconButton(icon=ft.Icons.ARROW_BACK, on_click=lambda e: bacCli(e, site)),
-            ft.Text(f"Suchergebnisse ({len(filBau)} gefunden)", 
+            ft.Text(f"Suchergebnisse ({len(lisBau)} gefunden)", 
                    theme_style=ft.TextThemeStyle.BODY_MEDIUM)
         ]
     )
     
-    if len(filBau) == 0:
+    if len(lisBau) == 0:
         return ft.Column(
             controls=[
                 ft.Row(),
@@ -269,17 +279,17 @@ def bauSeaRes(bauLis, site):
         )
     
     bauCar = []
-    for bau in filBau:
+    for bau in lisBau:
         card = ft.Card(
             content=ft.Container(
                 content=ft.Column(controls=[
                     ft.Icon(ft.Icons.AGRICULTURE, size=40, color=ft.Colors.GREEN),
                     ft.Text(bau.name, weight=ft.FontWeight.BOLD, size=18),
-                    ft.Text(f"{pr._ent[bau.ind]} km entfernt", size=14, color=ft.Colors.GREY_700)
+                    ft.Text(f"{bau.distanze} km entfernt", size=14, color=ft.Colors.GREY_700)
                 ],
                 horizontal_alignment=ft.CrossAxisAlignment.CENTER),
                 padding=20,
-                on_click=lambda e: cliBau(site, bau)
+                on_click=lambda e: cliBau(site, bau, lisBau)
             ),
             width=0.4 * site.page.width,
             height=0.3 * site.page.height,
@@ -303,13 +313,13 @@ def bauSeaRes(bauLis, site):
         scroll=ft.ScrollMode.ALWAYS
     )
 
-def shoBau(site):
+def shoBau(site, lisBau):
     openBau = False
     bau = None
 
-    bauLis = getBau()
+    lisBau = setBau(lisBau)
 
-    for i in bauLis:
+    for i in lisBau:
         if i.ope:
             openBau = True
             bau = i
@@ -318,4 +328,4 @@ def shoBau(site):
     if openBau:
         return bauSit(bau, site)
     else:
-        return bauSeaRes(bauLis, site)
+        return bauSeaRes(lisBau, site)
