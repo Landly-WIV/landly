@@ -1,5 +1,5 @@
 from sqlalchemy.orm import Session, joinedload
-from . import models, schemas
+from src.backend import models, schemas
 from typing import List, Optional
 
 # ========================

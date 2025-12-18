@@ -1,7 +1,7 @@
 from sqlalchemy import Column, Integer, String, Float, Date, ForeignKey, Table
 from sqlalchemy.orm import relationship
 from geoalchemy2 import Geography
-from db import Base
+from src.backend.db import Base
 
 # ========================
 # JUNCTION TABLES (Many-to-Many)
