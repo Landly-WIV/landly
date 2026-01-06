@@ -1,9 +1,9 @@
-from fastapi import FastAPI, Depends, HTTPException
+from fastapi import FastAPI, Depends, HTTPException, Query
 from fastapi.middleware.cors import CORSMiddleware
 from sqlalchemy.orm import Session
-from typing import List
+from typing import List, Optional
 
-from src.backend import crud, models, schemas
+from src.backend import crud, models, schemas, bauernabfrage
 from src.backend.db import engine, get_db
 
 # Erstelle alle Tabellen (falls noch nicht vorhanden)
@@ -105,6 +105,100 @@ def update_bauer(bauer_id: int, bauer: schemas.BauerCreate, db: Session = Depend
     if updated is None:
         raise HTTPException(status_code=404, detail="Bauer nicht gefunden")
     return updated
+
+# ========================
+# ERWEITERTE BAUERN-SUCHE
+# ========================
+
+@app.get("/bauern/search/advanced")
+def search_bauern_advanced(
+    search: Optional[str] = Query(None, description="Suchbegriff für Firmenname oder Kontaktperson"),
+    max_distanz: Optional[float] = Query(None, description="Maximale Entfernung in km"),
+    user_lat: Optional[float] = Query(None, description="Breitengrad des Nutzers"),
+    user_lon: Optional[float] = Query(None, description="Längengrad des Nutzers"),
+    skip: int = 0,
+    limit: int = 100,
+    db: Session = Depends(get_db)
+):
+    """Erweiterte Bauernsuche mit Text- und Geo-Filter (nutzt bauernabfrage.py)"""
+    results = bauernabfrage.search_bauern(
+        db=db,
+        search=search,
+        max_distanz=max_distanz,
+        user_lat=user_lat,
+        user_lon=user_lon,
+        skip=skip,
+        limit=limit
+    )
+    
+    # Formatiere Response: [{'bauer': {...}, 'distanz_km': 5.2}]
+    return [
+        {
+            "bauer": bauer,
+            "distanz_km": distanz
+        } for bauer, distanz in results
+    ]
+
+@app.get("/bauern/nearest")
+def get_nearest_bauern(
+    user_lat: float = Query(..., description="Breitengrad des Nutzers"),
+    user_lon: float = Query(..., description="Längengrad des Nutzers"),
+    limit: int = Query(10, description="Anzahl der nächsten Bauern"),
+    db: Session = Depends(get_db)
+):
+    """Findet die nächstgelegenen Bauern (nutzt bauernabfrage.py)"""
+    results = bauernabfrage.get_nearest_bauern(
+        db=db,
+        user_lat=user_lat,
+        user_lon=user_lon,
+        limit=limit
+    )
+    
+    return [
+        {
+            "bauer": bauer,
+            "distanz_km": distanz
+        } for bauer, distanz in results
+    ]
+
+@app.get("/bauern/{bauer_id}/details", response_model=schemas.Bauer)
+def get_bauer_with_details(bauer_id: int, db: Session = Depends(get_db)):
+    """Bauer mit allen Produkten und Standorten (nutzt bauernabfrage.py)"""
+    bauer = bauernabfrage.get_bauer_with_products(db=db, bauer_id=bauer_id)
+    if bauer is None:
+        raise HTTPException(status_code=404, detail="Bauer nicht gefunden")
+    return bauer
+
+@app.get("/bauern/{bauer_id}/produkte", response_model=List[schemas.Produkt])
+def get_produkte_by_bauer(
+    bauer_id: int,
+    produktart_id: Optional[int] = Query(None, description="Filter nach Produktart"),
+    skip: int = 0,
+    limit: int = 100,
+    db: Session = Depends(get_db)
+):
+    """Alle Produkte eines Bauern (nutzt bauernabfrage.py)"""
+    return bauernabfrage.get_produkte_by_bauer(
+        db=db,
+        bauer_id=bauer_id,
+        produktart_id=produktart_id,
+        skip=skip,
+        limit=limit
+    )
+
+@app.get("/bauern/{bauer_id}/standorte", response_model=List[schemas.Standort])
+def get_standorte_by_bauer(bauer_id: int, db: Session = Depends(get_db)):
+    """Alle Standorte eines Bauern (nutzt bauernabfrage.py)"""
+    return bauernabfrage.get_standorte_by_bauer(db=db, bauer_id=bauer_id)
+
+@app.get("/bauern/count")
+def count_bauern_endpoint(
+    search: Optional[str] = Query(None, description="Suchbegriff für Filterung"),
+    db: Session = Depends(get_db)
+):
+    """Zählt Bauern (für Pagination, nutzt bauernabfrage.py)"""
+    count = bauernabfrage.count_bauern(db=db, search=search)
+    return {"total": count}
 
 # ========================
 # KUNDE ENDPOINTS

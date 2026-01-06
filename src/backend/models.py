@@ -1,7 +1,8 @@
-from sqlalchemy import Column, Integer, String, Float, Date, ForeignKey, Table
+from sqlalchemy import Column, Integer, String, Float, Date, DateTime, ForeignKey, Table
 from sqlalchemy.orm import relationship
 from geoalchemy2 import Geography
 from src.backend.db import Base
+from datetime import datetime
 
 # ========================
 # JUNCTION TABLES (Many-to-Many)
@@ -54,6 +55,7 @@ class Bauer(Base):
     produkte = relationship("Produkt", back_populates="bauer")
     bestellungen = relationship("Bestellung", back_populates="bauer")
     standorte = relationship("Standort", back_populates="bauer")
+    user = relationship("User", foreign_keys="User.bauer_id")
 
 
 class Kunde(Base):
@@ -66,6 +68,24 @@ class Kunde(Base):
     
     # Relationships
     bestellungen = relationship("Bestellung", back_populates="kunde")
+
+
+class User(Base):
+    __tablename__ = 'users'
+    
+    user_id = Column(Integer, primary_key=True, index=True)
+    email = Column(String(100), unique=True, nullable=False)
+    passwort_hash = Column(String(255), nullable=False)
+    rolle = Column(String(20), default='kunde')  # 'kunde', 'bauer', 'admin'
+    erstellt_am = Column(DateTime, default=datetime.now)
+    aktiv = Column(Integer, default=1)  # 1 = aktiv, 0 = deaktiviert
+    
+    # Optional: Verknüpfung zu Kunde/Bauer
+    kunde_id = Column(Integer, ForeignKey('kunden.kunden_id'), nullable=True)
+    bauer_id = Column(Integer, ForeignKey('bauern.bauer_id'), nullable=True)
+    
+    # Relationships
+    warenkörbe = relationship("Warenkorb", back_populates="user")
 
 
 class Produktart(Base):
@@ -149,3 +169,31 @@ class Bestellposition(Base):
     # Relationships
     bestellung = relationship("Bestellung", back_populates="positionen")
     produkt = relationship("Produkt", back_populates="bestellpositionen")
+
+
+class Warenkorb(Base):
+    __tablename__ = 'warenkorb'
+    
+    warenkorb_id = Column(Integer, primary_key=True, index=True)
+    user_id = Column(Integer, ForeignKey('users.user_id'))
+    erstellt_am = Column(DateTime, default=datetime.now)
+    aktualisiert_am = Column(DateTime, default=datetime.now, onupdate=datetime.now)
+    status = Column(String(20), default='offen')  # 'offen', 'bestellt', 'abgebrochen'
+    
+    # Relationships
+    user = relationship("User", back_populates="warenkörbe")
+    positionen = relationship("WarenkorbPosition", back_populates="warenkorb", cascade="all, delete-orphan")
+
+
+class WarenkorbPosition(Base):
+    __tablename__ = 'warenkorb_position'
+    
+    warenkorb_position_id = Column(Integer, primary_key=True, index=True)
+    warenkorb_id = Column(Integer, ForeignKey('warenkorb.warenkorb_id'))
+    produkt_id = Column(Integer, ForeignKey('produkte.produkt_id'))
+    menge = Column(Integer)
+    preis_je_einheit = Column(Float)
+    
+    # Relationships
+    warenkorb = relationship("Warenkorb", back_populates="positionen")
+    produkt = relationship("Produkt")
