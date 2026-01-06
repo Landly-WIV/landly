@@ -274,3 +274,128 @@ def read_standort(standort_id: int, db: Session = Depends(get_db)):
     if standort is None:
         raise HTTPException(status_code=404, detail="Standort nicht gefunden")
     return standort
+
+# ========================
+# USER ENDPOINTS
+# ========================
+
+@app.get("/users", response_model=List[schemas.User])
+def list_users(skip: int = 0, limit: int = 100, db: Session = Depends(get_db)):
+    """Alle User abrufen"""
+    return crud.get_users(db, skip=skip, limit=limit)
+
+@app.get("/users/{user_id}", response_model=schemas.User)
+def read_user(user_id: int, db: Session = Depends(get_db)):
+    """Ein User nach ID"""
+    user = crud.get_user(db, user_id=user_id)
+    if user is None:
+        raise HTTPException(status_code=404, detail="User nicht gefunden")
+    return user
+
+@app.get("/users/email/{email}", response_model=schemas.User)
+def read_user_by_email(email: str, db: Session = Depends(get_db)):
+    """User nach Email suchen"""
+    user = crud.get_user_by_email(db, email=email)
+    if user is None:
+        raise HTTPException(status_code=404, detail="User nicht gefunden")
+    return user
+
+@app.post("/users", response_model=schemas.User, status_code=201)
+def create_user_endpoint(user: schemas.UserCreate, db: Session = Depends(get_db)):
+    """Neuen User erstellen (Passwort wird hier NICHT gehasht - nutze /users/register!)"""
+    # Prüfe ob Email schon existiert
+    existing = crud.get_user_by_email(db, email=user.email)
+    if existing:
+        raise HTTPException(status_code=400, detail="Email bereits registriert")
+    return crud.create_user(db=db, user=user)
+
+@app.delete("/users/{user_id}")
+def delete_user_endpoint(user_id: int, db: Session = Depends(get_db)):
+    """User löschen"""
+    success = crud.delete_user(db=db, user_id=user_id)
+    if not success:
+        raise HTTPException(status_code=404, detail="User nicht gefunden")
+    return {"message": "User gelöscht"}
+
+# ========================
+# WARENKORB ENDPOINTS
+# ========================
+
+@app.get("/warenkorb/user/{user_id}", response_model=schemas.WarenkorbDetailed)
+def get_user_warenkorb(user_id: int, db: Session = Depends(get_db)):
+    """Aktiven Warenkorb eines Users holen (oder neuen erstellen)"""
+    warenkorb = crud.get_warenkorb_by_user(db, user_id=user_id)
+    
+    if not warenkorb:
+        # Erstelle neuen Warenkorb
+        warenkorb = crud.create_warenkorb(db, user_id=user_id)
+    
+    # Hole mit Details
+    return crud.get_warenkorb_detailed(db, warenkorb_id=warenkorb.warenkorb_id)
+
+@app.get("/warenkorb/{warenkorb_id}", response_model=schemas.WarenkorbDetailed)
+def get_warenkorb(warenkorb_id: int, db: Session = Depends(get_db)):
+    """Warenkorb mit allen Positionen"""
+    warenkorb = crud.get_warenkorb_detailed(db, warenkorb_id=warenkorb_id)
+    if warenkorb is None:
+        raise HTTPException(status_code=404, detail="Warenkorb nicht gefunden")
+    return warenkorb
+
+@app.post("/warenkorb/{warenkorb_id}/add", response_model=schemas.WarenkorbPosition)
+def add_product_to_warenkorb(
+    warenkorb_id: int,
+    produkt_id: int,
+    menge: int,
+    preis_je_einheit: float,
+    db: Session = Depends(get_db)
+):
+    """Produkt zum Warenkorb hinzufügen"""
+    try:
+        position = crud.add_to_warenkorb(
+            db=db,
+            warenkorb_id=warenkorb_id,
+            produkt_id=produkt_id,
+            menge=menge,
+            preis_je_einheit=preis_je_einheit
+        )
+        return position
+    except Exception as e:
+        raise HTTPException(status_code=400, detail=str(e))
+
+@app.put("/warenkorb/position/{position_id}", response_model=schemas.WarenkorbPosition)
+def update_warenkorb_position_endpoint(
+    position_id: int,
+    menge: int,
+    db: Session = Depends(get_db)
+):
+    """Menge einer Position aktualisieren"""
+    position = crud.update_warenkorb_position(db, position_id=position_id, menge=menge)
+    if position is None:
+        raise HTTPException(status_code=404, detail="Position nicht gefunden")
+    return position
+
+@app.delete("/warenkorb/position/{position_id}")
+def remove_from_warenkorb_endpoint(position_id: int, db: Session = Depends(get_db)):
+    """Position aus Warenkorb entfernen"""
+    success = crud.remove_from_warenkorb(db, position_id=position_id)
+    if not success:
+        raise HTTPException(status_code=404, detail="Position nicht gefunden")
+    return {"message": "Position entfernt"}
+
+@app.delete("/warenkorb/{warenkorb_id}/clear")
+def clear_warenkorb_endpoint(warenkorb_id: int, db: Session = Depends(get_db)):
+    """Warenkorb leeren"""
+    success = crud.clear_warenkorb(db, warenkorb_id=warenkorb_id)
+    return {"message": "Warenkorb geleert"}
+
+@app.post("/warenkorb/{warenkorb_id}/checkout", response_model=schemas.Bestellung)
+def checkout_warenkorb(
+    warenkorb_id: int,
+    bauer_id: int,
+    db: Session = Depends(get_db)
+):
+    """Warenkorb in Bestellung umwandeln (Checkout)"""
+    bestellung = crud.warenkorb_to_bestellung(db, warenkorb_id=warenkorb_id, bauer_id=bauer_id)
+    if bestellung is None:
+        raise HTTPException(status_code=400, detail="Warenkorb ist leer oder User hat keine Kunde-ID")
+    return bestellung

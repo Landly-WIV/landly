@@ -1,7 +1,7 @@
 from pydantic import BaseModel
 from pydantic import EmailStr
 from typing import Optional, List
-from datetime import date
+from datetime import date, datetime
 
 # ========================
 # ORT SCHEMAS
@@ -185,6 +185,84 @@ class BestellungDetailed(Bestellung):
     kunde: Optional[Kunde] = None
     bauer: Optional[Bauer] = None
     positionen: List[BestellpositionDetailed] = []
+    
+    class Config:
+        from_attributes = True
+
+# ========================
+# USER SCHEMAS
+# ========================
+
+class UserBase(BaseModel):
+    email: Optional[EmailStr] = None
+    rolle: Optional[str] = None
+    aktiv: Optional[int] = None
+    kunde_id: Optional[int] = None
+    bauer_id: Optional[int] = None
+
+class UserCreate(BaseModel):
+    email: EmailStr
+    passwort: str  # Klartext beim Erstellen, wird gehasht
+    rolle: str = "kunde"  # Standard: kunde
+    kunde_id: Optional[int] = None
+    bauer_id: Optional[int] = None
+
+class UserLogin(BaseModel):
+    email: EmailStr
+    passwort: str
+
+class User(UserBase):
+    user_id: int
+    erstellt_am: datetime
+    
+    class Config:
+        from_attributes = True
+
+# ========================
+# WARENKORB SCHEMAS
+# ========================
+
+class WarenkorbPositionBase(BaseModel):
+    produkt_id: Optional[int] = None
+    menge: Optional[int] = None
+    preis_je_einheit: Optional[float] = None
+
+class WarenkorbPositionCreate(WarenkorbPositionBase):
+    produkt_id: int
+    menge: int
+    preis_je_einheit: float
+
+class WarenkorbPosition(WarenkorbPositionBase):
+    warenkorb_position_id: int
+    warenkorb_id: int
+    
+    class Config:
+        from_attributes = True
+
+class WarenkorbPositionDetailed(WarenkorbPosition):
+    produkt: Optional[Produkt] = None
+    
+    class Config:
+        from_attributes = True
+
+class WarenkorbBase(BaseModel):
+    user_id: Optional[int] = None
+    status: Optional[str] = None
+
+class WarenkorbCreate(BaseModel):
+    user_id: int
+    positionen: List[WarenkorbPositionCreate] = []
+
+class Warenkorb(WarenkorbBase):
+    warenkorb_id: int
+    erstellt_am: datetime
+    aktualisiert_am: datetime
+    
+    class Config:
+        from_attributes = True
+
+class WarenkorbDetailed(Warenkorb):
+    positionen: List[WarenkorbPositionDetailed] = []
     
     class Config:
         from_attributes = True
