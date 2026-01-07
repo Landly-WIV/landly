@@ -2,6 +2,7 @@ import flet as ft
 import search as se
 import landingpage as lp
 import maptest as mt
+import warenkorb as wk
 import backend.searchFunctions as sf
 
 class contentPage():
@@ -24,7 +25,7 @@ def getPage(ind, site):
             return lp.land()
         
         case 3:
-            return ft.Row()
+            return wk.warenkorbPage(site)
         
         case 4:
             return ft.Row()

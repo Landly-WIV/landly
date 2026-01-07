@@ -1,5 +1,6 @@
 import flet as ft
 import content as co
+import warenkorb as wk
 
 _products = None
 
@@ -50,6 +51,15 @@ def proSite(prod, site):
     def back_click(e):
         prod.cloPro()
         co.updatePage(site)
+    
+    def add_to_cart_click(e):
+        wk.addToWarenkorb(prod, menge=1)
+        site.page.snack_bar = ft.SnackBar(
+            content=ft.Text(f"{prod.name} zum Warenkorb hinzugefügt"),
+            bgcolor="#90C040"
+        )
+        site.page.snack_bar.open = True
+        site.page.update()
 
     header = ft.Row(controls=[
         ft.IconButton(icon=ft.Icons.ARROW_BACK, on_click=back_click),
@@ -74,7 +84,7 @@ def proSite(prod, site):
     horizontal_alignment=ft.CrossAxisAlignment.CENTER)
 
     footer = ft.Row(controls=[
-        ft.Button("In den Warenkorb"),
+        ft.Button("In den Warenkorb", on_click=add_to_cart_click),
     ],
     alignment=ft.MainAxisAlignment.CENTER)
 
