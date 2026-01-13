@@ -1,5 +1,5 @@
 from sqlalchemy.orm import Session, joinedload
-from . import models, schemas
+from src.backend import models, schemas
 from typing import List, Optional
 
 # ========================
@@ -168,3 +168,189 @@ def get_standorte(db: Session, skip: int = 0, limit: int = 100) -> List[models.S
 def get_standort(db: Session, standort_id: int) -> Optional[models.Standort]:
     """Ein Standort nach ID"""
     return db.query(models.Standort).filter(models.Standort.standort_id == standort_id).first()
+
+# ========================
+# USER CRUD
+# ========================
+
+def get_users(db: Session, skip: int = 0, limit: int = 100) -> List[models.User]:
+    """Alle User abrufen"""
+    return db.query(models.User).offset(skip).limit(limit).all()
+
+def get_user(db: Session, user_id: int) -> Optional[models.User]:
+    """Ein User nach ID"""
+    return db.query(models.User).filter(models.User.user_id == user_id).first()
+
+def get_user_by_email(db: Session, email: str) -> Optional[models.User]:
+    """User nach Email suchen"""
+    return db.query(models.User).filter(models.User.email == email).first()
+
+def create_user(db: Session, user: schemas.UserCreate) -> models.User:
+    """Neuen User erstellen (Passwort muss bereits gehasht sein!)"""
+    db_user = models.User(
+        email=user.email,
+        passwort_hash=user.passwort,  # Wird von auth.py gehasht übergeben
+        rolle=user.rolle,
+        kunde_id=user.kunde_id,
+        bauer_id=user.bauer_id
+    )
+    db.add(db_user)
+    db.commit()
+    db.refresh(db_user)
+    return db_user
+
+def update_user(db: Session, user_id: int, user_data: dict) -> Optional[models.User]:
+    """User aktualisieren"""
+    db_user = get_user(db, user_id)
+    if db_user:
+        for key, value in user_data.items():
+            if hasattr(db_user, key):
+                setattr(db_user, key, value)
+        db.commit()
+        db.refresh(db_user)
+    return db_user
+
+def delete_user(db: Session, user_id: int) -> bool:
+    """User löschen"""
+    db_user = get_user(db, user_id)
+    if db_user:
+        db.delete(db_user)
+        db.commit()
+        return True
+    return False
+
+# ========================
+# WARENKORB CRUD
+# ========================
+
+def get_warenkorb_by_user(db: Session, user_id: int) -> Optional[models.Warenkorb]:
+    """Aktiven Warenkorb eines Users holen (Status 'offen')"""
+    return db.query(models.Warenkorb)\
+        .filter(models.Warenkorb.user_id == user_id)\
+        .filter(models.Warenkorb.status == 'offen')\
+        .first()
+
+def get_warenkorb_detailed(db: Session, warenkorb_id: int) -> Optional[models.Warenkorb]:
+    """Warenkorb mit allen Positionen und Produkten"""
+    return db.query(models.Warenkorb)\
+        .options(
+            joinedload(models.Warenkorb.positionen).joinedload(models.WarenkorbPosition.produkt)
+        )\
+        .filter(models.Warenkorb.warenkorb_id == warenkorb_id)\
+        .first()
+
+def create_warenkorb(db: Session, user_id: int) -> models.Warenkorb:
+    """Neuen leeren Warenkorb für User erstellen"""
+    db_warenkorb = models.Warenkorb(
+        user_id=user_id,
+        status='offen'
+    )
+    db.add(db_warenkorb)
+    db.commit()
+    db.refresh(db_warenkorb)
+    return db_warenkorb
+
+def add_to_warenkorb(
+    db: Session,
+    warenkorb_id: int,
+    produkt_id: int,
+    menge: int,
+    preis_je_einheit: float
+) -> models.WarenkorbPosition:
+    """Produkt zum Warenkorb hinzufügen"""
+    # Prüfe ob Produkt schon im Warenkorb
+    existing = db.query(models.WarenkorbPosition)\
+        .filter(models.WarenkorbPosition.warenkorb_id == warenkorb_id)\
+        .filter(models.WarenkorbPosition.produkt_id == produkt_id)\
+        .first()
+    
+    if existing:
+        # Menge erhöhen
+        existing.menge += menge
+        db.commit()
+        db.refresh(existing)
+        return existing
+    else:
+        # Neue Position erstellen
+        db_position = models.WarenkorbPosition(
+            warenkorb_id=warenkorb_id,
+            produkt_id=produkt_id,
+            menge=menge,
+            preis_je_einheit=preis_je_einheit
+        )
+        db.add(db_position)
+        db.commit()
+        db.refresh(db_position)
+        return db_position
+
+def remove_from_warenkorb(db: Session, position_id: int) -> bool:
+    """Position aus Warenkorb entfernen"""
+    position = db.query(models.WarenkorbPosition)\
+        .filter(models.WarenkorbPosition.warenkorb_position_id == position_id)\
+        .first()
+    if position:
+        db.delete(position)
+        db.commit()
+        return True
+    return False
+
+def update_warenkorb_position(
+    db: Session,
+    position_id: int,
+    menge: int
+) -> Optional[models.WarenkorbPosition]:
+    """Menge einer Warenkorb-Position aktualisieren"""
+    position = db.query(models.WarenkorbPosition)\
+        .filter(models.WarenkorbPosition.warenkorb_position_id == position_id)\
+        .first()
+    if position:
+        position.menge = menge
+        db.commit()
+        db.refresh(position)
+    return position
+
+def clear_warenkorb(db: Session, warenkorb_id: int) -> bool:
+    """Alle Positionen aus Warenkorb entfernen"""
+    db.query(models.WarenkorbPosition)\
+        .filter(models.WarenkorbPosition.warenkorb_id == warenkorb_id)\
+        .delete()
+    db.commit()
+    return True
+
+def warenkorb_to_bestellung(db: Session, warenkorb_id: int, bauer_id: int) -> Optional[models.Bestellung]:
+    """Warenkorb in Bestellung umwandeln"""
+    warenkorb = get_warenkorb_detailed(db, warenkorb_id)
+    if not warenkorb or not warenkorb.positionen:
+        return None
+    
+    # Hole User-Daten
+    user = get_user(db, warenkorb.user_id)
+    if not user or not user.kunde_id:
+        return None
+    
+    # Erstelle Bestellung
+    from datetime import date
+    db_bestellung = models.Bestellung(
+        kunden_id=user.kunde_id,
+        bauer_id=bauer_id,
+        datum=date.today()
+    )
+    db.add(db_bestellung)
+    db.flush()
+    
+    # Kopiere Positionen
+    for position in warenkorb.positionen:
+        db_position = models.Bestellposition(
+            bestellung_id=db_bestellung.bestellung_id,
+            produkt_id=position.produkt_id,
+            menge=position.menge,
+            preis_je_einheit=position.preis_je_einheit
+        )
+        db.add(db_position)
+    
+    # Warenkorb auf 'bestellt' setzen
+    warenkorb.status = 'bestellt'
+    
+    db.commit()
+    db.refresh(db_bestellung)
+    return db_bestellung
