@@ -2,7 +2,7 @@ import flet as ft
 import backend.logRegAuth as au
 import re
 
-def inpVals(e, regStr):
+def inpVal(e, regStr):
     if re.match(regStr, e.control.value):
         e.control.border_color = ft.Colors.GREEN
         e.control.error_text = None
