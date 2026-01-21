@@ -142,6 +142,19 @@ class Standort(StandortBase):
     class Config:
         from_attributes = True
 
+# Standort mit Koordinaten für Kartenanzeige
+class StandortMitKoordinaten(BaseModel):
+    standort_id: int
+    bezeichnung: Optional[str] = None
+    adresse: Optional[str] = None
+    bauer_id: Optional[int] = None
+    firmenname: Optional[str] = None
+    lat: float
+    lon: float
+    
+    class Config:
+        from_attributes = True
+
 # ========================
 # BESTELLUNG SCHEMAS
 # ========================

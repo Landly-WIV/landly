@@ -1,3 +1,10 @@
+import sys
+from pathlib import Path
+
+# Füge das Root-Verzeichnis zum Python-Pfad hinzu
+root_dir = Path(__file__).parent.parent.parent
+sys.path.insert(0, str(root_dir))
+
 from fastapi import FastAPI, Depends, HTTPException, Query
 from fastapi.middleware.cors import CORSMiddleware
 from sqlalchemy.orm import Session

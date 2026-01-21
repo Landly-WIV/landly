@@ -9,17 +9,17 @@ from datetime import datetime
 # ========================
 
 produkt_label = Table(
-    'produkt_label',
+    'Produkt_Label',
     Base.metadata,
-    Column('produkt_id', Integer, ForeignKey('produkte.produkt_id')),
-    Column('label_id', Integer, ForeignKey('labels.label_id'))
+    Column('produkt_id', Integer, ForeignKey('Produkte.produkt_id')),
+    Column('label_id', Integer, ForeignKey('Labels.label_id'))
 )
 
 produkt_standort = Table(
-    'produkt_standort',
+    'Produkt_Standort',
     Base.metadata,
-    Column('produkt_id', Integer, ForeignKey('produkte.produkt_id')),
-    Column('standort_id', Integer, ForeignKey('standorte.standort_id'))
+    Column('produkt_id', Integer, ForeignKey('Produkte.produkt_id')),
+    Column('standort_id', Integer, ForeignKey('Standorte.standort_id'))
 )
 
 # ========================
@@ -27,7 +27,7 @@ produkt_standort = Table(
 # ========================
 
 class Ort(Base):
-    __tablename__ = 'ort'
+    __tablename__ = 'Ort'
     
     ort_id = Column(Integer, primary_key=True, index=True)
     plz = Column(Integer)
@@ -39,14 +39,14 @@ class Ort(Base):
 
 
 class Bauer(Base):
-    __tablename__ = 'bauern'
+    __tablename__ = 'Bauern'
     
     bauer_id = Column(Integer, primary_key=True, index=True)
     firmenname = Column(String(30))
     kontaktperson = Column(String(20))
     straße = Column(String(20))
     hausnr = Column(Integer)
-    ort_id = Column(Integer, ForeignKey('ort.ort_id'))
+    ort_id = Column(Integer, ForeignKey('Ort.ort_id'))
     telefon = Column(Integer)
     email = Column(String(50))
     
@@ -59,7 +59,7 @@ class Bauer(Base):
 
 
 class Kunde(Base):
-    __tablename__ = 'kunden'
+    __tablename__ = 'Kunden'
     
     kunden_id = Column(Integer, primary_key=True, index=True)
     vorname = Column(String(50))
@@ -71,7 +71,7 @@ class Kunde(Base):
 
 
 class User(Base):
-    __tablename__ = 'users'
+    __tablename__ = 'Users'
     
     user_id = Column(Integer, primary_key=True, index=True)
     email = Column(String(100), unique=True, nullable=False)
@@ -81,15 +81,15 @@ class User(Base):
     aktiv = Column(Integer, default=1)  # 1 = aktiv, 0 = deaktiviert
     
     # Optional: Verknüpfung zu Kunde/Bauer
-    kunde_id = Column(Integer, ForeignKey('kunden.kunden_id'), nullable=True)
-    bauer_id = Column(Integer, ForeignKey('bauern.bauer_id'), nullable=True)
+    kunde_id = Column(Integer, ForeignKey('Kunden.kunden_id'), nullable=True)
+    bauer_id = Column(Integer, ForeignKey('Bauern.bauer_id'), nullable=True)
     
     # Relationships
     warenkörbe = relationship("Warenkorb", back_populates="user")
 
 
 class Produktart(Base):
-    __tablename__ = 'produktart'
+    __tablename__ = 'Produktart'
     
     produktart_id = Column(Integer, primary_key=True, index=True)
     bezeichnung = Column(String(50))
@@ -99,7 +99,7 @@ class Produktart(Base):
 
 
 class Label(Base):
-    __tablename__ = 'labels'
+    __tablename__ = 'Labels'
     
     label_id = Column(Integer, primary_key=True, index=True)
     bezeichnung = Column(String(50))
@@ -109,15 +109,15 @@ class Label(Base):
 
 
 class Produkt(Base):
-    __tablename__ = 'produkte'
+    __tablename__ = 'Produkte'
     
     produkt_id = Column(Integer, primary_key=True, index=True)
     name = Column(String(50))
     beschreibung = Column(String(50))
     preis = Column(Float)
     einheit = Column(String(10))
-    bauern_id = Column(Integer, ForeignKey('bauern.bauer_id'))
-    produktart_id = Column(Integer, ForeignKey('produktart.produktart_id'))
+    bauern_id = Column(Integer, ForeignKey('Bauern.bauer_id'))
+    produktart_id = Column(Integer, ForeignKey('Produktart.produktart_id'))
     
     # Relationships
     bauer = relationship("Bauer", back_populates="produkte")
@@ -128,13 +128,13 @@ class Produkt(Base):
 
 
 class Standort(Base):
-    __tablename__ = 'standorte'
+    __tablename__ = 'Standorte'
     
     standort_id = Column(Integer, primary_key=True, index=True)
-    bauer_id = Column(Integer, ForeignKey('bauern.bauer_id'))
+    bauer_id = Column(Integer, ForeignKey('Bauern.bauer_id'))
     bezeichnung = Column(String(50))
     adresse = Column(String(50))
-    ort_id = Column(Integer, ForeignKey('ort.ort_id'))
+    ort_id = Column(Integer, ForeignKey('Ort.ort_id'))
     koordinate = Column(Geography('POINT', srid=4326))  # PostGIS Geography Type
     
     # Relationships
@@ -144,11 +144,11 @@ class Standort(Base):
 
 
 class Bestellung(Base):
-    __tablename__ = 'bestellungen'
+    __tablename__ = 'Bestellungen'
     
     bestellung_id = Column(Integer, primary_key=True, index=True)
-    kunden_id = Column(Integer, ForeignKey('kunden.kunden_id'))
-    bauer_id = Column(Integer, ForeignKey('bauern.bauer_id'))
+    kunden_id = Column(Integer, ForeignKey('Kunden.kunden_id'))
+    bauer_id = Column(Integer, ForeignKey('Bauern.bauer_id'))
     datum = Column(Date)
     
     # Relationships
@@ -158,11 +158,11 @@ class Bestellung(Base):
 
 
 class Bestellposition(Base):
-    __tablename__ = 'bestellposition'
+    __tablename__ = 'Bestellposition'
     
     bestellposs_id = Column(Integer, primary_key=True, index=True)
-    bestellung_id = Column(Integer, ForeignKey('bestellungen.bestellung_id'))
-    produkt_id = Column(Integer, ForeignKey('produkte.produkt_id'))
+    bestellung_id = Column(Integer, ForeignKey('Bestellungen.bestellung_id'))
+    produkt_id = Column(Integer, ForeignKey('Produkte.produkt_id'))
     menge = Column(Integer)
     preis_je_einheit = Column(Float)
     
@@ -172,10 +172,10 @@ class Bestellposition(Base):
 
 
 class Warenkorb(Base):
-    __tablename__ = 'warenkorb'
+    __tablename__ = 'Warenkorb'
     
     warenkorb_id = Column(Integer, primary_key=True, index=True)
-    user_id = Column(Integer, ForeignKey('users.user_id'))
+    user_id = Column(Integer, ForeignKey('Users.user_id'))
     erstellt_am = Column(DateTime, default=datetime.now)
     aktualisiert_am = Column(DateTime, default=datetime.now, onupdate=datetime.now)
     status = Column(String(20), default='offen')  # 'offen', 'bestellt', 'abgebrochen'
@@ -186,11 +186,11 @@ class Warenkorb(Base):
 
 
 class WarenkorbPosition(Base):
-    __tablename__ = 'warenkorb_position'
+    __tablename__ = 'Warenkorb_Position'
     
     warenkorb_position_id = Column(Integer, primary_key=True, index=True)
-    warenkorb_id = Column(Integer, ForeignKey('warenkorb.warenkorb_id'))
-    produkt_id = Column(Integer, ForeignKey('produkte.produkt_id'))
+    warenkorb_id = Column(Integer, ForeignKey('Warenkorb.warenkorb_id'))
+    produkt_id = Column(Integer, ForeignKey('Produkte.produkt_id'))
     menge = Column(Integer)
     preis_je_einheit = Column(Float)
     
