@@ -28,9 +28,38 @@ theme:
     - search.highlight
 
 nav:
-  - Übersicht: index.md
-  - Steckbrief: steckbrief.md
-  - Code-Beispiele: code-examples.md
+  - Startseite: index.md
+  
+  - Projekt:
+      - Projektidee: projekt/projektidee.md
+      - MoSCoW-Priorisierung: projekt/moscow.md
+      - Systemübersicht: projekt/systemuebersicht.md
+  
+  - User-Dokumentation:
+      - Einführung: user/einfuehrung.md
+      - Registrierung & Login: user/registrierung-login.md
+      - Produkte suchen: user/produkte-suchen.md
+      - Bestellung aufgeben: user/bestellung.md
+      - Abholung: user/abholung.md
+      - Mein Konto: user/mein-konto.md
+      - FAQ: user/faq.md
+  
+  - Entwickler-Dokumentation:
+      - Übersicht: dev/technische-uebersicht.md
+      - Setup & Installation: dev/setup.md
+      - Logisches Modell: dev/logisches-modell.md
+      - UML-Diagramme:
+          - Use-Case-Diagramm: dev/uml-usecase.md
+          - Klassendiagramm: dev/uml-klassen.md
+          - Sequenzdiagramme: dev/uml-sequenz.md
+  
+  - Projektorganisation:
+      - Weeklys Übersicht: organisation/weeklys-uebersicht.md
+      - KW01 - Lucas: organisation/weeklys/kw01-lucas.md
+  
+  - Sonstiges:
+      - Steckbrief: steckbrief.md
+      - Code-Beispiele: code-examples.md
 
 markdown_extensions:
   - admonition
