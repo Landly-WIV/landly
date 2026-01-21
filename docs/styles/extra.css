@@ -1,0 +1,18 @@
+/* Custom CSS für Landly Dokumentation */
+
+/* Zusätzliche Anpassungen können hier hinzugefügt werden */
+
+:root {
+  --md-primary-fg-color: #4caf50;
+  --md-accent-fg-color: #cddc39;
+}
+
+/* Verbesserte Code-Block Darstellung */
+.highlight pre {
+  border-radius: 8px;
+}
+
+/* Admonition Boxen leicht anpassen */
+.admonition {
+  border-radius: 6px;
+}
