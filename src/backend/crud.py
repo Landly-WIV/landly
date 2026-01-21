@@ -169,6 +169,57 @@ def get_standort(db: Session, standort_id: int) -> Optional[models.Standort]:
     """Ein Standort nach ID"""
     return db.query(models.Standort).filter(models.Standort.standort_id == standort_id).first()
 
+def get_standorte_mit_koordinaten(db: Session) -> List[dict]:
+    """
+    Holt alle Standorte mit ihren Koordinaten für die Kartenanzeige.
+    Extrahiert lat/lon aus dem PostGIS geography-Feld.
+    
+    Returns:
+        Liste von Dictionaries mit standort_id, bezeichnung, lat, lon, bauer_info
+    """
+    from sqlalchemy import func, text
+    from geoalchemy2.functions import ST_AsText
+    
+    # Query mit ST_AsText um die Koordinaten als Text zu bekommen
+    # Format: "POINT(longitude latitude)"
+    results = db.query(
+        models.Standort.standort_id,
+        models.Standort.bezeichnung,
+        models.Standort.adresse,
+        models.Standort.bauer_id,
+        models.Bauer.firmenname,
+        func.ST_AsText(models.Standort.koordinate).label('koordinate_text')
+    ).outerjoin(  # LEFT JOIN - zeigt auch Standorte ohne Bauer
+        models.Bauer, models.Standort.bauer_id == models.Bauer.bauer_id
+    ).filter(
+        models.Standort.koordinate.isnot(None)  # Nur Standorte mit Koordinaten
+    ).all()
+    
+    standorte = []
+    for row in results:
+        # Parse "POINT(lon lat)" String
+        # Beispiel: "POINT(11.0781 49.4522)"
+        if row.koordinate_text:
+            try:
+                # Entferne "POINT(" und ")"
+                coords = row.koordinate_text.replace('POINT(', '').replace(')', '')
+                lon, lat = coords.split()
+                
+                standorte.append({
+                    'standort_id': row.standort_id,
+                    'bezeichnung': row.bezeichnung or f'Standort {row.standort_id}',
+                    'adresse': row.adresse or 'Keine Adresse',
+                    'bauer_id': row.bauer_id,
+                    'firmenname': row.firmenname or f'Hof #{row.bauer_id}' if row.bauer_id else 'Unbekannter Hof',
+                    'lat': float(lat),
+                    'lon': float(lon)
+                })
+            except Exception as e:
+                print(f"⚠️ Warnung: Konnte Koordinaten nicht parsen für Standort {row.standort_id}: {e}")
+                continue
+    
+    return standorte
+
 # ========================
 # USER CRUD
 # ========================
