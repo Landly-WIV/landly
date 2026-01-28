@@ -83,11 +83,17 @@ def proSit(proDat, sit):
         sit.page.snack_bar.open = True
         sit.page.update()
 
-    det = getProDet(proDat['produkt_id'])
-    if det:
-        proDat = det
+    # Produkt-ID ermitteln (unterstützt beide Formate)
+    proId = proDat.get('produkt_id') or proDat.get('proId')
+    
+    det = None
+    if proId:
+        det = getProDet(proId)
+        if det:
+            proDat = det
 
-    bauNam = getBauNam(proDat['bauern_id'])
+    bauId = proDat.get('bauern_id') or proDat.get('bauer_id')
+    bauNam = getBauNam(bauId) if bauId else "Unbekannt"
     
     hea = ft.Row(controls=[
         ft.IconButton(icon=ft.Icons.ARROW_BACK, on_click=bacCli),
@@ -188,7 +194,6 @@ def proSeaRes(pro, sit):
     proCar = []
     for prd in filPro:
         bauNam = getBauNam(prd['bauern_id'])
-        dis = calDis(prd['bauern_id'])
         
         ico = "🛒"
         if prd.get('produktart'):
@@ -197,7 +202,7 @@ def proSeaRes(pro, sit):
         car = ft.Card(
             content=ft.Container(
                 content=ft.Column(controls=[
-                    ft.Text(bauNam, size=12),
+                    ft.Text(bauNam, size=12, color=ft.Colors.GREY_700),
                     ft.Text(prd['name'], weight=ft.FontWeight.BOLD, size=14),
                     ft.Text(ico, size=50),
                     ft.Text(
@@ -206,7 +211,6 @@ def proSeaRes(pro, sit):
                         size=12
                     ),
                     ft.Text(f"{prd['preis']} € / {prd['einheit']}", size=14),
-                    ft.Text(f"{dis} km entfernt", size=12)
                 ],
                 horizontal_alignment=ft.CrossAxisAlignment.CENTER,
                 alignment=ft.MainAxisAlignment.CENTER),

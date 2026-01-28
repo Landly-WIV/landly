@@ -36,7 +36,7 @@ def navBar(site):
         navButton(ft.Icons.MAP, "Map", 0, site),
         navButton(ft.Icons.SEARCH, "Suche", 1, site),
         navButton(ft.Icons.LIST, "Liste", 2, site),
-        navButton(ft.Icons.SHOPPING_BASKET, "Bestellung", 3, site),
+        navButton(ft.Icons.SHOPPING_BASKET, "Warenkorb", 3, site),
         navButton(ft.Icons.PERSON, "Profil", 4, site),
     ]
     site.page.update()

@@ -22,21 +22,33 @@ def getWarenkorb():
     return _warenkorb
 
 def addToWarenkorb(prod, menge=1):
-    """Produkt zum Warenkorb hinzufügen"""
+    """Produkt zum Warenkorb hinzufügen - unterstützt Dict oder Objekt"""
     warenkorb = getWarenkorb()
+    
+    # Produkt-ID ermitteln (unterstützt Dict und Objekt)
+    if isinstance(prod, dict):
+        proId = prod.get('produkt_id') or prod.get('proId')
+        name = prod.get('name', 'Unbekannt')
+        preis = prod.get('preis', 0)
+        einheit = prod.get('einheit', 'Stück')
+    else:
+        proId = prod.proId
+        name = prod.name
+        preis = prod.preis
+        einheit = prod.einheit
     
     # Prüfe ob Produkt schon im Warenkorb
     for item in warenkorb:
-        if item['proId'] == prod.proId:
+        if item['proId'] == proId:
             item['menge'] += menge
             return
     
     # Neues Produkt hinzufügen
     warenkorb.append({
-        'proId': prod.proId,
-        'name': prod.name,
-        'preis': prod.preis,
-        'einheit': prod.einheit,
+        'proId': proId,
+        'name': name,
+        'preis': preis,
+        'einheit': einheit,
         'menge': menge
     })
     
@@ -97,6 +109,7 @@ def warenkorbItem(item, site):
     """Einzelnes Warenkorb-Item darstellen"""
     # Farben
     PRIMARY_GREEN = "#2D5016"
+    LIGHT_GREEN = "#6B8E23"
     WHITE = "#FFFFFF"
     
     def remove_click(e):
@@ -116,53 +129,94 @@ def warenkorbItem(item, site):
         site.page.update()
     
     return ft.Container(
-        content=ft.Row(
+        content=ft.Column(
             controls=[
-                ft.Column(
-                    controls=[
-                        ft.Text(item['name'], size=16, weight=ft.FontWeight.BOLD),
-                        ft.Text(f"{item['preis']:.2f} € / {item['einheit']}", size=14, color="#666666"),
-                    ],
-                    expand=True,
-                ),
+                # Obere Zeile: Produktname + Löschen-Button
                 ft.Row(
                     controls=[
-                        ft.IconButton(
-                            icon=ft.Icons.REMOVE,
-                            on_click=menge_minus,
-                            icon_color=PRIMARY_GREEN,
-                            icon_size=20,
+                        ft.Text(
+                            item['name'], 
+                            size=16, 
+                            weight=ft.FontWeight.BOLD,
+                            color="#333333",
+                            expand=True,
                         ),
-                        ft.Text(str(item['menge']), size=16, width=30, text_align=ft.TextAlign.CENTER),
                         ft.IconButton(
-                            icon=ft.Icons.ADD,
-                            on_click=menge_plus,
-                            icon_color=PRIMARY_GREEN,
-                            icon_size=20,
+                            icon=ft.Icons.CLOSE,
+                            on_click=remove_click,
+                            icon_color="#999999",
+                            icon_size=18,
+                            tooltip="Entfernen",
                         ),
                     ],
-                    spacing=5,
+                    alignment=ft.MainAxisAlignment.SPACE_BETWEEN,
                 ),
+                # Mittlere Zeile: Preis pro Einheit
                 ft.Text(
-                    f"{item['preis'] * item['menge']:.2f} €",
-                    size=16,
-                    weight=ft.FontWeight.BOLD,
-                    width=80,
-                    text_align=ft.TextAlign.RIGHT,
+                    f"{item['preis']:.2f} € / {item['einheit']}", 
+                    size=13, 
+                    color="#888888"
                 ),
-                ft.IconButton(
-                    icon=ft.Icons.DELETE_OUTLINE,
-                    on_click=remove_click,
-                    icon_color="#FF0000",
-                    icon_size=20,
+                ft.Container(height=8),
+                # Untere Zeile: Mengensteuerung + Gesamtpreis
+                ft.Row(
+                    controls=[
+                        # Mengensteuerung
+                        ft.Container(
+                            content=ft.Row(
+                                controls=[
+                                    ft.IconButton(
+                                        icon=ft.Icons.REMOVE,
+                                        on_click=menge_minus,
+                                        icon_color=PRIMARY_GREEN,
+                                        icon_size=18,
+                                    ),
+                                    ft.Container(
+                                        content=ft.Text(
+                                            str(item['menge']), 
+                                            size=16, 
+                                            weight=ft.FontWeight.BOLD,
+                                            text_align=ft.TextAlign.CENTER,
+                                        ),
+                                        width=35,
+                                        alignment=ft.alignment.center,
+                                    ),
+                                    ft.IconButton(
+                                        icon=ft.Icons.ADD,
+                                        on_click=menge_plus,
+                                        icon_color=PRIMARY_GREEN,
+                                        icon_size=18,
+                                    ),
+                                ],
+                                spacing=0,
+                            ),
+                            border=ft.border.all(1, "#DDDDDD"),
+                            border_radius=8,
+                        ),
+                        # Gesamtpreis für dieses Item
+                        ft.Text(
+                            f"{item['preis'] * item['menge']:.2f} €",
+                            size=18,
+                            weight=ft.FontWeight.BOLD,
+                            color=PRIMARY_GREEN,
+                        ),
+                    ],
+                    alignment=ft.MainAxisAlignment.SPACE_BETWEEN,
                 ),
             ],
-            alignment=ft.MainAxisAlignment.SPACE_BETWEEN,
+            spacing=2,
         ),
         padding=15,
         bgcolor=WHITE,
-        border_radius=10,
-        margin=ft.margin.only(bottom=10),
+        border_radius=12,
+        border=ft.border.all(1, "#E8E8E8"),
+        shadow=ft.BoxShadow(
+            spread_radius=0,
+            blur_radius=6,
+            color=ft.Colors.with_opacity(0.08, "#000000"),
+            offset=ft.Offset(0, 2),
+        ),
+        margin=ft.margin.only(bottom=12, left=15, right=15),
     )
 
 def warenkorbPage(site):
@@ -278,15 +332,6 @@ def warenkorbPage(site):
                         alignment=ft.MainAxisAlignment.SPACE_BETWEEN,
                     ),
                     ft.Row(height=20),
-                    ft.ElevatedButton(
-                        "Zur Kasse",
-                        icon=ft.Icons.SHOPPING_CART_CHECKOUT,
-                        on_click=checkout_click,
-                        bgcolor=PRIMARY_GREEN,
-                        color=WHITE,
-                        width=300,
-                        height=50,
-                    ),
                     ft.TextButton(
                         "Warenkorb leeren",
                         icon=ft.Icons.DELETE_OUTLINE,

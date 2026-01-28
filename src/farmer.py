@@ -1,6 +1,36 @@
 import flet as ft
 import content as co
 import products as pr
+import requests
+
+apiUrl = "http://localhost:8000"
+
+def getProIco(proArtBez):
+    """Icon für Produktart zurückgeben"""
+    ico = {
+        "gemüse": "🥕",
+        "obst": "🍎",
+        "fleisch": "🥩",
+        "eier": "🥚",
+        "milch": "🥛",
+        "brot": "🍞",
+        "käse": "🧀",
+        "honig": "🍯",
+    }
+    if proArtBez:
+        key = proArtBez.lower()
+        return ico.get(key, "🛒")
+    return "🛒"
+
+def getBauernProdukte(bauerId):
+    """Produkte eines Bauern aus der API laden"""
+    try:
+        res = requests.get(f"{apiUrl}/bauern/{bauerId}/produkte")
+        if res.status_code == 200:
+            return res.json()
+    except Exception as e:
+        print(f"Fehler beim Laden der Bauern-Produkte: {e}")
+    return []
 
 
 # _bau = None
@@ -90,33 +120,32 @@ def bauSit(bau, site):
     ACCENT_GREEN = "#90C040"
     WHITE = "#FFFFFF"
     
-    # Dummy-Daten für den Hof
-    # farm_data = {
-    #     "name": "Birkenhof Schmidt",
-    #     "banner_image": "https://images.unsplash.com/photo-1500382017468-9049fed747ef?w=1200",
-    #     "address": "Dorfstraße 23, 12345 Grünwald",
-    #     "opening_hours": "Mo-Fr: 8:00-18:00\nSa: 8:00-14:00\nSo: Geschlossen",
-    #     "phone": "+49 123 456789",
-    #     "email": "info@birkenhof-schmidt.de"
-    # }
+    # Produkte aus der API laden
+    apiProducts = getBauernProdukte(bau.ind)
     
-    # Dummy-Produkte
-    products = [
-        {"name": "Frische Eier", "price": "3,50 €", "unit": "10 Stück", "image": "🥚"},
-        {"name": "Bio-Milch", "price": "1,20 €", "unit": "1 Liter", "image": "🥛"},
-        {"name": "Kartoffeln", "price": "2,50 €", "unit": "1 kg", "image": "🥔"},
-        {"name": "Äpfel", "price": "3,00 €", "unit": "1 kg", "image": "🍎"},
-        {"name": "Honig", "price": "8,50 €", "unit": "500g Glas", "image": "🍯"},
-        {"name": "Karotten", "price": "2,00 €", "unit": "1 kg", "image": "🥕"},
-    ]
+    # Produkte in Frontend-Format konvertieren
+    products = []
+    for p in apiProducts:
+        proArt = p.get('produktart', {}) if p.get('produktart') else {}
+        products.append({
+            "produkt_id": p.get('produkt_id'),
+            "name": p.get('name', 'Unbekannt'),
+            "price": f"{p.get('preis', 0):.2f} €",
+            "unit": p.get('einheit', 'Stück'),
+            "image": getProIco(proArt.get('bezeichnung', '')),
+            "preis": p.get('preis', 0),
+            "einheit": p.get('einheit', 'Stück'),
+            "bauern_id": p.get('bauern_id'),
+            "beschreibung": p.get('beschreibung', ''),
+        })
     
-    def on_product_click(e, product_name):
-        site.page.snack_bar = ft.SnackBar(
-            content=ft.Text(f"{product_name} ausgewählt"),
-            bgcolor=ACCENT_GREEN
-        )
-        site.page.snack_bar.open = True
-        site.page.update()
+    def on_product_click(e, product):
+        # Produkt zur Produktdetailseite navigieren
+        site.seaSta.selectedProduct = product
+        site.ind.current = 1  # Zur Suche wechseln (zeigt dann Produktdetails)
+        site.seaSta.seaEna = True
+        site.seaSta.mode = "produkt"
+        co.updatePage(site)
     
     # Header
     header = ft.Container(
@@ -220,7 +249,7 @@ def bauSit(bau, site):
             border=ft.border.all(2, LIGHT_GREEN),
             border_radius=10,
             padding=20,
-            on_click=lambda e, p=product["name"]: on_product_click(e, p),
+            on_click=lambda e, p=product: on_product_click(e, p),
             ink=True,
             shadow=ft.BoxShadow(
                 spread_radius=1,
@@ -280,16 +309,20 @@ def bauSeaRes(lisBau, site):
     
     bauCar = []
     for bau in lisBau:
+        # Nur Distanz anzeigen wenn vorhanden (nicht 0)
+        cardContent = [
+            ft.Icon(ft.Icons.AGRICULTURE, size=40, color=ft.Colors.GREEN),
+            ft.Text(bau.name, weight=ft.FontWeight.BOLD, size=18),
+        ]
+        if bau.distanze and bau.distanze > 0:
+            cardContent.append(ft.Text(f"{bau.distanze} km entfernt", size=14, color=ft.Colors.GREY_700))
+        
         card = ft.Card(
             content=ft.Container(
-                content=ft.Column(controls=[
-                    ft.Icon(ft.Icons.AGRICULTURE, size=40, color=ft.Colors.GREEN),
-                    ft.Text(bau.name, weight=ft.FontWeight.BOLD, size=18),
-                    ft.Text(f"{bau.distanze} km entfernt", size=14, color=ft.Colors.GREY_700)
-                ],
+                content=ft.Column(controls=cardContent,
                 horizontal_alignment=ft.CrossAxisAlignment.CENTER),
                 padding=20,
-                on_click=lambda e: cliBau(site, bau, lisBau)
+                on_click=lambda e, b=bau: cliBau(site, b, lisBau)
             ),
             width=0.4 * site.page.width,
             height=0.3 * site.page.height,

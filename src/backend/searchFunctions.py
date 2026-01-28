@@ -1,13 +1,26 @@
 import flet as ft
 import content as co
+import requests
+
+apiUrl = "http://localhost:8000"
 
 _lab = None
 
 def getLab():
+    """Labels aus der Datenbank laden"""
     global _lab
     if _lab is None:
-        _lab = ["Gemüse", "Obst", "Fleisch", "Eier", "BIO", "Milch", "Vegan", "Vegetarisch"]
-
+        try:
+            res = requests.get(f"{apiUrl}/labels")
+            if res.status_code == 200:
+                labels = res.json()
+                _lab = [lab['bezeichnung'] for lab in labels if lab.get('bezeichnung')]
+            else:
+                _lab = []
+        except Exception as e:
+            print(f"Fehler beim Laden der Labels: {e}")
+            _lab = []
+    
     return _lab.copy()
 
 class searchState():
@@ -21,6 +34,8 @@ class searchState():
         self.priSta = 0
         self.priEnd = 50
         self.lab = []
+        self.showAll = True  # Alle Bauern anzeigen (ohne Geo-Filter)
+        self.showAllProducts = True  # Alle Produkte anzeigen (ohne Filter)
 
 def sel(e, site, mode):
     site.seaSta.mode = mode
