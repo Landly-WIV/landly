@@ -10,7 +10,7 @@
 
 #     phone.run() 
 
-# ft.app(main)
+# ft.run(main)
 
 import flet as ft
 import sites as si
@@ -22,4 +22,4 @@ def main(page: ft.Page):
     page.theme_mode = ft.ThemeMode.LIGHT
     page.add(si.appSite(page))  
 
-ft.app(main)
+ft.run(main)

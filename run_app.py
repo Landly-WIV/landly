@@ -107,7 +107,7 @@ if __name__ == "__main__":
     
     # Frontend starten (blockiert bis Fenster geschlossen)
     print("📱 Starte Frontend...")
-    ft.app(main)
+    ft.run(main)
     
     # Cleanup
     stop_backend()

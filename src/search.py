@@ -25,7 +25,7 @@ def seaSel(site):
         border_radius=10,
         on_click=lambda e: sf.sel(e, site, "produkt"),
         width=0.7 * site.page.width,
-        alignment=ft.alignment.center
+        alignment=ft.Alignment.CENTER
     )
     
     bauBut = ft.Container(
@@ -42,7 +42,7 @@ def seaSel(site):
         border_radius=10,
         on_click=lambda e: sf.sel(e, site, "bauer"),
         width=0.7 * site.page.width,
-        alignment=ft.alignment.center
+        alignment=ft.Alignment.CENTER
     )
     
     return ft.Column(
@@ -89,7 +89,7 @@ def proSeaMas(site, lab):
         label="Kategorie",
         width=400,
         options=opt,
-        on_change=lambda e: sf.selLab(e, site, sel, lab, selRow, catDro)
+        on_text_change=lambda e: sf.selLab(e, site, sel, lab, selRow, catDro)
     )
     
     seaBut = ft.ElevatedButton(

@@ -32,24 +32,6 @@ def getBauernProdukte(bauerId):
         print(f"Fehler beim Laden der Bauern-Produkte: {e}")
     return []
 
-
-# _bau = None
-
-# def getBau():
-#     global _bau
-#     if _bau is None:
-#         _bau = [
-#             farm(
-#                 "Birkenhof Schmidt",
-#                 "https://images.unsplash.com/photo-1500382017468-9049fed747ef?w=1200",
-#                 "Dorfstraße 23, 12345 Grünwald",
-#                 "Mo-Fr: 8:00-18:00\nSa: 8:00-14:00\nSo: Geschlossen",
-#                 "+49 123 456789",
-#                 "info@birkenhof-schmidt.de")
-#         ]
-
-#     return _bau
-
 _bau = None
 
 def setBau(lisBau):
@@ -142,7 +124,7 @@ def bauSit(bau, site):
     def on_product_click(e, product):
         # Produkt zur Produktdetailseite navigieren
         site.seaSta.selectedProduct = product
-        site.ind.current = 1  # Zur Suche wechseln (zeigt dann Produktdetails)
+        site.ind = 1  # Zur Suche wechseln (zeigt dann Produktdetails)
         site.seaSta.seaEna = True
         site.seaSta.mode = "produkt"
         co.updatePage(site)
@@ -169,7 +151,7 @@ def bauSit(bau, site):
     banner = ft.Container(
         content=ft.Image(
             src=bau.banner_image,
-            fit=ft.ImageFit.COVER,
+            fit=ft.BoxFit.COVER,
             width=float('inf'),
             height=200,
         ),

@@ -5,31 +5,31 @@ import re
 def inpVal(e, regStr):
     if re.match(regStr, e.control.value):
         e.control.border_color = ft.Colors.GREEN
-        e.control.error_text = None
+        e.control.error = None
     elif e.control.value == "":
         e.control.border_color = ft.Colors.GREY_400
-        e.control.error_text = None
+        e.control.error = None
     else:
         e.control.border_color = ft.Colors.ORANGE
-        e.control.error_text = None
+        e.control.error = None
     e.control.update()
 
 def bluVal(e, regStr):
     if e.control.value != "" and not re.match(regStr, e.control.value):
-        e.control.error_text = "Ungültige Eingabe"
+        e.control.error = "Ungültige Eingabe"
         e.control.border_color = ft.Colors.RED
     elif re.match(regStr, e.control.value):
-        e.control.error_text = None
+        e.control.error = None
         e.control.border_color = ft.Colors.GREEN
     else:
-        e.control.error_text = None
+        e.control.error = None
         e.control.border_color = ft.Colors.GREY_400
     e.control.update()
 
 def sub(e, fie, page):
     if fie[0]:
         if fie[6].value and fie[7].value:
-            if not fie[6].error_text and not fie[7].error_text:
+            if not fie[6].error and not fie[7].error:
                 if fie[9].value:
                     fie[8].value = f"Login erfolgreich für: {fie[6].value}"
                     fie[8].color = ft.Colors.GREEN
@@ -46,7 +46,7 @@ def sub(e, fie, page):
             fie[8].color = ft.Colors.RED
     else:
         if fie[6].value and fie[4].value and fie[7].value:
-            if not fie[6].error_text and not fie[4].error_text and not fie[7].error_text:
+            if not fie[6].error and not fie[4].error and not fie[7].error:
                 if fie[9].value:
                     if fie[7].value == fie[5].value:
                         fie[8].value = f"Registrierung erfolgreich für: {fie[6].value}"
@@ -108,7 +108,7 @@ def logRegPag(page):
             regex_string=r"^[a-zA-Z0-9]*$",
             allow=True
         ),
-        error_text=None,
+        error=None,
         border_color = ft.Colors.GREY_400,
         on_change=lambda e: inpVal(e, useReg),
         on_blur=lambda e: bluVal(e, useReg)
@@ -123,7 +123,7 @@ def logRegPag(page):
             regex_string=r"^[a-zA-Z0-9._%+-@]*$",
             allow=True
         ),
-        error_text=None,
+        error=None,
         border_color = ft.Colors.GREY_400,
         on_change=lambda e: inpVal(e, emaReg),
         on_blur=lambda e: bluVal(e, emaReg)
@@ -139,7 +139,7 @@ def logRegPag(page):
             regex_string=r"^[a-zA-Z0-9?!_-]*$",
             allow=True
         ),
-        error_text=None,
+        error=None,
         border_color = ft.Colors.GREY_400,
         on_change=lambda e: inpVal(e, pasReg),
         on_blur=lambda e: bluVal(e, pasReg)
@@ -156,7 +156,7 @@ def logRegPag(page):
             regex_string=r"^[a-zA-Z0-9?!_-]*$",
             allow=True
         ),
-        error_text=None,
+        error=None,
         border_color = ft.Colors.GREY_400,
         on_change=lambda e: inpVal(e, pasReg),
         on_blur=lambda e: bluVal(e, pasReg)
@@ -182,7 +182,7 @@ def logRegPag(page):
     )
     
     subBut = ft.ElevatedButton(
-        text="Anmelden",
+        content="Anmelden",
         width=300,
         bgcolor=ft.Colors.GREEN,
         color=ft.Colors.BLACK,
@@ -190,7 +190,7 @@ def logRegPag(page):
     )
     
     togBut = ft.TextButton(
-        text="Noch kein Konto? Registrieren",
+        content="Noch kein Konto? Registrieren",
         on_click=lambda e: swiMod(e, fie, page)
     )
 

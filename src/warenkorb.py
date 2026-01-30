@@ -179,7 +179,7 @@ def warenkorbItem(item, site):
                                             text_align=ft.TextAlign.CENTER,
                                         ),
                                         width=35,
-                                        alignment=ft.alignment.center,
+                                        alignment=ft.Alignment.CENTER,
                                     ),
                                     ft.IconButton(
                                         icon=ft.Icons.ADD,
@@ -302,7 +302,7 @@ def warenkorbPage(site):
                 spacing=10,
             ),
             padding=50,
-            alignment=ft.alignment.center,
+            alignment=ft.Alignment.CENTER,
         )
         items_column.controls.append(empty_message)
     else:

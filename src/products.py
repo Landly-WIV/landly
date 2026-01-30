@@ -107,7 +107,7 @@ def proSit(proDat, sit):
 
     bod = ft.Column(controls=[
         ft.Text(proDat['name'], theme_style=ft.TextThemeStyle.HEADLINE_LARGE),
-        ft.Text(f"von {bauNam}", size=14, color=ft.Colors.GREY_700),
+        ft.Text(f"von {bauNam}", size=14),
         ft.Text(proDat.get('beschreibung', ''), size=16),
         ft.Row(),
         ft.Text("Preis", weight=ft.FontWeight.BOLD),
@@ -202,7 +202,7 @@ def proSeaRes(pro, sit):
         car = ft.Card(
             content=ft.Container(
                 content=ft.Column(controls=[
-                    ft.Text(bauNam, size=12, color=ft.Colors.GREY_700),
+                    ft.Text(bauNam, size=12),
                     ft.Text(prd['name'], weight=ft.FontWeight.BOLD, size=14),
                     ft.Text(ico, size=50),
                     ft.Text(

@@ -3,12 +3,12 @@ import content as co
 
 def navButton(icon, label, i, site):
     def click(e):
-        site.ind.current = i
+        site.ind = i
         navBar(site)
         co.updatePage(site)
     
     col = None
-    if i == site.ind.current:
+    if i == site.ind:
         col = ft.Colors.GREY_600  
     else:
         col = ft.Colors.TRANSPARENT
@@ -16,7 +16,7 @@ def navButton(icon, label, i, site):
     return ft.Container(
         content = ft.Column(
             [
-                ft.Icon(name = icon, color = ft.Colors.WHITE, size = 24),
+                ft.Icon(icon, color = ft.Colors.WHITE, size = 24),
                 ft.Text(label, color = ft.Colors.WHITE, size = 12),
             ],
             alignment = ft.MainAxisAlignment.CENTER,
@@ -26,7 +26,7 @@ def navButton(icon, label, i, site):
         bgcolor = col,
         expand = True,
         on_click = click,
-        alignment = ft.alignment.center,
+        alignment = ft.Alignment.CENTER,
         padding = ft.padding.symmetric(vertical = 8),
     )
 

@@ -8,4 +8,4 @@ def main(page: ft.Page):
     page.theme_mode = ft.ThemeMode.LIGHT
     page.add(au.sitVie(page))
 
-ft.app(main)
+ft.run(main)
