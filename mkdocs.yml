@@ -1,5 +1,5 @@
-site_name: Dokumentation
-site_url: https://sitename.example
+site_name: Landly Dokumentation
+site_url: https://jomawau.github.io/landly
 
 theme:
   name: material
