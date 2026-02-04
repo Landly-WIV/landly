@@ -21,6 +21,8 @@ theme:
         name: "Hellmodus"
   features:
     - navigation.instant
+    - navigation.tabs          # Hauptthemen als Tabs oben
+    - navigation.tabs.sticky    # Tabs bleiben beim Scrollen sichtbar
     - navigation.expand
     - toc.integrate
     - content.code.copy
