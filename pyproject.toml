@@ -7,23 +7,31 @@ requires-python = ">=3.10"
 authors = [
     { name = "Flet developer", email = "you@example.com" }
 ]
+# Nur App-Dependencies (für schlanke APK)
 dependencies = [
-    "fastapi>=0.128.0",
     "flet>=0.80.4",
     "flet-map>=0.80.4",
+    "requests>=2.32.5",
+]
+
+[dependency-groups]
+# Backend-Dependencies (für lokale Entwicklung mit Backend)
+backend = [
+    "fastapi>=0.128.0",
     "geoalchemy2>=0.18.1",
     "postgis>=1.0.4",
     "pydantic[email]>=2.12.5",
     "python-dotenv>=1.2.1",
-    "requests>=2.32.5",
     "sqlalchemy>=2.0.46",
     "uvicorn>=0.40.0",
     "psycopg[binary]>=3.3.2",
     "psycopg2>=2.9.11",
+]
+# Dokumentation
+docs = [
     "mkdocs>=1.6.1",
 ]
-
-[dependency-groups]
+# Development
 dev = [
     "flet-desktop>=0.80.4",
     "flet-web>=0.80.4",
