@@ -1,4 +1,8 @@
-import backend.auth as au
+import requests
+import sys
+from pathlib import Path
+sys.path.insert(0, str(Path(__file__).parent.parent))
+from config import API_URL
 
 _log = False
 _use = None
@@ -26,17 +30,39 @@ def getUseObj():
     return _useObjDat
 
 def regUse(emaVal, pasWor, rolVal, firNam=None, konPer=None, vorNam=None, nacNam=None):
-    useObj = au.regUse(emaVal, pasWor, rolVal, firNam, konPer, vorNam, nacNam)
-    if useObj:
-        setLog(emaVal, useObj)
-        return True
+    try:
+        params = {
+            "email": emaVal,
+            "passwort": pasWor,
+            "rolle": rolVal
+        }
+        if firNam:
+            params["firmenname"] = firNam
+        if konPer:
+            params["kontaktperson"] = konPer
+        if vorNam:
+            params["vorname"] = vorNam
+        if nacNam:
+            params["nachname"] = nacNam
+        
+        res = requests.post(f"{API_URL}/auth/register", params=params)
+        if res.status_code == 200:
+            useObj = res.json()
+            setLog(emaVal, useObj)
+            return True
+    except Exception as e:
+        print(f"Registrierung fehlgeschlagen: {e}")
     return False
 
 def logUse(emaVal, pasWor):
-    useObj = au.logUse(emaVal, pasWor)
-    if useObj:
-        setLog(emaVal, useObj)
-        return True
+    try:
+        res = requests.post(f"{API_URL}/auth/login", params={"email": emaVal, "passwort": pasWor})
+        if res.status_code == 200:
+            useObj = res.json()
+            setLog(emaVal, useObj)
+            return True
+    except Exception as e:
+        print(f"Login fehlgeschlagen: {e}")
     return False
 
 def sitVie(page):

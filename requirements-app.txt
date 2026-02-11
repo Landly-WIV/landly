@@ -1,0 +1,6 @@
+# Frontend Dependencies für Flet App Build
+# Verwendet mit: flet build apk --requirements requirements-app.txt
+
+flet>=0.80.4
+flet-map>=0.80.4
+requests>=2.32.5

@@ -274,6 +274,11 @@ def list_standorte(skip: int = 0, limit: int = 100, db: Session = Depends(get_db
     """Alle Standorte"""
     return crud.get_standorte(db, skip=skip, limit=limit)
 
+@app.get("/standorte/karte", response_model=List[schemas.StandortMitKoordinaten])
+def list_standorte_fuer_karte(db: Session = Depends(get_db)):
+    """Alle Standorte mit Koordinaten für die Kartenanzeige"""
+    return crud.get_standorte_mit_koordinaten(db)
+
 @app.get("/standorte/{standort_id}", response_model=schemas.Standort)
 def read_standort(standort_id: int, db: Session = Depends(get_db)):
     """Ein Standort nach ID"""
@@ -406,3 +411,45 @@ def checkout_warenkorb(
     if bestellung is None:
         raise HTTPException(status_code=400, detail="Warenkorb ist leer oder User hat keine Kunde-ID")
     return bestellung
+
+# ========================
+# AUTH ENDPOINTS
+# ========================
+
+from src.backend import auth
+
+@app.post("/auth/register")
+def register_user(
+    email: str,
+    passwort: str,
+    rolle: str = "kunde",
+    firmenname: Optional[str] = None,
+    kontaktperson: Optional[str] = None,
+    vorname: Optional[str] = None,
+    nachname: Optional[str] = None
+):
+    """Neuen User registrieren mit automatischem Bauer/Kunde-Eintrag"""
+    user = auth.regUse(email, passwort, rolle, firmenname, kontaktperson, vorname, nachname)
+    if user is None:
+        raise HTTPException(status_code=400, detail="Email bereits registriert oder Fehler bei Registrierung")
+    return {
+        "user_id": user.user_id,
+        "email": user.email,
+        "rolle": user.rolle,
+        "bauer_id": user.bauer_id,
+        "kunde_id": user.kunde_id
+    }
+
+@app.post("/auth/login")
+def login_user(email: str, passwort: str):
+    """User einloggen"""
+    user = auth.logUse(email, passwort)
+    if user is None:
+        raise HTTPException(status_code=401, detail="Ungültige Anmeldedaten")
+    return {
+        "user_id": user.user_id,
+        "email": user.email,
+        "rolle": user.rolle,
+        "bauer_id": user.bauer_id,
+        "kunde_id": user.kunde_id
+    }

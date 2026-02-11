@@ -1,8 +1,10 @@
 import flet as ft
 import content as co
 import requests
-
-apiUrl = "http://localhost:8000"
+import sys
+from pathlib import Path
+sys.path.insert(0, str(Path(__file__).parent.parent))
+from config import API_URL
 
 _lab = None
 
@@ -11,7 +13,7 @@ def getLab():
     global _lab
     if _lab is None:
         try:
-            res = requests.get(f"{apiUrl}/labels")
+            res = requests.get(f"{API_URL}/labels")
             if res.status_code == 200:
                 labels = res.json()
                 _lab = [lab['bezeichnung'] for lab in labels if lab.get('bezeichnung')]

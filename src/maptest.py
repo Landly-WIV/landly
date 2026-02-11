@@ -1,28 +1,24 @@
 import flet as ft
 import flet_map as map
-from backend.db import SessionLocal
-from backend import crud
+import requests
+from config import API_URL
 
 def get_standorte_from_db():
     """
-    Holt alle Standorte mit Koordinaten aus der Datenbank.
+    Holt alle Standorte mit Koordinaten über die API.
     Returns:
         Liste von Standorten mit lat/lon Koordinaten
     """
-    db = SessionLocal()
     try:
-        standorte = crud.get_standorte_mit_koordinaten(db)
-        print(f"📍 DEBUG: {len(standorte)} Standorte aus DB geladen")
-        for s in standorte:
-            print(f"   - {s['firmenname']}: lat={s['lat']}, lon={s['lon']}")
-        return standorte
+        res = requests.get(f"{API_URL}/standorte/karte")
+        if res.status_code == 200:
+            standorte = res.json()
+            print(f"📍 DEBUG: {len(standorte)} Standorte aus API geladen")
+            return standorte
+        return []
     except Exception as e:
         print(f"❌ Fehler beim Laden der Standorte: {e}")
-        import traceback
-        traceback.print_exc()
         return []
-    finally:
-        db.close()
 
 
 def create_marker_for_standort(standort, on_click_handler):
