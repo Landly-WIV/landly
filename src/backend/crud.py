@@ -7,8 +7,13 @@ from typing import List, Optional
 # ========================
 
 def get_produkte(db: Session, skip: int = 0, limit: int = 100) -> List[models.Produkt]:
-    """Alle Produkte abrufen"""
-    return db.query(models.Produkt).offset(skip).limit(limit).all()
+    """Alle Produkte mit Bauer und Produktart abrufen"""
+    return db.query(models.Produkt)\
+        .options(
+            joinedload(models.Produkt.bauer),
+            joinedload(models.Produkt.produktart)
+        )\
+        .offset(skip).limit(limit).all()
 
 def get_produkt(db: Session, produkt_id: int) -> Optional[models.Produkt]:
     """Ein Produkt nach ID"""

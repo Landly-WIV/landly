@@ -2,8 +2,7 @@ import flet as ft
 import content as co
 import warenkorb as wk
 import requests
-
-apiUrl = "http://localhost:8000"
+from config import API_URL
 
 _proCac = None
 _bauCac = {}
@@ -15,7 +14,7 @@ def getBauNam(bauId):
         return _bauCac[bauId]
     
     try:
-        res = requests.get(f"{apiUrl}/bauern/{bauId}")
+        res = requests.get(f"{API_URL}/bauern/{bauId}")
         if res.status_code == 200:
             bau = res.json()
             nam = bau.get('firmenname', 'Unbekannt')
@@ -30,7 +29,7 @@ def getProFroApi():
     global _proCac
     
     try:
-        res = requests.get(f"{apiUrl}/produkte")
+        res = requests.get(f"{API_URL}/produkte")
         if res.status_code == 200:
             _proCac = res.json()
             return _proCac
@@ -42,7 +41,7 @@ def getProFroApi():
 
 def getProDet(proId):
     try:
-        res = requests.get(f"{apiUrl}/produkte/{proId}")
+        res = requests.get(f"{API_URL}/produkte/{proId}")
         if res.status_code == 200:
             return res.json()
     except Exception as e:
@@ -193,7 +192,9 @@ def proSeaRes(pro, sit):
     
     proCar = []
     for prd in filPro:
-        bauNam = getBauNam(prd['bauern_id'])
+        # Bauern-Name direkt aus der API-Response (kein extra API-Call mehr)
+        bauer = prd.get('bauer')
+        bauNam = bauer.get('firmenname', 'Unbekannt') if bauer else 'Unbekannt'
         
         ico = "🛒"
         if prd.get('produktart'):

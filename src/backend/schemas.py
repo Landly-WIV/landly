@@ -122,6 +122,14 @@ class ProduktDetailed(Produkt):
     class Config:
         from_attributes = True
 
+# Für Produktliste mit Bauern-Name (leichtgewichtig)
+class ProduktListe(Produkt):
+    bauer: Optional[Bauer] = None
+    produktart: Optional[Produktart] = None
+    
+    class Config:
+        from_attributes = True
+
 # ========================
 # STANDORT SCHEMAS
 # ========================

@@ -5,9 +5,10 @@ Verbindet Frontend-Warenkorb mit der Datenbank
 
 import requests
 from typing import Optional, Dict, List
-
-# Backend URL (später in .env auslagern)
-BACKEND_URL = "http://localhost:8000"
+import sys
+from pathlib import Path
+sys.path.insert(0, str(Path(__file__).parent.parent))
+from config import API_URL
 
 
 def get_warenkorb(user_id: int) -> Optional[Dict]:
@@ -40,7 +41,7 @@ def get_warenkorb(user_id: int) -> Optional[Dict]:
         }
     """
     try:
-        response = requests.get(f"{BACKEND_URL}/warenkorb/user/{user_id}")
+        response = requests.get(f"{API_URL}/warenkorb/user/{user_id}")
         if response.status_code == 200:
             return response.json()
         return None
@@ -64,7 +65,7 @@ def add_to_warenkorb(warenkorb_id: int, produkt_id: int, menge: int, preis_je_ei
     """
     try:
         response = requests.post(
-            f"{BACKEND_URL}/warenkorb/{warenkorb_id}/add",
+            f"{API_URL}/warenkorb/{warenkorb_id}/add",
             params={
                 "produkt_id": produkt_id,
                 "menge": menge,
@@ -90,7 +91,7 @@ def update_warenkorb_position(position_id: int, menge: int) -> bool:
     """
     try:
         response = requests.put(
-            f"{BACKEND_URL}/warenkorb/position/{position_id}",
+            f"{API_URL}/warenkorb/position/{position_id}",
             params={"menge": menge}
         )
         return response.status_code == 200
@@ -110,7 +111,7 @@ def remove_from_warenkorb(position_id: int) -> bool:
         True wenn erfolgreich, False bei Fehler
     """
     try:
-        response = requests.delete(f"{BACKEND_URL}/warenkorb/position/{position_id}")
+        response = requests.delete(f"{API_URL}/warenkorb/position/{position_id}")
         return response.status_code == 200
     except Exception as e:
         print(f"Fehler beim Entfernen aus Warenkorb: {e}")
@@ -128,7 +129,7 @@ def clear_warenkorb(warenkorb_id: int) -> bool:
         True wenn erfolgreich, False bei Fehler
     """
     try:
-        response = requests.delete(f"{BACKEND_URL}/warenkorb/{warenkorb_id}/clear")
+        response = requests.delete(f"{API_URL}/warenkorb/{warenkorb_id}/clear")
         return response.status_code == 200
     except Exception as e:
         print(f"Fehler beim Leeren des Warenkorbs: {e}")
@@ -148,7 +149,7 @@ def checkout_warenkorb(warenkorb_id: int, bauer_id: int) -> Optional[Dict]:
     """
     try:
         response = requests.post(
-            f"{BACKEND_URL}/warenkorb/{warenkorb_id}/checkout",
+            f"{API_URL}/warenkorb/{warenkorb_id}/checkout",
             params={"bauer_id": bauer_id}
         )
         if response.status_code == 200:

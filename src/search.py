@@ -3,6 +3,7 @@ import products as pr
 import farmer as fa
 import backend.searchFunctions as sf
 import requests
+from config import API_URL
 
 def seaSel(site):
     header = ft.Text(
@@ -317,12 +318,10 @@ def shoSea(site):
             lisBau = []
 
             if zwi == 0:
-                url = "http://localhost:8000"
-
                 try:
                     # Wenn "Alle anzeigen" aktiv, einfache Bauern-Liste laden
                     if site.seaSta.showAll:
-                        res = requests.get(f"{url}/bauern")
+                        res = requests.get(f"{API_URL}/bauern")
                         
                         if res.status_code == 200:
                             jsoBau = res.json()
@@ -357,7 +356,7 @@ def shoSea(site):
                         if site.seaSta.seaTex:
                             params["search"] = site.seaSta.seaTex
 
-                        res = requests.get(f"{url}/bauern/search/advanced", params=params)
+                        res = requests.get(f"{API_URL}/bauern/search/advanced", params=params)
                         
                         if res.status_code == 200:
                             jsoBau = res.json()

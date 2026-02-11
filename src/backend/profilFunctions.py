@@ -5,9 +5,10 @@ Holt Daten aus der Datenbank basierend auf User-Login
 
 import requests
 from typing import Optional, Dict, List
-
-# Backend URL (später in .env auslagern)
-BACKEND_URL = "http://localhost:8000"
+import sys
+from pathlib import Path
+sys.path.insert(0, str(Path(__file__).parent.parent))
+from config import API_URL
 
 
 def get_user_profile(user_email: str) -> Optional[Dict]:
@@ -21,7 +22,7 @@ def get_user_profile(user_email: str) -> Optional[Dict]:
         User-Daten oder None bei Fehler
     """
     try:
-        response = requests.get(f"{BACKEND_URL}/users/email/{user_email}")
+        response = requests.get(f"{API_URL}/users/email/{user_email}")
         if response.status_code == 200:
             return response.json()
         return None
@@ -41,7 +42,7 @@ def get_bauer_profile(bauer_id: int) -> Optional[Dict]:
         Bauer-Daten mit Produkten, Standorten etc.
     """
     try:
-        response = requests.get(f"{BACKEND_URL}/bauern/{bauer_id}/details")
+        response = requests.get(f"{API_URL}/bauern/{bauer_id}/details")
         if response.status_code == 200:
             return response.json()
         return None
@@ -61,7 +62,7 @@ def get_bauer_produkte(bauer_id: int) -> List[Dict]:
         Liste von Produkten
     """
     try:
-        response = requests.get(f"{BACKEND_URL}/bauern/{bauer_id}/produkte")
+        response = requests.get(f"{API_URL}/bauern/{bauer_id}/produkte")
         if response.status_code == 200:
             return response.json()
         return []
@@ -81,7 +82,7 @@ def get_bauer_standorte(bauer_id: int) -> List[Dict]:
         Liste von Standorten
     """
     try:
-        response = requests.get(f"{BACKEND_URL}/bauern/{bauer_id}/standorte")
+        response = requests.get(f"{API_URL}/bauern/{bauer_id}/standorte")
         if response.status_code == 200:
             return response.json()
         return []
@@ -101,7 +102,7 @@ def get_kunde_bestellungen(kunden_id: int) -> List[Dict]:
         Liste von Bestellungen
     """
     try:
-        response = requests.get(f"{BACKEND_URL}/bestellungen")
+        response = requests.get(f"{API_URL}/bestellungen")
         if response.status_code == 200:
             alle_bestellungen = response.json()
             # Filtere nach kunden_id
@@ -152,7 +153,7 @@ def get_profil_data(user_email: str) -> Optional[Dict]:
     elif user.get('rolle') == 'kunde' and user.get('kunde_id'):
         kunden_id = user['kunde_id']
         try:
-            kunde_response = requests.get(f"{BACKEND_URL}/kunden/{kunden_id}")
+            kunde_response = requests.get(f"{API_URL}/kunden/{kunden_id}")
             if kunde_response.status_code == 200:
                 result['kunde'] = kunde_response.json()
         except:

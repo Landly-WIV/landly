@@ -48,9 +48,9 @@ def read_root():
 # PRODUKT ENDPOINTS
 # ========================
 
-@app.get("/produkte", response_model=List[schemas.Produkt])
+@app.get("/produkte", response_model=List[schemas.ProduktListe])
 def list_produkte(skip: int = 0, limit: int = 100, db: Session = Depends(get_db)):
-    """Alle Produkte abrufen"""
+    """Alle Produkte mit Bauer-Info abrufen"""
     produkte = crud.get_produkte(db, skip=skip, limit=limit)
     return produkte
 

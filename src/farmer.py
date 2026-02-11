@@ -2,8 +2,7 @@ import flet as ft
 import content as co
 import products as pr
 import requests
-
-apiUrl = "http://localhost:8000"
+from config import API_URL
 
 def getProIco(proArtBez):
     """Icon für Produktart zurückgeben"""
@@ -25,7 +24,7 @@ def getProIco(proArtBez):
 def getBauernProdukte(bauerId):
     """Produkte eines Bauern aus der API laden"""
     try:
-        res = requests.get(f"{apiUrl}/bauern/{bauerId}/produkte")
+        res = requests.get(f"{API_URL}/bauern/{bauerId}/produkte")
         if res.status_code == 200:
             return res.json()
     except Exception as e:
