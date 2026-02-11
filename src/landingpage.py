@@ -75,7 +75,7 @@ def land():
                     # Background Image
                     ft.Image(
                         src=article["image"],
-                        fit=ft.ImageFit.COVER,
+                        fit=ft.BoxFit.COVER,
                         width=float('inf'),
                         height=150,
                     ),

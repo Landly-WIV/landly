@@ -3,7 +3,6 @@ import flet_map as map
 from backend.db import SessionLocal
 from backend import crud
 
-
 def get_standorte_from_db():
     """
     Holt alle Standorte mit Koordinaten aus der Datenbank.
@@ -58,8 +57,7 @@ def mapPage(site):
     marker_layer_ref = ft.Ref[map.MarkerLayer]()
     
     # Status für geladene Standorte
-    standorte_geladen = ft.Ref[bool]()
-    standorte_geladen.current = False
+    standorte_geladen = False
     
     # Snackbar für Marker-Klick
     def on_marker_click(e, standort):
@@ -75,7 +73,8 @@ def mapPage(site):
     
     def load_standorte(e=None):
         """Lädt alle Bauern-Standorte aus der Datenbank und zeigt sie als Marker"""
-        if standorte_geladen.current:
+        nonlocal standorte_geladen
+        if standorte_geladen:
             return
         
         print("🔄 Lade Standorte...")
@@ -91,7 +90,7 @@ def mapPage(site):
                 marker = create_marker_for_standort(standort, on_marker_click)
                 marker_layer_ref.current.markers.append(marker)
             
-            standorte_geladen.current = True
+            standorte_geladen = True
             print(f"✅ {len(standorte)} Marker hinzugefügt")
             site.page.update()
             
@@ -113,7 +112,8 @@ def mapPage(site):
     
     def reload_standorte(e):
         """Lädt die Standorte neu"""
-        standorte_geladen.current = False
+        nonlocal standorte_geladen
+        standorte_geladen = False
         load_standorte()
     
     # Header mit Lade-Button
@@ -147,8 +147,8 @@ def mapPage(site):
         expand=True,
         initial_center=map.MapLatitudeLongitude(INITIAL_LAT, INITIAL_LON),
         initial_zoom=INITIAL_ZOOM,
-        interaction_configuration=map.MapInteractionConfiguration(
-            flags=map.MapInteractiveFlag.ALL
+        interaction_configuration=map.InteractionConfiguration(
+            flags=map.InteractionFlag.ALL
         ),
         on_init=load_standorte,  # Standorte beim Laden der Karte laden
         layers=[

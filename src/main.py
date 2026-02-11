@@ -6,4 +6,4 @@ def main(page: ft.Page):
     page.theme_mode = ft.ThemeMode.LIGHT
     page.add(si.appSite(page))  
 
-ft.app(main)
+ft.run(main)

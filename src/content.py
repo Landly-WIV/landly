@@ -94,7 +94,7 @@ def profilPage(site):
                     ),
                     width=120,
                     height=120,
-                    alignment=ft.alignment.center,
+                    alignment=ft.Alignment.CENTER,
                 ),
             ],
         ),
@@ -133,7 +133,7 @@ def profilPage(site):
             color="#333333",
         ),
         padding=ft.padding.only(left=20, top=20, bottom=10),
-        alignment=ft.alignment.center_left,
+        alignment=ft.Alignment.CENTER_LEFT,
     )
     
     # Produkt Kacheln
@@ -150,7 +150,7 @@ def profilPage(site):
             controls=[
                 ft.Container(
                     content=ft.Text("🥬", size=40),
-                    alignment=ft.alignment.center,
+                    alignment=ft.Alignment.CENTER,
                     expand=True,
                 ),
                 ft.Container(
@@ -181,7 +181,7 @@ def profilPage(site):
             controls=[
                 ft.Container(
                     content=ft.Text("🍎", size=40),
-                    alignment=ft.alignment.center,
+                    alignment=ft.Alignment.CENTER,
                     expand=True,
                 ),
                 ft.Container(
@@ -222,7 +222,7 @@ def profilPage(site):
             color="#333333",
         ),
         padding=ft.padding.only(left=20, top=30, bottom=15),
-        alignment=ft.alignment.center_left,
+        alignment=ft.Alignment.CENTER_LEFT,
     )
     
     # Kontakt Items
@@ -236,7 +236,7 @@ def profilPage(site):
                         height=40,
                         bgcolor=icon_bg,
                         border_radius=20,
-                        alignment=ft.alignment.center,
+                        alignment=ft.Alignment.CENTER,
                     ),
                     ft.Column(
                         controls=[
@@ -297,10 +297,10 @@ def profilPage(site):
 
 
 def updatePage(site):
-    if site.ind.current != 1:
+    if site.ind != 1:
         site.seaSta.mode = None
     
-    site.cont.content = getPage(site.ind.current, site)
+    site.cont.content = getPage(site.ind, site)
     site.page.update()
 
         

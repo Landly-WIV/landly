@@ -3,8 +3,7 @@ import navbar as nb
 import content as co
 
 def appSite(page):
-    ind = ft.Ref[int]()
-    ind.current = 2
+    ind = 2
     
     navRow = ft.Row(
         spacing = 0,
@@ -25,7 +24,7 @@ def appSite(page):
 
     site = co.contentPage(navRow, page, ind, cont)
 
-    cont.content = co.getPage(ind.current, site)
+    cont.content = co.getPage(ind, site)
     
     nb.navBar(site)
 
