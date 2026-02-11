@@ -109,6 +109,7 @@ def swiMod(e, fie, page):
         fie[3].content = ft.Text("Noch kein Konto? Registrieren")
         fie[5].visible = False
         fie[4].visible = True
+        fie[8].visible = False
         fie[9].visible = False
         fie[10].visible = False
         fie[11].visible = False
@@ -119,13 +120,14 @@ def swiMod(e, fie, page):
         fie[3].content = ft.Text("Bereits ein Konto? Anmelden")
         fie[4].visible = True
         fie[5].visible = True
+        fie[8].visible = True
         updRolFie(fie, page)
     
     fie[4].value = ""
     fie[6].value = ""
     fie[5].value = ""
     fie[7].value = ""
-    fie[8].value = None
+    fie[8].value = "kunde"
     fie[9].value = ""
     fie[10].value = ""
     fie[11].value = ""
@@ -144,11 +146,6 @@ def updRolFie(fie, page):
         fie[10].visible = False
         fie[11].visible = True
         fie[12].visible = True
-    else:
-        fie[9].visible = False
-        fie[10].visible = False
-        fie[11].visible = False
-        fie[12].visible = False
     page.update()
 
 def logRegPag(page):
@@ -269,6 +266,8 @@ def logRegPag(page):
     fie = []
 
     radGro = ft.RadioGroup(
+        value="kunde",
+        visible=False,
         content=ft.Row(
             controls=[
                 ft.Radio(value="bauer", label="Bauer"),
@@ -319,19 +318,19 @@ def logRegPag(page):
     
     logRegCol = ft.Column(
         controls=[
-            ft.Row(height=20),
             titTex,
-            ft.Row(height=20),
+            ft.Row(height=10),
+            radGro,
             firNamFie,
             konPerFie,
             vorNamFie,
             nacNamFie,
             emaBut,
             pasFie,
-            radGro,
-            ft.Row(height=10),
+            pasConFie,
+            ft.Row(height=5),
             mesTex,
-            ft.Row(height=10),
+            ft.Row(height=5),
             subBut,
             togBut
         ],
