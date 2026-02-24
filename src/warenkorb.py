@@ -1,7 +1,6 @@
 import flet as ft
-
-# import backend.crud as crud
-# from backend.db import get_db
+import backend.logRegAuth as logRegAut
+#import backend.bestellungFunctions as besFun
 
 _warenkorb = None
 
@@ -236,24 +235,65 @@ def warenkorbPage(site):
         site.cont.content = warenkorbPage(site)
         site.page.update()
     
-    def checkout_click(e):
-        # Später: Zur Bestellung umwandeln
-        site.page.snack_bar = ft.SnackBar(
-            content=ft.Text("Bestellung wird bearbeitet..."),
-            bgcolor=ACCENT_GREEN
-        )
-        site.page.snack_bar.open = True
+    dlgRef = {"dlg": None}
+
+    def besDurFue(e):
+        dlgRef["dlg"].open = False
+        clearWarenkorb()
+        site.cont.content = warenkorbPage(site)
         site.page.update()
-        
-        # Backend-Version (auskommentiert):
-        # db = next(get_db())
-        # user_id = 1  # Später aus Session holen
-        # warenkorb_obj = crud.get_warenkorb_by_user(db, user_id=user_id)
-        # if warenkorb_obj:
-        #     bauer_id = 1  # Später vom User auswählen lassen
-        #     bestellung = crud.warenkorb_to_bestellung(db, warenkorb_id=warenkorb_obj.warenkorb_id, bauer_id=bauer_id)
-        #     clearWarenkorb()
-        #     co.updatePage(site)
+
+    def besDiaAbr(e):
+        dlgRef["dlg"].open = False
+        site.page.update()
+
+    def bstAbsClick(e):
+        if not logRegAut.isLog():
+            import logreg as lr
+            site.cont.content = lr.logRegPag(site.page)
+            site.page.update()
+            return
+
+        usrObj = logRegAut.getUseObj()
+        if not usrObj or "user_id" not in usrObj:
+            site.page.snack_bar = ft.SnackBar(
+                content=ft.Text("Bitte erneut anmelden."),
+                bgcolor=ft.Colors.RED
+            )
+            site.page.snack_bar.open = True
+            site.page.update()
+            return
+
+        if not getWarenkorb():
+            site.page.snack_bar = ft.SnackBar(
+                content=ft.Text("Warenkorb ist leer."),
+                bgcolor=ft.Colors.ORANGE
+            )
+            site.page.snack_bar.open = True
+            site.page.update()
+            return
+
+        dlg = ft.AlertDialog(
+            modal=True,
+            title=ft.Text("Bestellung bestätigen"),
+            content=ft.Text(
+                f"Möchtest du die Bestellung über {getGesamtpreis():.2f} € wirklich aufgeben?"
+            ),
+            actions=[
+                ft.TextButton("Abbrechen", on_click=besDiaAbr),
+                ft.ElevatedButton(
+                    "Jetzt bestellen",
+                    on_click=besDurFue,
+                    bgcolor=PRIMARY_GREEN,
+                    color=WHITE,
+                ),
+            ],
+            actions_alignment=ft.MainAxisAlignment.END,
+        )
+        dlgRef["dlg"] = dlg
+        site.page.overlay.append(dlg)
+        dlg.open = True
+        site.page.update()
     
     # Header
     header = ft.Container(
@@ -337,6 +377,18 @@ def warenkorbPage(site):
                         icon=ft.Icons.DELETE_OUTLINE,
                         on_click=clear_click,
                         style=ft.ButtonStyle(color="#FF0000"),
+                    ),
+                    ft.ElevatedButton(
+                        "Jetzt bestellen",
+                        icon=ft.Icons.CHECK_CIRCLE_OUTLINE,
+                        on_click=bstAbsClick,
+                        bgcolor=PRIMARY_GREEN,
+                        color=WHITE,
+                        style=ft.ButtonStyle(
+                            shape=ft.RoundedRectangleBorder(radius=8),
+                        ),
+                        width=250,
+                        height=48,
                     ),
                 ],
                 horizontal_alignment=ft.CrossAxisAlignment.CENTER,
