@@ -86,12 +86,15 @@ def proSeaMas(site, lab):
     for i in lab:
         opt.append(ft.dropdown.Option(i))
     
+    def on_dropdown_change(e):
+        sf.selLab(e, site, sel, lab, selRow, catDro)
+    
     catDro = ft.Dropdown(
         label="Kategorie",
         width=400,
         options=opt,
-        on_text_change=lambda e: sf.selLab(e, site, sel, lab, selRow, catDro)
     )
+    catDro.on_change = on_dropdown_change
     
     seaBut = ft.ElevatedButton(
         "Suchen",

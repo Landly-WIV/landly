@@ -11,9 +11,9 @@ def land():
     # Dummy-Neuigkeiten
     news = [
         {
-            "title": "Neue Bio-Zertifizierung erhalten",
-            "date": "15. November 2024",
-            "image": "https://images.unsplash.com/photo-1621719225574-736570b520ad?q=80&w=2070&auto=format&fit=crop"
+            "title": "Englisch Review",
+            "date": "25. Februar 2026",
+            "image": "https://images.unsplash.com/photo-1610813328519-0ade655c40c1?q=80&w=1932&auto=format&fit=crop"
         },
         {
             "title": "Herbsternte beginnt",

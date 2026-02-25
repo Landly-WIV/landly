@@ -71,23 +71,33 @@ def selLab(e, site, sel, lab, selRow, catDro):
         site.seaSta.lab.append(e.control.value)
         sel.append(e.control.value)
         lab.remove(e.control.value)
+        catDro.value = None  # Dropdown zurücksetzen für nächste Auswahl
         updLab(site, sel, lab, selRow, catDro)
 
 def updLab(site, sel, lab, selRow, catDro):
     selRow.controls.clear()
-    for selLab in sel:
+    for label_text in sel:
         but = ft.FilledTonalButton(
-            text=selLab,
+            text=label_text,
             icon=ft.Icons.CLOSE_SHARP,
-            on_click=lambda e: remLab(e, site, sel, lab, selRow, catDro)
+            on_click=lambda e, lbl=label_text: remLabByName(e, lbl, site, sel, lab, selRow, catDro)
         )
         selRow.controls.append(but)
     
     catDro.options.clear()
-    for selLab in lab:
-        catDro.options.append(ft.dropdown.Option(selLab))
+    for label_text in lab:
+        catDro.options.append(ft.dropdown.Option(label_text))
     
     site.page.update()
+
+def remLabByName(e, label_name, site, sel, lab, selRow, catDro):
+    """Entfernt ein Label anhand des Namens"""
+    if label_name in sel:
+        site.seaSta.lab.remove(label_name)
+        sel.remove(label_name)
+        lab.append(label_name)
+        lab.sort()
+        updLab(site, sel, lab, selRow, catDro)
 
 def sliLab(e, priTex, site):
     site.seaSta.priSta = int(e.control.start_value)
