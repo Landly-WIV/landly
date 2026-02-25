@@ -17,13 +17,56 @@ Das Use-Case-Diagramm zeigt die **Akteure** und **Anwendungsfälle** des Systems
 
 ## 📊 Use-Case-Diagramm
 
-!!! warning "Diagramm einfügen"
-    Hier sollte das Use-Case-Diagramm eingefügt werden.  
-    Speichere es als `usecase-diagramm.png` im Ordner `docs/images/` und füge es hier ein:
+```mermaid
+graph LR
+    subgraph System["Landly System"]
+        UC1[Registrieren]
+        UC2[Einloggen]
+        UC3[Produkte suchen]
+        UC4[Produkt in Warenkorb]
+        UC5[Bestellung aufgeben]
+        UC6[Bestellung verwalten]
+        UC7[Produkt anlegen]
+        UC8[Produkt bearbeiten]
+        UC9[Bestellung bestätigen]
+        UC10[Benutzer verwalten]
+    end
     
-    ```markdown
-    ![Use-Case-Diagramm](../images/usecase-diagramm.png)
-    ```
+    Kunde((Kunde))
+    Landwirt((Landwirt))
+    Admin((Admin))
+    
+    Kunde --> UC1
+    Kunde --> UC2
+    Kunde --> UC3
+    Kunde --> UC4
+    Kunde --> UC5
+    Kunde --> UC6
+    
+    Landwirt --> UC2
+    Landwirt --> UC7
+    Landwirt --> UC8
+    Landwirt --> UC9
+    Landwirt --> UC6
+    
+    Admin --> UC2
+    Admin --> UC10
+    
+    style UC1 fill:#e1f5ff
+    style UC2 fill:#e1f5ff
+    style UC3 fill:#e1f5ff
+    style UC4 fill:#e1f5ff
+    style UC5 fill:#e1f5ff
+    style UC6 fill:#fff4e1
+    style UC7 fill:#fff4e1
+    style UC8 fill:#fff4e1
+    style UC9 fill:#fff4e1
+    style UC10 fill:#ffe1e1
+```
+
+!!! tip "Diagramm als Bild"
+    Für Präsentationen kannst du das Diagramm auch als PNG speichern:  
+    `docs/images/usecase-diagramm.png`
 
 ---
 

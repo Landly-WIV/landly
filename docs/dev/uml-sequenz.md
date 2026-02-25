@@ -10,12 +10,38 @@ Dieser Ablauf zeigt, wie ein Kunde eine Bestellung aufgibt.
 
 ### Diagramm
 
-!!! warning "Diagramm einfügen"
-    Speichere das Sequenzdiagramm als `sequenz-bestellung.png` in `docs/images/` und füge es hier ein:
+```mermaid
+sequenceDiagram
+    actor Kunde
+    participant Frontend
+    participant Backend
+    participant Database
+    participant EmailService
     
-    ```markdown
-    ![Sequenzdiagramm: Bestellung](../images/sequenz-bestellung.png)
-    ```
+    Kunde->>Frontend: Klickt "Zur Kasse"
+    Frontend->>Backend: POST /api/orders<br/>(Cart-Daten)
+    
+    Backend->>Database: Validiere Produktverfügbarkeit
+    Database-->>Backend: Produkte verfügbar
+    
+    Backend->>Database: CREATE Order
+    Database-->>Backend: Order ID
+    
+    Backend->>Database: CREATE OrderItems
+    Database-->>Backend: Erfolgreich
+    
+    Backend->>Backend: Berechne Gesamtpreis
+    Backend-->>Frontend: Order-Objekt (JSON)
+    
+    Frontend->>Frontend: Clear Cart
+    Frontend-->>Kunde: Bestellbestätigung anzeigen
+    
+    Backend->>EmailService: Sende Bestätigungsmail
+    Backend->>EmailService: Benachrichtige Landwirt
+```
+
+!!! tip "Diagramm als Bild"
+    Für Präsentationen: `docs/images/sequenz-bestellung.png`
 
 ### Beschreibung
 
@@ -93,8 +119,33 @@ Zeigt, wie die Umkreissuche funktioniert.
 
 ### Diagramm
 
-!!! warning "Diagramm einfügen"
-    Speichere das Sequenzdiagramm als `sequenz-suche.png` in `docs/images/`.
+```mermaid
+sequenceDiagram
+    actor Kunde
+    participant Frontend
+    participant Backend
+    participant GeoService
+    participant Database
+    
+    Kunde->>Frontend: Gibt PLZ ein (12345)
+    Frontend->>Backend: GET /api/products?<br/>plz=12345&radius=25
+    
+    Backend->>GeoService: get_coordinates("12345")
+    GeoService-->>Backend: {lat, lng}
+    
+    Backend->>Database: SELECT products<br/>WHERE distance < 25km
+    Database-->>Backend: Liste von Produkten
+    
+    Backend->>Backend: Berechne Distanzen
+    Backend->>Backend: Sortiere nach Entfernung
+    
+    Backend-->>Frontend: Produkte (JSON)
+    Frontend->>Frontend: Rendere Produktliste
+    Frontend-->>Kunde: Zeige Produkte mit Entfernung
+```
+
+!!! tip "Diagramm als Bild"
+    Für Präsentationen: `docs/images/sequenz-suche.png`
 
 ### Beschreibung
 
@@ -145,8 +196,39 @@ Authentifizierungsprozess.
 
 ### Diagramm
 
-!!! warning "Diagramm einfügen"
-    Speichere das Sequenzdiagramm als `sequenz-login.png` in `docs/images/`.
+```mermaid
+sequenceDiagram
+    actor Benutzer
+    participant Frontend
+    participant Backend
+    participant AuthService
+    participant Database
+    
+    Benutzer->>Frontend: Gibt Email & Passwort ein
+    Frontend->>Backend: POST /api/auth/login
+    
+    Backend->>Database: SELECT user<br/>WHERE email = ?
+    Database-->>Backend: User-Objekt
+    
+    Backend->>AuthService: verify_password()
+    
+    alt Passwort korrekt
+        AuthService-->>Backend: ✓ Valid
+        Backend->>AuthService: create_jwt_token()
+        AuthService-->>Backend: JWT Token
+        
+        Backend-->>Frontend: {token, user}
+        Frontend->>Frontend: Speichere Token<br/>in Session
+        Frontend-->>Benutzer: Weiterleitung<br/>zur Startseite
+    else Passwort falsch
+        AuthService-->>Backend: ✗ Invalid
+        Backend-->>Frontend: 401 Unauthorized
+        Frontend-->>Benutzer: Fehlermeldung
+    end
+```
+
+!!! tip "Diagramm als Bild"
+    Für Präsentationen: `docs/images/sequenz-login.png`
 
 ### Beschreibung
 
@@ -200,8 +282,45 @@ Landwirt erstellt ein neues Produkt.
 
 ### Diagramm
 
-!!! warning "Diagramm einfügen"
-    Speichere das Sequenzdiagramm als `sequenz-produkt-anlegen.png` in `docs/images/`.
+```mermaid
+sequenceDiagram
+    actor Landwirt
+    participant Frontend
+    participant Backend
+    participant AuthService
+    participant Database
+    
+    Landwirt->>Frontend: Klickt "Neues Produkt"
+    Frontend-->>Landwirt: Zeige Formular
+    
+    Landwirt->>Frontend: Füllt Daten aus<br/>und sendet
+    Frontend->>Backend: POST /api/products<br/>(+ JWT Token)
+    
+    Backend->>AuthService: Validate Token
+    AuthService-->>Backend: User-Objekt
+    
+    Backend->>Backend: Prüfe Rolle = FARMER
+    
+    Backend->>Database: SELECT farmer<br/>WHERE user_id = ?
+    Database-->>Backend: Farmer-Objekt
+    
+    Backend->>Backend: Prüfe is_approved
+    
+    alt Farmer approved
+        Backend->>Backend: Validiere Produktdaten
+        Backend->>Database: INSERT INTO products
+        Database-->>Backend: Product ID
+        
+        Backend-->>Frontend: Product-Objekt (JSON)
+        Frontend-->>Landwirt: Erfolgsmeldung<br/>+ Weiterleitung
+    else Farmer nicht approved
+        Backend-->>Frontend: 403 Forbidden
+        Frontend-->>Landwirt: "Warten auf Freischaltung"
+    end
+```
+
+!!! tip "Diagramm als Bild"
+    Für Präsentationen: `docs/images/sequenz-produkt-anlegen.png`
 
 ### Beschreibung
 
@@ -266,8 +385,46 @@ Landwirt bestätigt eine eingehende Bestellung.
 
 ### Diagramm
 
-!!! warning "Diagramm einfügen"
-    Speichere das Sequenzdiagramm als `sequenz-bestellung-bestaetigen.png` in `docs/images/`.
+```mermaid
+sequenceDiagram
+    actor Landwirt
+    participant Frontend
+    participant Backend
+    participant Database
+    participant EmailService
+    
+    Landwirt->>Frontend: Öffnet Bestellungen
+    Frontend->>Backend: GET /api/orders
+    Backend->>Database: SELECT orders<br/>WHERE farmer_id = ?
+    Database-->>Backend: Liste von Orders
+    Backend-->>Frontend: Orders (JSON)
+    Frontend-->>Landwirt: Zeige Bestellliste
+    
+    Landwirt->>Frontend: Klickt auf Bestellung
+    Frontend->>Backend: GET /api/orders/{id}
+    Backend->>Database: SELECT order details
+    Database-->>Backend: Order + Items
+    Backend-->>Frontend: Order-Details (JSON)
+    Frontend-->>Landwirt: Zeige Bestelldetails
+    
+    Landwirt->>Frontend: Klickt "Bestätigen"
+    Frontend->>Backend: PATCH /api/orders/{id}/confirm
+    
+    Backend->>Backend: Prüfe Berechtigung
+    Backend->>Backend: Prüfe Status = OPEN
+    
+    Backend->>Database: UPDATE orders<br/>SET status='confirmed'
+    Database-->>Backend: Erfolgreich
+    
+    Backend->>EmailService: notify_customer(order)
+    EmailService-->>Backend: Email gesendet
+    
+    Backend-->>Frontend: Order-Objekt (updated)
+    Frontend-->>Landwirt: Erfolgsmeldung<br/>"Bestellung bestätigt"
+```
+
+!!! tip "Diagramm als Bild"
+    Für Präsentationen: `docs/images/sequenz-bestellung-bestaetigen.png`
 
 ### Beschreibung
 

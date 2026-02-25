@@ -6,13 +6,109 @@ Das Klassendiagramm zeigt die **Objektstruktur** des Systems und deren **Beziehu
 
 ## 📊 Klassendiagramm
 
-!!! warning "Diagramm einfügen"
-    Hier sollte das Klassendiagramm eingefügt werden.  
-    Speichere es als `klassendiagramm.png` im Ordner `docs/images/` und füge es hier ein:
+```mermaid
+classDiagram
+    class User {
+        +int id
+        +string email
+        +string password_hash
+        +string first_name
+        +string last_name
+        +UserRole role
+        +string street
+        +string plz
+        +string city
+        +string phone
+        +DateTime created_at
+        +login(email, password) bool
+        +logout() void
+        +update_profile(data) void
+    }
     
-    ```markdown
-    ![Klassendiagramm](../images/klassendiagramm.png)
-    ```
+    class Farmer {
+        +int id
+        +int user_id
+        +string farm_name
+        +string description
+        +string farm_street
+        +string farm_plz
+        +string farm_city
+        +bool bio_certified
+        +bool is_approved
+        +create_product(data) Product
+        +get_products() List~Product~
+        +get_orders() List~Order~
+        +confirm_order(order_id) void
+    }
+    
+    class Product {
+        +int id
+        +int farmer_id
+        +string name
+        +string description
+        +string category
+        +float price
+        +string unit
+        +bool bio
+        +bool available
+        +DateTime created_at
+        +update(data) void
+        +delete() void
+        +set_availability(available) void
+    }
+    
+    class Order {
+        +int id
+        +int customer_id
+        +int farmer_id
+        +OrderStatus status
+        +float total_price
+        +DateTime pickup_date
+        +DateTime created_at
+        +DateTime updated_at
+        +add_item(product, quantity) void
+        +calculate_total() float
+        +confirm() void
+        +cancel() void
+    }
+    
+    class OrderItem {
+        +int id
+        +int order_id
+        +int product_id
+        +int quantity
+        +float unit_price
+        +get_subtotal() float
+    }
+    
+    class UserRole {
+        <<enumeration>>
+        CUSTOMER
+        FARMER
+        ADMIN
+    }
+    
+    class OrderStatus {
+        <<enumeration>>
+        OPEN
+        CONFIRMED
+        PICKED_UP
+        CANCELLED
+    }
+    
+    User "1" -- "1" Farmer : hat >
+    User "1" -- "*" Order : erstellt >
+    Farmer "1" -- "*" Product : bietet an >
+    Farmer "1" -- "*" Order : empfängt >
+    Order "1" -- "*" OrderItem : enthält >
+    Product "1" -- "*" OrderItem : ist in >
+    User --> UserRole
+    Order --> OrderStatus
+```
+
+!!! tip "Diagramm als Bild"
+    Für Präsentationen kannst du das Diagramm auch als PNG speichern:  
+    `docs/images/klassendiagramm.png`
 
 ---
 

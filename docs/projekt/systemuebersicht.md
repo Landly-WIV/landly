@@ -38,6 +38,47 @@ Landly
 
 Das System folgt einer klassischen **Client-Server-Architektur**:
 
+### Komponenten-Diagramm
+
+```mermaid
+graph TB
+    subgraph "Client Layer"
+        UI[Flet Frontend<br/>Python UI Framework]
+    end
+    
+    subgraph "API Layer"
+        API[FastAPI Backend<br/>REST API]
+        AUTH[Auth Service<br/>JWT Tokens]
+    end
+    
+    subgraph "Business Layer"
+        CRUD[CRUD Operations]
+        SEARCH[Search Functions]
+        ORDER[Order Management]
+    end
+    
+    subgraph "Data Layer"
+        ORM[SQLAlchemy ORM]
+        DB[(Database<br/>SQLite/PostgreSQL)]
+    end
+    
+    UI -->|HTTP/REST| API
+    API --> AUTH
+    API --> CRUD
+    API --> SEARCH
+    API --> ORDER
+    CRUD --> ORM
+    SEARCH --> ORM
+    ORDER --> ORM
+    ORM --> DB
+    
+    style UI fill:#e1f5ff
+    style API fill:#fff4e1
+    style DB fill:#e8f5e9
+```
+
+### Vereinfachte Darstellung
+
 !!! info "Architektur"
     ```
     ┌─────────────────┐

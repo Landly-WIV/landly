@@ -1,10 +1,47 @@
-# Landly – Regionale Onlineplattform
+<div align="center">
+  <img src="images/logo.png" alt="Landly Logo" width="200"/>
+  <h1>Landly – Regionale Onlineplattform</h1>
+  
+  ![Python](https://img.shields.io/badge/Python-3.10+-blue.svg)
+  ![Flet](https://img.shields.io/badge/Flet-0.24-green.svg)
+  ![FastAPI](https://img.shields.io/badge/FastAPI-0.110-teal.svg)
+  ![License](https://img.shields.io/badge/License-MIT-yellow.svg)
+  ![Status](https://img.shields.io/badge/Status-In%20Development-orange.svg)
+</div>
+
+---
 
 ## 📖 Übersicht
 
-**Landly** ist eine regionale Onlineplattform, über die Landwirte ihre Produkte direkt an Kund:innen verkaufen können.
+**Landly** verbindet regionale Landwirte direkt mit Kund:innen – ohne Umwege, ohne Zwischenhändler.
 
-**Ziel des Projekts** ist es, die regionale Landwirtschaft zu fördern, Lieferwege zu verkürzen und den Zugang zu lokalen Lebensmitteln zu vereinfachen. Landwirte können ihre Produkte digital präsentieren, während Kund:innen diese in ihrer Umgebung suchen, filtern und bestellen können.
+### 🎯 Value Proposition
+
+!!! success "Das Problem"
+    Lokale Landwirte haben keine digitale Sichtbarkeit. Kund:innen finden regionale Produkte nur schwer. Lieferwege sind unnötig lang.
+
+!!! success "Unsere Lösung"
+    Landly ist die digitale Plattform für direkten, regionalen Handel – mit Umkreissuche, transparenten Produktinfos und einfacher Bestellung zur Abholung.
+
+!!! success "Der Mehrwert"
+    ✅ **Für Kund:innen:** Frische Produkte aus der Nähe finden und bestellen  
+    ✅ **Für Landwirte:** Digitale Sichtbarkeit und Direktvermarktung  
+    ✅ **Für die Umwelt:** Kurze Lieferwege, weniger CO₂
+
+---
+
+## 🚀 Quick Start
+
+!!! tip "Direkt loslegen"
+    
+    **Entwickler:**  
+    → [Setup & Installation](dev/setup.md) – Projekt lokal starten  
+    → [Test-Accounts](dev/testdaten.md) – Sofort mit Demo-Daten testen  
+    → [API-Dokumentation](dev/api.md) – Backend-Endpunkte erkunden
+    
+    **User:**  
+    → [Einführung](user/einfuehrung.md) – Erste Schritte mit Landly  
+    → [Produkte suchen](user/produkte-suchen.md) – Lokale Produkte finden
 
 ---
 

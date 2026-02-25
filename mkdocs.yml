@@ -49,7 +49,12 @@ nav:
   - Entwickler-Dokumentation:
       - Übersicht: dev/technische-uebersicht.md
       - Setup & Installation: dev/setup.md
+      - Konfiguration: dev/konfiguration.md
+      - Test-Accounts & Demo: dev/testdaten.md
+      - Technische Strategie: dev/technische-strategie.md
       - Logisches Modell: dev/logisches-modell.md
+      - Datenbankschema: dev/datenbankschema.md
+      - API-Dokumentation: dev/api.md
       - UML-Diagramme:
           - Use-Case-Diagramm: dev/uml-usecase.md
           - Klassendiagramm: dev/uml-klassen.md
@@ -69,7 +74,11 @@ markdown_extensions:
   - toc:
       permalink: true
   - pymdownx.details
-  - pymdownx.superfences
+  - pymdownx.superfences:
+      custom_fences:
+        - name: mermaid
+          class: mermaid
+          format: !!python/name:pymdownx.superfences.fence_code_format
   - pymdownx.emoji:
       emoji_index: !!python/name:material.extensions.emoji.twemoji
       emoji_generator: !!python/name:material.extensions.emoji.to_svg

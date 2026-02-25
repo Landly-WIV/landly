@@ -6,9 +6,76 @@ Das logische Datenmodell beschreibt die **Entitäten** und **Beziehungen** des S
 
 ## 📊 ER-Diagramm
 
-!!! warning "Diagramm einfügen"
-    Hier sollte das ER-Diagramm eingefügt werden.  
-    Speichere es als `er-diagramm.png` im Ordner `docs/images/` und füge es hier ein:
+```mermaid
+erDiagram
+    USER ||--o| FARMER : "ist"
+    USER ||--o{ ORDER : "erstellt"
+    FARMER ||--o{ PRODUCT : "bietet an"
+    FARMER ||--o{ ORDER : "empfängt"
+    ORDER ||--|{ ORDER_ITEM : "enthält"
+    PRODUCT ||--o{ ORDER_ITEM : "ist in"
+    
+    USER {
+        int id PK
+        string email UK
+        string password_hash
+        string first_name
+        string last_name
+        enum role
+        string street
+        string plz
+        string city
+        string phone
+        datetime created_at
+    }
+    
+    FARMER {
+        int id PK
+        int user_id FK
+        string farm_name
+        text description
+        string farm_street
+        string farm_plz
+        string farm_city
+        boolean bio_certified
+        boolean is_approved
+    }
+    
+    PRODUCT {
+        int id PK
+        int farmer_id FK
+        string name
+        text description
+        string category
+        float price
+        string unit
+        boolean bio
+        boolean available
+        datetime created_at
+    }
+    
+    ORDER {
+        int id PK
+        int customer_id FK
+        int farmer_id FK
+        enum status
+        float total_price
+        datetime pickup_date
+        datetime created_at
+        datetime updated_at
+    }
+    
+    ORDER_ITEM {
+        int id PK
+        int order_id FK
+        int product_id FK
+        int quantity
+        float unit_price
+    }
+```
+
+!!! tip "Diagramm als Bild"
+    Falls du ein visuelles Diagramm erstellen möchtest, speichere es als `er-diagramm.png` im Ordner `docs/images/` und füge es hier ein:
     
     ```markdown
     ![ER-Diagramm](../images/er-diagramm.png)

@@ -14,6 +14,9 @@ Stelle sicher, dass folgende Software installiert ist:
 | **Git** | Latest | [git-scm.com](https://git-scm.com) |
 | **VS Code** | Optional | [code.visualstudio.com](https://code.visualstudio.com) |
 
+!!! tip "Schnellstart"
+    Für eine vollständige Übersicht der Konfigurationsmöglichkeiten siehe [Konfiguration](konfiguration.md).
+
 ---
 
 ## 🚀 Installation
@@ -112,6 +115,21 @@ python src/main.py
 ```
 
 Die App öffnet sich automatisch im Standardbrowser.
+
+---
+
+## 🔑 Test-Accounts
+
+Zum Testen stehen vorkonfigurierte Accounts bereit:
+
+| Rolle | E-Mail | Passwort |
+|-------|--------|----------|
+| **Kunde** | kunde@landly.de | Test123! |
+| **Landwirt** | landwirt@landly.de | Test123! |
+| **Admin** | admin@landly.de | Admin123! |
+
+!!! info "Mehr Test-Szenarien"
+    Ausführliche Informationen zu Test-Accounts, Demo-Daten und Test-Szenarien findest du unter [Test-Accounts & Demo-Daten](testdaten.md).
 
 ---
 
