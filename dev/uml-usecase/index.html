@@ -1,0 +1,2260 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+        <link rel="canonical" href="https://sitename.example/dev/uml-usecase/">
+      
+      
+        <link rel="prev" href="../api/">
+      
+      
+        <link rel="next" href="../uml-klassen/">
+      
+      
+        
+      
+      
+      <link rel="icon" href="../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.3">
+    
+    
+      
+        <title>Use-Case-Diagramm - Dokumentation</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/main.484c7ddc.min.css">
+      
+        
+        <link rel="stylesheet" href="../../assets/stylesheets/palette.ab4e12ef.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Merriweather+Sans:300,300i,400,400i,700,700i%7CRed+Hat+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Merriweather Sans";--md-code-font:"Red Hat Mono"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="../../styles/extra.css">
+    
+    <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="green" data-md-color-accent="lime">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#use-case-diagramm" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow md-header--lifted" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../.." title="Dokumentation" class="md-header__button md-logo" aria-label="Dokumentation" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Dokumentation
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Use-Case-Diagramm
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="default" data-md-color-primary="green" data-md-color-accent="lime"  aria-label="Dunkelmodus"  type="radio" name="__palette" id="__palette_0">
+    
+      <label class="md-header__button md-icon" title="Dunkelmodus" for="__palette_1" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m17.75 4.09-2.53 1.94.91 3.06-2.63-1.81-2.63 1.81.91-3.06-2.53-1.94L12.44 4l1.06-3 1.06 3zm3.5 6.91-1.64 1.25.59 1.98-1.7-1.17-1.7 1.17.59-1.98L15.75 11l2.06-.05L18.5 9l.69 1.95zm-2.28 4.95c.83-.08 1.72 1.1 1.19 1.85-.32.45-.66.87-1.08 1.27C15.17 23 8.84 23 4.94 19.07c-3.91-3.9-3.91-10.24 0-14.14.4-.4.82-.76 1.27-1.08.75-.53 1.93.36 1.85 1.19-.27 2.86.69 5.83 2.89 8.02a9.96 9.96 0 0 0 8.02 2.89m-1.64 2.02a12.08 12.08 0 0 1-7.8-3.47c-2.17-2.19-3.33-5-3.49-7.82-2.81 3.14-2.7 7.96.31 10.98 3.02 3.01 7.84 3.12 10.98.31"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="slate" data-md-color-primary="green" data-md-color-accent="lime"  aria-label="Hellmodus"  type="radio" name="__palette" id="__palette_1">
+    
+      <label class="md-header__button md-icon" title="Hellmodus" for="__palette_0" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 7a5 5 0 0 1 5 5 5 5 0 0 1-5 5 5 5 0 0 1-5-5 5 5 0 0 1 5-5m0 2a3 3 0 0 0-3 3 3 3 0 0 0 3 3 3 3 0 0 0 3-3 3 3 0 0 0-3-3m0-7 2.39 3.42C13.65 5.15 12.84 5 12 5s-1.65.15-2.39.42zM3.34 7l4.16-.35A7.2 7.2 0 0 0 5.94 8.5c-.44.74-.69 1.5-.83 2.29zm.02 10 1.76-3.77a7.131 7.131 0 0 0 2.38 4.14zM20.65 7l-1.77 3.79a7.02 7.02 0 0 0-2.38-4.15zm-.01 10-4.14.36c.59-.51 1.12-1.14 1.54-1.86.42-.73.69-1.5.83-2.29zM12 22l-2.41-3.44c.74.27 1.55.44 2.41.44.82 0 1.63-.17 2.37-.44z"/></svg>
+      </label>
+    
+  
+</form>
+      
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+        <div class="md-search__suggest" data-md-component="search-suggest"></div>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+  </nav>
+  
+    
+      
+<nav class="md-tabs" aria-label="Tabs" data-md-component="tabs">
+  <div class="md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../.." class="md-tabs__link">
+        
+  
+  
+    
+  
+  Startseite
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../projekt/projektidee/" class="md-tabs__link">
+          
+  
+  
+  Projekt
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../user/einfuehrung/" class="md-tabs__link">
+          
+  
+  
+  User-Dokumentation
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    
+  
+  
+    
+    
+      <li class="md-tabs__item md-tabs__item--active">
+        <a href="../technische-uebersicht/" class="md-tabs__link">
+          
+  
+  
+  Entwickler-Dokumentation
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../organisation/weeklys-uebersicht/" class="md-tabs__link">
+          
+  
+  
+  Projektorganisation
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../steckbrief/" class="md-tabs__link">
+          
+  
+  
+  Sonstiges
+
+        </a>
+      </li>
+    
+  
+
+      
+    </ul>
+  </div>
+</nav>
+    
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+  
+
+
+  
+
+<nav class="md-nav md-nav--primary md-nav--lifted md-nav--integrated" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../.." title="Dokumentation" class="md-nav__button md-logo" aria-label="Dokumentation" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    Dokumentation
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../.." class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Startseite
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Projekt
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Projekt
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../projekt/projektidee/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Projektidee
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../projekt/moscow/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    MoSCoW-Priorisierung
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../projekt/systemuebersicht/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Systemübersicht
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    User-Dokumentation
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    User-Dokumentation
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../user/einfuehrung/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Einführung
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../user/registrierung-login/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Registrierung & Login
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../user/produkte-suchen/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Produkte suchen
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../user/bestellung/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Bestellung aufgeben
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../user/abholung/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Abholung
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../user/mein-konto/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Mein Konto
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../user/faq/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    FAQ
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    
+    
+    
+    
+      
+        
+        
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_4" id="__nav_4_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Entwickler-Dokumentation
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_4">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Entwickler-Dokumentation
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../technische-uebersicht/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Übersicht
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../setup/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Setup & Installation
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../konfiguration/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Konfiguration
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../testdaten/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Test-Accounts & Demo
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../technische-strategie/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Technische Strategie
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../logisches-modell/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Logisches Modell
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../datenbankschema/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Datenbankschema
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../api/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    API-Dokumentation
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4_9" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_4_9" id="__nav_4_9_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    UML-Diagramme
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_4_9_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_4_9">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    UML-Diagramme
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Use-Case-Diagramm
+  
+
+    
+  </span>
+  
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Use-Case-Diagramm
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#akteure" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        🎭 Akteure
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#use-case-diagramm_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        📊 Use-Case-Diagramm
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#anwendungsfalle" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        🔄 Anwendungsfälle
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="🔄 Anwendungsfälle">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#kunde" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Kunde
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Kunde">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#uc-01-registrieren" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        UC-01: Registrieren
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#uc-02-einloggen" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        UC-02: Einloggen
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#uc-03-produkte-suchen" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        UC-03: Produkte suchen
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#uc-04-produktdetails-anzeigen" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        UC-04: Produktdetails anzeigen
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#uc-05-produkt-in-warenkorb-legen" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        UC-05: Produkt in Warenkorb legen
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#uc-06-bestellung-aufgeben" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        UC-06: Bestellung aufgeben
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#uc-07-bestellungen-anzeigen" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        UC-07: Bestellungen anzeigen
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#uc-08-bestellung-stornieren" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        UC-08: Bestellung stornieren
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#uc-09-profil-verwalten" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        UC-09: Profil verwalten
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#landwirt" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Landwirt
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Landwirt">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#uc-10-als-landwirt-registrieren" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        UC-10: Als Landwirt registrieren
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#uc-11-produkt-anlegen" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        UC-11: Produkt anlegen
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#uc-12-produkt-bearbeiten" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        UC-12: Produkt bearbeiten
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#uc-13-produkt-loschen" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        UC-13: Produkt löschen
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#uc-14-bestellungen-einsehen" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        UC-14: Bestellungen einsehen
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#uc-15-bestellung-bestatigen" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        UC-15: Bestellung bestätigen
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#administrator" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Administrator
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Administrator">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#uc-16-benutzerverwaltung" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        UC-16: Benutzerverwaltung
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#uc-17-landwirt-freischalten" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        UC-17: Landwirt freischalten
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#uc-18-systemuberwachung" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        UC-18: Systemüberwachung
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#use-case-prioritaten" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        🎯 Use-Case-Prioritäten
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#nachste-schritte" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        🚀 Nächste Schritte
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../uml-klassen/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Klassendiagramm
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../uml-sequenz/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Sequenzdiagramme
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_5" >
+        
+          
+          <label class="md-nav__link" for="__nav_5" id="__nav_5_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Projektorganisation
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_5_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_5">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Projektorganisation
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../organisation/weeklys-uebersicht/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Weeklys Übersicht
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../organisation/weeklys/kw01-lucas/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    KW01 - Lucas
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_6" >
+        
+          
+          <label class="md-nav__link" for="__nav_6" id="__nav_6_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Sonstiges
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_6_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_6">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Sonstiges
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../steckbrief/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Steckbrief
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../code-examples/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Code-Beispiele
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+
+<h1 id="use-case-diagramm">👥 Use-Case-Diagramm<a class="headerlink" href="#use-case-diagramm" title="Permanent link">&para;</a></h1>
+<p>Das Use-Case-Diagramm zeigt die <strong>Akteure</strong> und <strong>Anwendungsfälle</strong> des Systems.</p>
+<hr />
+<h2 id="akteure">🎭 Akteure<a class="headerlink" href="#akteure" title="Permanent link">&para;</a></h2>
+<table>
+<thead>
+<tr>
+<th>Akteur</th>
+<th>Beschreibung</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Kunde</strong></td>
+<td>Sucht Produkte, erstellt Bestellungen</td>
+</tr>
+<tr>
+<td><strong>Landwirt</strong></td>
+<td>Verwaltet Produkte und Bestellungen</td>
+</tr>
+<tr>
+<td><strong>Administrator</strong></td>
+<td>Verwaltet System und Benutzer</td>
+</tr>
+<tr>
+<td><strong>System</strong></td>
+<td>Automatisierte Prozesse (z. B. Benachrichtigungen)</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2 id="use-case-diagramm_1">📊 Use-Case-Diagramm<a class="headerlink" href="#use-case-diagramm_1" title="Permanent link">&para;</a></h2>
+<pre class="mermaid"><code>graph LR
+    subgraph System["Landly System"]
+        UC1[Registrieren]
+        UC2[Einloggen]
+        UC3[Produkte suchen]
+        UC4[Produkt in Warenkorb]
+        UC5[Bestellung aufgeben]
+        UC6[Bestellung verwalten]
+        UC7[Produkt anlegen]
+        UC8[Produkt bearbeiten]
+        UC9[Bestellung bestätigen]
+        UC10[Benutzer verwalten]
+    end
+
+    Kunde((Kunde))
+    Landwirt((Landwirt))
+    Admin((Admin))
+
+    Kunde --&gt; UC1
+    Kunde --&gt; UC2
+    Kunde --&gt; UC3
+    Kunde --&gt; UC4
+    Kunde --&gt; UC5
+    Kunde --&gt; UC6
+
+    Landwirt --&gt; UC2
+    Landwirt --&gt; UC7
+    Landwirt --&gt; UC8
+    Landwirt --&gt; UC9
+    Landwirt --&gt; UC6
+
+    Admin --&gt; UC2
+    Admin --&gt; UC10
+
+    style UC1 fill:#e1f5ff
+    style UC2 fill:#e1f5ff
+    style UC3 fill:#e1f5ff
+    style UC4 fill:#e1f5ff
+    style UC5 fill:#e1f5ff
+    style UC6 fill:#fff4e1
+    style UC7 fill:#fff4e1
+    style UC8 fill:#fff4e1
+    style UC9 fill:#fff4e1
+    style UC10 fill:#ffe1e1</code></pre>
+<div class="admonition tip">
+<p class="admonition-title">Diagramm als Bild</p>
+<p>Für Präsentationen kannst du das Diagramm auch als PNG speichern:<br />
+<code>docs/images/usecase-diagramm.png</code></p>
+</div>
+<hr />
+<h2 id="anwendungsfalle">🔄 Anwendungsfälle<a class="headerlink" href="#anwendungsfalle" title="Permanent link">&para;</a></h2>
+<h3 id="kunde">Kunde<a class="headerlink" href="#kunde" title="Permanent link">&para;</a></h3>
+<h4 id="uc-01-registrieren">UC-01: Registrieren<a class="headerlink" href="#uc-01-registrieren" title="Permanent link">&para;</a></h4>
+<p><strong>Akteur:</strong> Kunde<br />
+<strong>Beschreibung:</strong> Kunde erstellt ein neues Konto<br />
+<strong>Vorbedingung:</strong> Keine<br />
+<strong>Ablauf:</strong></p>
+<ol>
+<li>Kunde öffnet Registrierungsformular</li>
+<li>Kunde gibt Daten ein (E-Mail, Passwort, Name, Adresse)</li>
+<li>System validiert Eingaben</li>
+<li>System erstellt Konto</li>
+<li>System sendet Bestätigungsmail</li>
+</ol>
+<p><strong>Nachbedingung:</strong> Kunde ist registriert und kann sich einloggen</p>
+<hr />
+<h4 id="uc-02-einloggen">UC-02: Einloggen<a class="headerlink" href="#uc-02-einloggen" title="Permanent link">&para;</a></h4>
+<p><strong>Akteur:</strong> Kunde, Landwirt<br />
+<strong>Beschreibung:</strong> Benutzer meldet sich im System an<br />
+<strong>Vorbedingung:</strong> Benutzer ist registriert<br />
+<strong>Ablauf:</strong></p>
+<ol>
+<li>Benutzer öffnet Login-Seite</li>
+<li>Benutzer gibt E-Mail und Passwort ein</li>
+<li>System validiert Anmeldedaten</li>
+<li>System erstellt Session</li>
+<li>Benutzer wird zur Startseite weitergeleitet</li>
+</ol>
+<p><strong>Nachbedingung:</strong> Benutzer ist eingeloggt</p>
+<hr />
+<h4 id="uc-03-produkte-suchen">UC-03: Produkte suchen<a class="headerlink" href="#uc-03-produkte-suchen" title="Permanent link">&para;</a></h4>
+<p><strong>Akteur:</strong> Kunde<br />
+<strong>Beschreibung:</strong> Kunde sucht Produkte in der Umgebung<br />
+<strong>Vorbedingung:</strong> Kunde ist eingeloggt (optional)<br />
+<strong>Ablauf:</strong></p>
+<ol>
+<li>Kunde gibt PLZ ein</li>
+<li>System zeigt Produkte im Umkreis an</li>
+<li>Kunde wendet Filter an (optional)</li>
+<li>System aktualisiert Ergebnisse</li>
+</ol>
+<p><strong>Nachbedingung:</strong> Kunde sieht relevante Produkte</p>
+<hr />
+<h4 id="uc-04-produktdetails-anzeigen">UC-04: Produktdetails anzeigen<a class="headerlink" href="#uc-04-produktdetails-anzeigen" title="Permanent link">&para;</a></h4>
+<p><strong>Akteur:</strong> Kunde<br />
+<strong>Beschreibung:</strong> Kunde öffnet Detailseite eines Produkts<br />
+<strong>Vorbedingung:</strong> Produkt existiert<br />
+<strong>Ablauf:</strong></p>
+<ol>
+<li>Kunde klickt auf Produkt</li>
+<li>System zeigt Produktdetails (Name, Preis, Herkunft, etc.)</li>
+<li>Kunde sieht Hofprofil des Anbieters</li>
+</ol>
+<p><strong>Nachbedingung:</strong> Kunde hat Produktinformationen</p>
+<hr />
+<h4 id="uc-05-produkt-in-warenkorb-legen">UC-05: Produkt in Warenkorb legen<a class="headerlink" href="#uc-05-produkt-in-warenkorb-legen" title="Permanent link">&para;</a></h4>
+<p><strong>Akteur:</strong> Kunde<br />
+<strong>Beschreibung:</strong> Kunde fügt Produkt zum Warenkorb hinzu<br />
+<strong>Vorbedingung:</strong> Kunde ist eingeloggt<br />
+<strong>Ablauf:</strong></p>
+<ol>
+<li>Kunde wählt Produkt aus</li>
+<li>Kunde gibt Menge ein</li>
+<li>Kunde klickt "In den Warenkorb"</li>
+<li>System fügt Produkt zu Warenkorb hinzu</li>
+</ol>
+<p><strong>Nachbedingung:</strong> Produkt ist im Warenkorb</p>
+<hr />
+<h4 id="uc-06-bestellung-aufgeben">UC-06: Bestellung aufgeben<a class="headerlink" href="#uc-06-bestellung-aufgeben" title="Permanent link">&para;</a></h4>
+<p><strong>Akteur:</strong> Kunde<br />
+<strong>Beschreibung:</strong> Kunde schließt Bestellung ab<br />
+<strong>Vorbedingung:</strong> Warenkorb ist nicht leer<br />
+<strong>Ablauf:</strong></p>
+<ol>
+<li>Kunde öffnet Warenkorb</li>
+<li>Kunde prüft Produkte</li>
+<li>Kunde klickt "Zur Kasse"</li>
+<li>System erstellt Bestellung</li>
+<li>System sendet Bestätigung per E-Mail</li>
+</ol>
+<p><strong>Nachbedingung:</strong> Bestellung ist erstellt</p>
+<hr />
+<h4 id="uc-07-bestellungen-anzeigen">UC-07: Bestellungen anzeigen<a class="headerlink" href="#uc-07-bestellungen-anzeigen" title="Permanent link">&para;</a></h4>
+<p><strong>Akteur:</strong> Kunde<br />
+<strong>Beschreibung:</strong> Kunde sieht seine Bestellungen<br />
+<strong>Vorbedingung:</strong> Kunde ist eingeloggt<br />
+<strong>Ablauf:</strong></p>
+<ol>
+<li>Kunde öffnet "Meine Bestellungen"</li>
+<li>System zeigt alle Bestellungen mit Status</li>
+</ol>
+<p><strong>Nachbedingung:</strong> Kunde kennt seine Bestellungen</p>
+<hr />
+<h4 id="uc-08-bestellung-stornieren">UC-08: Bestellung stornieren<a class="headerlink" href="#uc-08-bestellung-stornieren" title="Permanent link">&para;</a></h4>
+<p><strong>Akteur:</strong> Kunde<br />
+<strong>Beschreibung:</strong> Kunde storniert eine Bestellung<br />
+<strong>Vorbedingung:</strong> Bestellung ist noch nicht abgeholt<br />
+<strong>Ablauf:</strong></p>
+<ol>
+<li>Kunde öffnet Bestellung</li>
+<li>Kunde klickt "Stornieren"</li>
+<li>System ändert Status auf "storniert"</li>
+<li>System benachrichtigt Landwirt</li>
+</ol>
+<p><strong>Nachbedingung:</strong> Bestellung ist storniert</p>
+<hr />
+<h4 id="uc-09-profil-verwalten">UC-09: Profil verwalten<a class="headerlink" href="#uc-09-profil-verwalten" title="Permanent link">&para;</a></h4>
+<p><strong>Akteur:</strong> Kunde, Landwirt<br />
+<strong>Beschreibung:</strong> Benutzer bearbeitet seine Daten<br />
+<strong>Vorbedingung:</strong> Benutzer ist eingeloggt<br />
+<strong>Ablauf:</strong></p>
+<ol>
+<li>Benutzer öffnet "Mein Profil"</li>
+<li>Benutzer ändert Daten</li>
+<li>Benutzer speichert</li>
+<li>System aktualisiert Profil</li>
+</ol>
+<p><strong>Nachbedingung:</strong> Profil ist aktualisiert</p>
+<hr />
+<h3 id="landwirt">Landwirt<a class="headerlink" href="#landwirt" title="Permanent link">&para;</a></h3>
+<h4 id="uc-10-als-landwirt-registrieren">UC-10: Als Landwirt registrieren<a class="headerlink" href="#uc-10-als-landwirt-registrieren" title="Permanent link">&para;</a></h4>
+<p><strong>Akteur:</strong> Landwirt<br />
+<strong>Beschreibung:</strong> Landwirt erstellt ein Hofprofil<br />
+<strong>Vorbedingung:</strong> Keine<br />
+<strong>Ablauf:</strong></p>
+<ol>
+<li>Landwirt öffnet Registrierung</li>
+<li>Landwirt gibt Hofdaten ein</li>
+<li>System validiert Eingaben</li>
+<li>System erstellt Konto (Status: inaktiv)</li>
+<li>Administrator muss Konto freischalten</li>
+</ol>
+<p><strong>Nachbedingung:</strong> Landwirt wartet auf Freischaltung</p>
+<hr />
+<h4 id="uc-11-produkt-anlegen">UC-11: Produkt anlegen<a class="headerlink" href="#uc-11-produkt-anlegen" title="Permanent link">&para;</a></h4>
+<p><strong>Akteur:</strong> Landwirt<br />
+<strong>Beschreibung:</strong> Landwirt fügt ein neues Produkt hinzu<br />
+<strong>Vorbedingung:</strong> Landwirt ist eingeloggt und freigeschaltet<br />
+<strong>Ablauf:</strong></p>
+<ol>
+<li>Landwirt öffnet "Produkte verwalten"</li>
+<li>Landwirt klickt "Neues Produkt"</li>
+<li>Landwirt gibt Produktdaten ein</li>
+<li>Landwirt speichert</li>
+<li>System erstellt Produkt</li>
+</ol>
+<p><strong>Nachbedingung:</strong> Produkt ist verfügbar</p>
+<hr />
+<h4 id="uc-12-produkt-bearbeiten">UC-12: Produkt bearbeiten<a class="headerlink" href="#uc-12-produkt-bearbeiten" title="Permanent link">&para;</a></h4>
+<p><strong>Akteur:</strong> Landwirt<br />
+<strong>Beschreibung:</strong> Landwirt ändert Produktinformationen<br />
+<strong>Vorbedingung:</strong> Produkt existiert<br />
+<strong>Ablauf:</strong></p>
+<ol>
+<li>Landwirt öffnet Produkt</li>
+<li>Landwirt ändert Daten (Preis, Verfügbarkeit, etc.)</li>
+<li>Landwirt speichert</li>
+<li>System aktualisiert Produkt</li>
+</ol>
+<p><strong>Nachbedingung:</strong> Produkt ist aktualisiert</p>
+<hr />
+<h4 id="uc-13-produkt-loschen">UC-13: Produkt löschen<a class="headerlink" href="#uc-13-produkt-loschen" title="Permanent link">&para;</a></h4>
+<p><strong>Akteur:</strong> Landwirt<br />
+<strong>Beschreibung:</strong> Landwirt entfernt ein Produkt<br />
+<strong>Vorbedingung:</strong> Produkt existiert und ist nicht in offenen Bestellungen<br />
+<strong>Ablauf:</strong></p>
+<ol>
+<li>Landwirt öffnet Produkt</li>
+<li>Landwirt klickt "Löschen"</li>
+<li>System bestätigt Löschung</li>
+<li>System entfernt Produkt</li>
+</ol>
+<p><strong>Nachbedingung:</strong> Produkt ist gelöscht</p>
+<hr />
+<h4 id="uc-14-bestellungen-einsehen">UC-14: Bestellungen einsehen<a class="headerlink" href="#uc-14-bestellungen-einsehen" title="Permanent link">&para;</a></h4>
+<p><strong>Akteur:</strong> Landwirt<br />
+<strong>Beschreibung:</strong> Landwirt sieht eingehende Bestellungen<br />
+<strong>Vorbedingung:</strong> Landwirt ist eingeloggt<br />
+<strong>Ablauf:</strong></p>
+<ol>
+<li>Landwirt öffnet "Bestellungen"</li>
+<li>System zeigt alle Bestellungen für diesen Hof</li>
+</ol>
+<p><strong>Nachbedingung:</strong> Landwirt kennt seine Bestellungen</p>
+<hr />
+<h4 id="uc-15-bestellung-bestatigen">UC-15: Bestellung bestätigen<a class="headerlink" href="#uc-15-bestellung-bestatigen" title="Permanent link">&para;</a></h4>
+<p><strong>Akteur:</strong> Landwirt<br />
+<strong>Beschreibung:</strong> Landwirt bestätigt eine Bestellung<br />
+<strong>Vorbedingung:</strong> Bestellung ist offen<br />
+<strong>Ablauf:</strong></p>
+<ol>
+<li>Landwirt öffnet Bestellung</li>
+<li>Landwirt prüft Verfügbarkeit</li>
+<li>Landwirt klickt "Bestätigen"</li>
+<li>System ändert Status auf "bestätigt"</li>
+<li>System benachrichtigt Kunde</li>
+</ol>
+<p><strong>Nachbedingung:</strong> Bestellung ist bestätigt</p>
+<hr />
+<h3 id="administrator">Administrator<a class="headerlink" href="#administrator" title="Permanent link">&para;</a></h3>
+<h4 id="uc-16-benutzerverwaltung">UC-16: Benutzerverwaltung<a class="headerlink" href="#uc-16-benutzerverwaltung" title="Permanent link">&para;</a></h4>
+<p><strong>Akteur:</strong> Administrator<br />
+<strong>Beschreibung:</strong> Admin verwaltet Benutzerkonten<br />
+<strong>Vorbedingung:</strong> Admin ist eingeloggt<br />
+<strong>Ablauf:</strong></p>
+<ol>
+<li>Admin öffnet Benutzerverwaltung</li>
+<li>Admin sieht alle Benutzer</li>
+<li>Admin kann Benutzer aktivieren/deaktivieren/löschen</li>
+</ol>
+<p><strong>Nachbedingung:</strong> Benutzer sind verwaltet</p>
+<hr />
+<h4 id="uc-17-landwirt-freischalten">UC-17: Landwirt freischalten<a class="headerlink" href="#uc-17-landwirt-freischalten" title="Permanent link">&para;</a></h4>
+<p><strong>Akteur:</strong> Administrator<br />
+<strong>Beschreibung:</strong> Admin schaltet Landwirt-Konto frei<br />
+<strong>Vorbedingung:</strong> Landwirt hat sich registriert<br />
+<strong>Ablauf:</strong></p>
+<ol>
+<li>Admin öffnet "Freischaltungen"</li>
+<li>Admin prüft Landwirt-Profil</li>
+<li>Admin klickt "Freischalten"</li>
+<li>System aktiviert Konto</li>
+<li>System benachrichtigt Landwirt</li>
+</ol>
+<p><strong>Nachbedingung:</strong> Landwirt kann Produkte anlegen</p>
+<hr />
+<h4 id="uc-18-systemuberwachung">UC-18: Systemüberwachung<a class="headerlink" href="#uc-18-systemuberwachung" title="Permanent link">&para;</a></h4>
+<p><strong>Akteur:</strong> Administrator<br />
+<strong>Beschreibung:</strong> Admin überwacht System-Performance<br />
+<strong>Vorbedingung:</strong> Admin ist eingeloggt<br />
+<strong>Ablauf:</strong></p>
+<ol>
+<li>Admin öffnet Dashboard</li>
+<li>System zeigt Kennzahlen (Benutzer, Bestellungen, Fehler)</li>
+</ol>
+<p><strong>Nachbedingung:</strong> Admin kennt Systemzustand</p>
+<hr />
+<h2 id="use-case-prioritaten">🎯 Use-Case-Prioritäten<a class="headerlink" href="#use-case-prioritaten" title="Permanent link">&para;</a></h2>
+<table>
+<thead>
+<tr>
+<th>Use-Case</th>
+<th>Priorität (MoSCoW)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>UC-02: Einloggen</td>
+<td><strong>Must</strong></td>
+</tr>
+<tr>
+<td>UC-03: Produkte suchen</td>
+<td><strong>Must</strong></td>
+</tr>
+<tr>
+<td>UC-06: Bestellung aufgeben</td>
+<td><strong>Must</strong></td>
+</tr>
+<tr>
+<td>UC-11: Produkt anlegen</td>
+<td><strong>Must</strong></td>
+</tr>
+<tr>
+<td>UC-14: Bestellungen einsehen</td>
+<td><strong>Must</strong></td>
+</tr>
+<tr>
+<td>UC-15: Bestellung bestätigen</td>
+<td><strong>Must</strong></td>
+</tr>
+<tr>
+<td>UC-17: Landwirt freischalten</td>
+<td><strong>Must</strong></td>
+</tr>
+<tr>
+<td>UC-08: Bestellung stornieren</td>
+<td>Should</td>
+</tr>
+<tr>
+<td>UC-13: Produkt löschen</td>
+<td>Should</td>
+</tr>
+<tr>
+<td>UC-18: Systemüberwachung</td>
+<td>Should</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2 id="nachste-schritte">🚀 Nächste Schritte<a class="headerlink" href="#nachste-schritte" title="Permanent link">&para;</a></h2>
+<p>Siehe auch:</p>
+<ul>
+<li><strong><a href="../uml-sequenz/">Sequenzdiagramme</a></strong> – Detaillierte Ablaufbeschreibungen</li>
+<li><strong><a href="../uml-klassen/">Klassendiagramm</a></strong> – Systemstruktur</li>
+</ul>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      
+      <script id="__config" type="application/json">{"annotate": null, "base": "../..", "features": ["navigation.instant", "navigation.tabs", "navigation.tabs.sticky", "navigation.expand", "toc.integrate", "content.code.copy", "search.suggest", "search.highlight"], "search": "../../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
+    
+    
+      <script src="../../assets/javascripts/bundle.79ae519e.min.js"></script>
+      
+    
+  </body>
+</html>

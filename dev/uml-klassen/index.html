@@ -1,0 +1,2170 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+        <link rel="canonical" href="https://sitename.example/dev/uml-klassen/">
+      
+      
+        <link rel="prev" href="../uml-usecase/">
+      
+      
+        <link rel="next" href="../uml-sequenz/">
+      
+      
+        
+      
+      
+      <link rel="icon" href="../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.3">
+    
+    
+      
+        <title>Klassendiagramm - Dokumentation</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/main.484c7ddc.min.css">
+      
+        
+        <link rel="stylesheet" href="../../assets/stylesheets/palette.ab4e12ef.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Merriweather+Sans:300,300i,400,400i,700,700i%7CRed+Hat+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Merriweather Sans";--md-code-font:"Red Hat Mono"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="../../styles/extra.css">
+    
+    <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="green" data-md-color-accent="lime">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#klassendiagramm" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow md-header--lifted" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../.." title="Dokumentation" class="md-header__button md-logo" aria-label="Dokumentation" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Dokumentation
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Klassendiagramm
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="default" data-md-color-primary="green" data-md-color-accent="lime"  aria-label="Dunkelmodus"  type="radio" name="__palette" id="__palette_0">
+    
+      <label class="md-header__button md-icon" title="Dunkelmodus" for="__palette_1" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m17.75 4.09-2.53 1.94.91 3.06-2.63-1.81-2.63 1.81.91-3.06-2.53-1.94L12.44 4l1.06-3 1.06 3zm3.5 6.91-1.64 1.25.59 1.98-1.7-1.17-1.7 1.17.59-1.98L15.75 11l2.06-.05L18.5 9l.69 1.95zm-2.28 4.95c.83-.08 1.72 1.1 1.19 1.85-.32.45-.66.87-1.08 1.27C15.17 23 8.84 23 4.94 19.07c-3.91-3.9-3.91-10.24 0-14.14.4-.4.82-.76 1.27-1.08.75-.53 1.93.36 1.85 1.19-.27 2.86.69 5.83 2.89 8.02a9.96 9.96 0 0 0 8.02 2.89m-1.64 2.02a12.08 12.08 0 0 1-7.8-3.47c-2.17-2.19-3.33-5-3.49-7.82-2.81 3.14-2.7 7.96.31 10.98 3.02 3.01 7.84 3.12 10.98.31"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="slate" data-md-color-primary="green" data-md-color-accent="lime"  aria-label="Hellmodus"  type="radio" name="__palette" id="__palette_1">
+    
+      <label class="md-header__button md-icon" title="Hellmodus" for="__palette_0" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 7a5 5 0 0 1 5 5 5 5 0 0 1-5 5 5 5 0 0 1-5-5 5 5 0 0 1 5-5m0 2a3 3 0 0 0-3 3 3 3 0 0 0 3 3 3 3 0 0 0 3-3 3 3 0 0 0-3-3m0-7 2.39 3.42C13.65 5.15 12.84 5 12 5s-1.65.15-2.39.42zM3.34 7l4.16-.35A7.2 7.2 0 0 0 5.94 8.5c-.44.74-.69 1.5-.83 2.29zm.02 10 1.76-3.77a7.131 7.131 0 0 0 2.38 4.14zM20.65 7l-1.77 3.79a7.02 7.02 0 0 0-2.38-4.15zm-.01 10-4.14.36c.59-.51 1.12-1.14 1.54-1.86.42-.73.69-1.5.83-2.29zM12 22l-2.41-3.44c.74.27 1.55.44 2.41.44.82 0 1.63-.17 2.37-.44z"/></svg>
+      </label>
+    
+  
+</form>
+      
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+        <div class="md-search__suggest" data-md-component="search-suggest"></div>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+  </nav>
+  
+    
+      
+<nav class="md-tabs" aria-label="Tabs" data-md-component="tabs">
+  <div class="md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../.." class="md-tabs__link">
+        
+  
+  
+    
+  
+  Startseite
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../projekt/projektidee/" class="md-tabs__link">
+          
+  
+  
+  Projekt
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../user/einfuehrung/" class="md-tabs__link">
+          
+  
+  
+  User-Dokumentation
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    
+  
+  
+    
+    
+      <li class="md-tabs__item md-tabs__item--active">
+        <a href="../technische-uebersicht/" class="md-tabs__link">
+          
+  
+  
+  Entwickler-Dokumentation
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../organisation/weeklys-uebersicht/" class="md-tabs__link">
+          
+  
+  
+  Projektorganisation
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../steckbrief/" class="md-tabs__link">
+          
+  
+  
+  Sonstiges
+
+        </a>
+      </li>
+    
+  
+
+      
+    </ul>
+  </div>
+</nav>
+    
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+  
+
+
+  
+
+<nav class="md-nav md-nav--primary md-nav--lifted md-nav--integrated" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../.." title="Dokumentation" class="md-nav__button md-logo" aria-label="Dokumentation" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    Dokumentation
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../.." class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Startseite
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Projekt
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Projekt
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../projekt/projektidee/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Projektidee
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../projekt/moscow/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    MoSCoW-Priorisierung
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../projekt/systemuebersicht/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Systemübersicht
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    User-Dokumentation
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    User-Dokumentation
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../user/einfuehrung/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Einführung
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../user/registrierung-login/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Registrierung & Login
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../user/produkte-suchen/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Produkte suchen
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../user/bestellung/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Bestellung aufgeben
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../user/abholung/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Abholung
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../user/mein-konto/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Mein Konto
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../user/faq/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    FAQ
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    
+    
+    
+    
+      
+        
+        
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_4" id="__nav_4_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Entwickler-Dokumentation
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_4">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Entwickler-Dokumentation
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../technische-uebersicht/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Übersicht
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../setup/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Setup & Installation
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../konfiguration/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Konfiguration
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../testdaten/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Test-Accounts & Demo
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../technische-strategie/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Technische Strategie
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../logisches-modell/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Logisches Modell
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../datenbankschema/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Datenbankschema
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../api/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    API-Dokumentation
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4_9" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_4_9" id="__nav_4_9_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    UML-Diagramme
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_4_9_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_4_9">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    UML-Diagramme
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../uml-usecase/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Use-Case-Diagramm
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Klassendiagramm
+  
+
+    
+  </span>
+  
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Klassendiagramm
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#klassendiagramm_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        📊 Klassendiagramm
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#klassen" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        🏗️ Klassen
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="🏗️ Klassen">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#user" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        User
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#farmer" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Farmer
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#product" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Product
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#order" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Order
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#orderitem" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        OrderItem
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#cart-warenkorb" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Cart (Warenkorb)
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#beziehungen" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        🔗 Beziehungen
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="🔗 Beziehungen">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#assoziationen" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Assoziationen
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#vererbung" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Vererbung
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#aggregation-komposition" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Aggregation / Komposition
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#enumerationen" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        📋 Enumerationen
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="📋 Enumerationen">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#userrole" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        UserRole
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#orderstatus" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        OrderStatus
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#productcategory" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        ProductCategory
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#design-patterns" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        🎯 Design-Patterns
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="🎯 Design-Patterns">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#repository-pattern" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Repository Pattern
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#service-layer" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Service Layer
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#sicherheit" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        🔐 Sicherheit
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="🔐 Sicherheit">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#authentifizierung" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Authentifizierung
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#nachste-schritte" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        🚀 Nächste Schritte
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../uml-sequenz/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Sequenzdiagramme
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_5" >
+        
+          
+          <label class="md-nav__link" for="__nav_5" id="__nav_5_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Projektorganisation
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_5_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_5">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Projektorganisation
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../organisation/weeklys-uebersicht/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Weeklys Übersicht
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../organisation/weeklys/kw01-lucas/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    KW01 - Lucas
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_6" >
+        
+          
+          <label class="md-nav__link" for="__nav_6" id="__nav_6_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Sonstiges
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_6_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_6">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Sonstiges
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../steckbrief/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Steckbrief
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../code-examples/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Code-Beispiele
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+
+<h1 id="klassendiagramm">🏛️ Klassendiagramm<a class="headerlink" href="#klassendiagramm" title="Permanent link">&para;</a></h1>
+<p>Das Klassendiagramm zeigt die <strong>Objektstruktur</strong> des Systems und deren <strong>Beziehungen</strong>.</p>
+<hr />
+<h2 id="klassendiagramm_1">📊 Klassendiagramm<a class="headerlink" href="#klassendiagramm_1" title="Permanent link">&para;</a></h2>
+<pre class="mermaid"><code>classDiagram
+    class User {
+        +int id
+        +string email
+        +string password_hash
+        +string first_name
+        +string last_name
+        +UserRole role
+        +string street
+        +string plz
+        +string city
+        +string phone
+        +DateTime created_at
+        +login(email, password) bool
+        +logout() void
+        +update_profile(data) void
+    }
+
+    class Farmer {
+        +int id
+        +int user_id
+        +string farm_name
+        +string description
+        +string farm_street
+        +string farm_plz
+        +string farm_city
+        +bool bio_certified
+        +bool is_approved
+        +create_product(data) Product
+        +get_products() List~Product~
+        +get_orders() List~Order~
+        +confirm_order(order_id) void
+    }
+
+    class Product {
+        +int id
+        +int farmer_id
+        +string name
+        +string description
+        +string category
+        +float price
+        +string unit
+        +bool bio
+        +bool available
+        +DateTime created_at
+        +update(data) void
+        +delete() void
+        +set_availability(available) void
+    }
+
+    class Order {
+        +int id
+        +int customer_id
+        +int farmer_id
+        +OrderStatus status
+        +float total_price
+        +DateTime pickup_date
+        +DateTime created_at
+        +DateTime updated_at
+        +add_item(product, quantity) void
+        +calculate_total() float
+        +confirm() void
+        +cancel() void
+    }
+
+    class OrderItem {
+        +int id
+        +int order_id
+        +int product_id
+        +int quantity
+        +float unit_price
+        +get_subtotal() float
+    }
+
+    class UserRole {
+        &lt;&lt;enumeration&gt;&gt;
+        CUSTOMER
+        FARMER
+        ADMIN
+    }
+
+    class OrderStatus {
+        &lt;&lt;enumeration&gt;&gt;
+        OPEN
+        CONFIRMED
+        PICKED_UP
+        CANCELLED
+    }
+
+    User "1" -- "1" Farmer : hat &gt;
+    User "1" -- "*" Order : erstellt &gt;
+    Farmer "1" -- "*" Product : bietet an &gt;
+    Farmer "1" -- "*" Order : empfängt &gt;
+    Order "1" -- "*" OrderItem : enthält &gt;
+    Product "1" -- "*" OrderItem : ist in &gt;
+    User --&gt; UserRole
+    Order --&gt; OrderStatus</code></pre>
+<div class="admonition tip">
+<p class="admonition-title">Diagramm als Bild</p>
+<p>Für Präsentationen kannst du das Diagramm auch als PNG speichern:<br />
+<code>docs/images/klassendiagramm.png</code></p>
+</div>
+<hr />
+<h2 id="klassen">🏗️ Klassen<a class="headerlink" href="#klassen" title="Permanent link">&para;</a></h2>
+<h3 id="user">User<a class="headerlink" href="#user" title="Permanent link">&para;</a></h3>
+<p>Repräsentiert einen Benutzer (Kunde, Landwirt oder Admin).</p>
+<div class="highlight"><pre><span></span><code><span class="k">class</span><span class="w"> </span><span class="nc">User</span><span class="p">:</span>
+    <span class="o">+</span> <span class="nb">id</span><span class="p">:</span> <span class="nb">int</span>
+    <span class="o">+</span> <span class="n">email</span><span class="p">:</span> <span class="nb">str</span>
+    <span class="o">+</span> <span class="n">password_hash</span><span class="p">:</span> <span class="nb">str</span>
+    <span class="o">+</span> <span class="n">first_name</span><span class="p">:</span> <span class="nb">str</span>
+    <span class="o">+</span> <span class="n">last_name</span><span class="p">:</span> <span class="nb">str</span>
+    <span class="o">+</span> <span class="n">role</span><span class="p">:</span> <span class="n">UserRole</span>
+    <span class="o">+</span> <span class="n">street</span><span class="p">:</span> <span class="nb">str</span>
+    <span class="o">+</span> <span class="n">plz</span><span class="p">:</span> <span class="nb">str</span>
+    <span class="o">+</span> <span class="n">city</span><span class="p">:</span> <span class="nb">str</span>
+    <span class="o">+</span> <span class="n">phone</span><span class="p">:</span> <span class="nb">str</span>
+    <span class="o">+</span> <span class="n">created_at</span><span class="p">:</span> <span class="n">DateTime</span>
+
+    <span class="o">+</span> <span class="n">login</span><span class="p">(</span><span class="n">email</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">password</span><span class="p">:</span> <span class="nb">str</span><span class="p">):</span> <span class="nb">bool</span>
+    <span class="o">+</span> <span class="n">logout</span><span class="p">():</span> <span class="n">void</span>
+    <span class="o">+</span> <span class="n">update_profile</span><span class="p">(</span><span class="n">data</span><span class="p">:</span> <span class="nb">dict</span><span class="p">):</span> <span class="n">void</span>
+</code></pre></div>
+<p><strong>Beziehungen:</strong></p>
+<ul>
+<li>1:1 → <code>Farmer</code> (wenn role = "farmer")</li>
+<li>1:n → <code>Order</code> (als customer)</li>
+</ul>
+<hr />
+<h3 id="farmer">Farmer<a class="headerlink" href="#farmer" title="Permanent link">&para;</a></h3>
+<p>Erweiterte Informationen für Landwirte.</p>
+<div class="highlight"><pre><span></span><code><span class="k">class</span><span class="w"> </span><span class="nc">Farmer</span><span class="p">:</span>
+    <span class="o">+</span> <span class="nb">id</span><span class="p">:</span> <span class="nb">int</span>
+    <span class="o">+</span> <span class="n">user_id</span><span class="p">:</span> <span class="nb">int</span>
+    <span class="o">+</span> <span class="n">farm_name</span><span class="p">:</span> <span class="nb">str</span>
+    <span class="o">+</span> <span class="n">description</span><span class="p">:</span> <span class="nb">str</span>
+    <span class="o">+</span> <span class="n">farm_street</span><span class="p">:</span> <span class="nb">str</span>
+    <span class="o">+</span> <span class="n">farm_plz</span><span class="p">:</span> <span class="nb">str</span>
+    <span class="o">+</span> <span class="n">farm_city</span><span class="p">:</span> <span class="nb">str</span>
+    <span class="o">+</span> <span class="n">bio_certified</span><span class="p">:</span> <span class="nb">bool</span>
+    <span class="o">+</span> <span class="n">is_approved</span><span class="p">:</span> <span class="nb">bool</span>
+
+    <span class="o">+</span> <span class="n">create_product</span><span class="p">(</span><span class="n">data</span><span class="p">:</span> <span class="nb">dict</span><span class="p">):</span> <span class="n">Product</span>
+    <span class="o">+</span> <span class="n">get_products</span><span class="p">():</span> <span class="n">List</span><span class="p">[</span><span class="n">Product</span><span class="p">]</span>
+    <span class="o">+</span> <span class="n">get_orders</span><span class="p">():</span> <span class="n">List</span><span class="p">[</span><span class="n">Order</span><span class="p">]</span>
+    <span class="o">+</span> <span class="n">confirm_order</span><span class="p">(</span><span class="n">order_id</span><span class="p">:</span> <span class="nb">int</span><span class="p">):</span> <span class="n">void</span>
+</code></pre></div>
+<p><strong>Beziehungen:</strong></p>
+<ul>
+<li>1:1 → <code>User</code></li>
+<li>1:n → <code>Product</code></li>
+<li>1:n → <code>Order</code></li>
+</ul>
+<hr />
+<h3 id="product">Product<a class="headerlink" href="#product" title="Permanent link">&para;</a></h3>
+<p>Ein Produkt, das von einem Landwirt angeboten wird.</p>
+<div class="highlight"><pre><span></span><code><span class="k">class</span><span class="w"> </span><span class="nc">Product</span><span class="p">:</span>
+    <span class="o">+</span> <span class="nb">id</span><span class="p">:</span> <span class="nb">int</span>
+    <span class="o">+</span> <span class="n">farmer_id</span><span class="p">:</span> <span class="nb">int</span>
+    <span class="o">+</span> <span class="n">name</span><span class="p">:</span> <span class="nb">str</span>
+    <span class="o">+</span> <span class="n">description</span><span class="p">:</span> <span class="nb">str</span>
+    <span class="o">+</span> <span class="n">category</span><span class="p">:</span> <span class="nb">str</span>
+    <span class="o">+</span> <span class="n">price</span><span class="p">:</span> <span class="nb">float</span>
+    <span class="o">+</span> <span class="n">unit</span><span class="p">:</span> <span class="nb">str</span>
+    <span class="o">+</span> <span class="n">bio</span><span class="p">:</span> <span class="nb">bool</span>
+    <span class="o">+</span> <span class="n">available</span><span class="p">:</span> <span class="nb">bool</span>
+    <span class="o">+</span> <span class="n">created_at</span><span class="p">:</span> <span class="n">DateTime</span>
+
+    <span class="o">+</span> <span class="n">update</span><span class="p">(</span><span class="n">data</span><span class="p">:</span> <span class="nb">dict</span><span class="p">):</span> <span class="n">void</span>
+    <span class="o">+</span> <span class="n">delete</span><span class="p">():</span> <span class="n">void</span>
+    <span class="o">+</span> <span class="n">set_availability</span><span class="p">(</span><span class="n">available</span><span class="p">:</span> <span class="nb">bool</span><span class="p">):</span> <span class="n">void</span>
+</code></pre></div>
+<p><strong>Beziehungen:</strong></p>
+<ul>
+<li>n:1 → <code>Farmer</code></li>
+<li>n:m → <code>Order</code> (via <code>OrderItem</code>)</li>
+</ul>
+<hr />
+<h3 id="order">Order<a class="headerlink" href="#order" title="Permanent link">&para;</a></h3>
+<p>Eine Bestellung eines Kunden bei einem Landwirt.</p>
+<div class="highlight"><pre><span></span><code><span class="k">class</span><span class="w"> </span><span class="nc">Order</span><span class="p">:</span>
+    <span class="o">+</span> <span class="nb">id</span><span class="p">:</span> <span class="nb">int</span>
+    <span class="o">+</span> <span class="n">customer_id</span><span class="p">:</span> <span class="nb">int</span>
+    <span class="o">+</span> <span class="n">farmer_id</span><span class="p">:</span> <span class="nb">int</span>
+    <span class="o">+</span> <span class="n">status</span><span class="p">:</span> <span class="n">OrderStatus</span>
+    <span class="o">+</span> <span class="n">total_price</span><span class="p">:</span> <span class="nb">float</span>
+    <span class="o">+</span> <span class="n">pickup_date</span><span class="p">:</span> <span class="n">DateTime</span>
+    <span class="o">+</span> <span class="n">created_at</span><span class="p">:</span> <span class="n">DateTime</span>
+    <span class="o">+</span> <span class="n">updated_at</span><span class="p">:</span> <span class="n">DateTime</span>
+
+    <span class="o">+</span> <span class="n">add_item</span><span class="p">(</span><span class="n">product</span><span class="p">:</span> <span class="n">Product</span><span class="p">,</span> <span class="n">quantity</span><span class="p">:</span> <span class="nb">int</span><span class="p">):</span> <span class="n">void</span>
+    <span class="o">+</span> <span class="n">calculate_total</span><span class="p">():</span> <span class="nb">float</span>
+    <span class="o">+</span> <span class="n">confirm</span><span class="p">():</span> <span class="n">void</span>
+    <span class="o">+</span> <span class="n">cancel</span><span class="p">():</span> <span class="n">void</span>
+    <span class="o">+</span> <span class="n">mark_picked_up</span><span class="p">():</span> <span class="n">void</span>
+</code></pre></div>
+<p><strong>Beziehungen:</strong></p>
+<ul>
+<li>n:1 → <code>User</code> (als customer)</li>
+<li>n:1 → <code>Farmer</code></li>
+<li>1:n → <code>OrderItem</code></li>
+</ul>
+<hr />
+<h3 id="orderitem">OrderItem<a class="headerlink" href="#orderitem" title="Permanent link">&para;</a></h3>
+<p>Eine einzelne Position innerhalb einer Bestellung.</p>
+<div class="highlight"><pre><span></span><code><span class="k">class</span><span class="w"> </span><span class="nc">OrderItem</span><span class="p">:</span>
+    <span class="o">+</span> <span class="nb">id</span><span class="p">:</span> <span class="nb">int</span>
+    <span class="o">+</span> <span class="n">order_id</span><span class="p">:</span> <span class="nb">int</span>
+    <span class="o">+</span> <span class="n">product_id</span><span class="p">:</span> <span class="nb">int</span>
+    <span class="o">+</span> <span class="n">quantity</span><span class="p">:</span> <span class="nb">int</span>
+    <span class="o">+</span> <span class="n">unit_price</span><span class="p">:</span> <span class="nb">float</span>
+
+    <span class="o">+</span> <span class="n">get_subtotal</span><span class="p">():</span> <span class="nb">float</span>
+</code></pre></div>
+<p><strong>Beziehungen:</strong></p>
+<ul>
+<li>n:1 → <code>Order</code></li>
+<li>n:1 → <code>Product</code></li>
+</ul>
+<hr />
+<h3 id="cart-warenkorb">Cart (Warenkorb)<a class="headerlink" href="#cart-warenkorb" title="Permanent link">&para;</a></h3>
+<p>Temporärer Speicher für Produkte vor der Bestellung.</p>
+<div class="highlight"><pre><span></span><code><span class="k">class</span><span class="w"> </span><span class="nc">Cart</span><span class="p">:</span>
+    <span class="o">+</span> <span class="n">user_id</span><span class="p">:</span> <span class="nb">int</span>
+    <span class="o">+</span> <span class="n">items</span><span class="p">:</span> <span class="n">List</span><span class="p">[</span><span class="n">CartItem</span><span class="p">]</span>
+
+    <span class="o">+</span> <span class="n">add_item</span><span class="p">(</span><span class="n">product</span><span class="p">:</span> <span class="n">Product</span><span class="p">,</span> <span class="n">quantity</span><span class="p">:</span> <span class="nb">int</span><span class="p">):</span> <span class="n">void</span>
+    <span class="o">+</span> <span class="n">remove_item</span><span class="p">(</span><span class="n">product_id</span><span class="p">:</span> <span class="nb">int</span><span class="p">):</span> <span class="n">void</span>
+    <span class="o">+</span> <span class="n">update_quantity</span><span class="p">(</span><span class="n">product_id</span><span class="p">:</span> <span class="nb">int</span><span class="p">,</span> <span class="n">quantity</span><span class="p">:</span> <span class="nb">int</span><span class="p">):</span> <span class="n">void</span>
+    <span class="o">+</span> <span class="n">get_total</span><span class="p">():</span> <span class="nb">float</span>
+    <span class="o">+</span> <span class="n">clear</span><span class="p">():</span> <span class="n">void</span>
+    <span class="o">+</span> <span class="n">checkout</span><span class="p">():</span> <span class="n">Order</span>
+</code></pre></div>
+<p><strong>Beziehungen:</strong></p>
+<ul>
+<li>1:1 → <code>User</code></li>
+<li>1:n → <code>CartItem</code></li>
+</ul>
+<hr />
+<h2 id="beziehungen">🔗 Beziehungen<a class="headerlink" href="#beziehungen" title="Permanent link">&para;</a></h2>
+<h3 id="assoziationen">Assoziationen<a class="headerlink" href="#assoziationen" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code>User ────── (1:1) ────── Farmer
+  │
+  │ (1:n)
+  │
+  └── Order ────── (n:1) ────── Farmer
+        │                         │
+        │ (1:n)                   │ (1:n)
+        │                         │
+    OrderItem ─── (n:1) ──── Product
+</code></pre></div>
+<h3 id="vererbung">Vererbung<a class="headerlink" href="#vererbung" title="Permanent link">&para;</a></h3>
+<div class="admonition note">
+<p class="admonition-title">Keine Vererbung</p>
+<p>In diesem Modell wird keine Vererbung verwendet. <code>User</code> deckt alle Benutzertypen über das <code>role</code>-Attribut ab.</p>
+</div>
+<h3 id="aggregation-komposition">Aggregation / Komposition<a class="headerlink" href="#aggregation-komposition" title="Permanent link">&para;</a></h3>
+<ul>
+<li><strong>Order</strong> → <strong>OrderItem</strong>: Komposition (OrderItem kann nicht ohne Order existieren)</li>
+<li><strong>Cart</strong> → <strong>CartItem</strong>: Komposition</li>
+<li><strong>Farmer</strong> → <strong>Product</strong>: Aggregation (Product existiert unabhängig)</li>
+</ul>
+<hr />
+<h2 id="enumerationen">📋 Enumerationen<a class="headerlink" href="#enumerationen" title="Permanent link">&para;</a></h2>
+<h3 id="userrole">UserRole<a class="headerlink" href="#userrole" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code><span class="k">class</span><span class="w"> </span><span class="nc">UserRole</span><span class="p">(</span><span class="n">Enum</span><span class="p">):</span>
+    <span class="n">CUSTOMER</span> <span class="o">=</span> <span class="s2">&quot;customer&quot;</span>
+    <span class="n">FARMER</span> <span class="o">=</span> <span class="s2">&quot;farmer&quot;</span>
+    <span class="n">ADMIN</span> <span class="o">=</span> <span class="s2">&quot;admin&quot;</span>
+</code></pre></div>
+<h3 id="orderstatus">OrderStatus<a class="headerlink" href="#orderstatus" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code><span class="k">class</span><span class="w"> </span><span class="nc">OrderStatus</span><span class="p">(</span><span class="n">Enum</span><span class="p">):</span>
+    <span class="n">OPEN</span> <span class="o">=</span> <span class="s2">&quot;open&quot;</span>
+    <span class="n">CONFIRMED</span> <span class="o">=</span> <span class="s2">&quot;confirmed&quot;</span>
+    <span class="n">PICKED_UP</span> <span class="o">=</span> <span class="s2">&quot;picked_up&quot;</span>
+    <span class="n">CANCELLED</span> <span class="o">=</span> <span class="s2">&quot;cancelled&quot;</span>
+</code></pre></div>
+<h3 id="productcategory">ProductCategory<a class="headerlink" href="#productcategory" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code><span class="k">class</span><span class="w"> </span><span class="nc">ProductCategory</span><span class="p">(</span><span class="n">Enum</span><span class="p">):</span>
+    <span class="n">FRUIT</span> <span class="o">=</span> <span class="s2">&quot;Obst&quot;</span>
+    <span class="n">VEGETABLE</span> <span class="o">=</span> <span class="s2">&quot;Gemüse&quot;</span>
+    <span class="n">MEAT</span> <span class="o">=</span> <span class="s2">&quot;Fleisch&quot;</span>
+    <span class="n">DAIRY</span> <span class="o">=</span> <span class="s2">&quot;Milchprodukte&quot;</span>
+    <span class="n">EGGS</span> <span class="o">=</span> <span class="s2">&quot;Eier&quot;</span>
+    <span class="n">OTHER</span> <span class="o">=</span> <span class="s2">&quot;Sonstiges&quot;</span>
+</code></pre></div>
+<hr />
+<h2 id="design-patterns">🎯 Design-Patterns<a class="headerlink" href="#design-patterns" title="Permanent link">&para;</a></h2>
+<h3 id="repository-pattern">Repository Pattern<a class="headerlink" href="#repository-pattern" title="Permanent link">&para;</a></h3>
+<p>Datenzugriff wird über Repository-Klassen gekapselt:</p>
+<div class="highlight"><pre><span></span><code><span class="k">class</span><span class="w"> </span><span class="nc">UserRepository</span><span class="p">:</span>
+    <span class="o">+</span> <span class="n">find_by_id</span><span class="p">(</span><span class="nb">id</span><span class="p">:</span> <span class="nb">int</span><span class="p">):</span> <span class="n">User</span>
+    <span class="o">+</span> <span class="n">find_by_email</span><span class="p">(</span><span class="n">email</span><span class="p">:</span> <span class="nb">str</span><span class="p">):</span> <span class="n">User</span>
+    <span class="o">+</span> <span class="n">save</span><span class="p">(</span><span class="n">user</span><span class="p">:</span> <span class="n">User</span><span class="p">):</span> <span class="n">void</span>
+    <span class="o">+</span> <span class="n">delete</span><span class="p">(</span><span class="nb">id</span><span class="p">:</span> <span class="nb">int</span><span class="p">):</span> <span class="n">void</span>
+</code></pre></div>
+<h3 id="service-layer">Service Layer<a class="headerlink" href="#service-layer" title="Permanent link">&para;</a></h3>
+<p>Business-Logik in Service-Klassen:</p>
+<div class="highlight"><pre><span></span><code><span class="k">class</span><span class="w"> </span><span class="nc">OrderService</span><span class="p">:</span>
+    <span class="o">+</span> <span class="n">create_order</span><span class="p">(</span><span class="n">cart</span><span class="p">:</span> <span class="n">Cart</span><span class="p">):</span> <span class="n">Order</span>
+    <span class="o">+</span> <span class="n">confirm_order</span><span class="p">(</span><span class="n">order_id</span><span class="p">:</span> <span class="nb">int</span><span class="p">):</span> <span class="n">void</span>
+    <span class="o">+</span> <span class="n">cancel_order</span><span class="p">(</span><span class="n">order_id</span><span class="p">:</span> <span class="nb">int</span><span class="p">):</span> <span class="n">void</span>
+</code></pre></div>
+<hr />
+<h2 id="sicherheit">🔐 Sicherheit<a class="headerlink" href="#sicherheit" title="Permanent link">&para;</a></h2>
+<h3 id="authentifizierung">Authentifizierung<a class="headerlink" href="#authentifizierung" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code><span class="k">class</span><span class="w"> </span><span class="nc">AuthService</span><span class="p">:</span>
+    <span class="o">+</span> <span class="n">login</span><span class="p">(</span><span class="n">email</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">password</span><span class="p">:</span> <span class="nb">str</span><span class="p">):</span> <span class="n">Token</span>
+    <span class="o">+</span> <span class="n">logout</span><span class="p">(</span><span class="n">token</span><span class="p">:</span> <span class="n">Token</span><span class="p">):</span> <span class="n">void</span>
+    <span class="o">+</span> <span class="n">validate_token</span><span class="p">(</span><span class="n">token</span><span class="p">:</span> <span class="n">Token</span><span class="p">):</span> <span class="nb">bool</span>
+    <span class="o">+</span> <span class="n">hash_password</span><span class="p">(</span><span class="n">password</span><span class="p">:</span> <span class="nb">str</span><span class="p">):</span> <span class="nb">str</span>
+    <span class="o">+</span> <span class="n">verify_password</span><span class="p">(</span><span class="n">password</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="nb">hash</span><span class="p">:</span> <span class="nb">str</span><span class="p">):</span> <span class="nb">bool</span>
+</code></pre></div>
+<hr />
+<h2 id="nachste-schritte">🚀 Nächste Schritte<a class="headerlink" href="#nachste-schritte" title="Permanent link">&para;</a></h2>
+<p>Siehe auch:</p>
+<ul>
+<li><strong><a href="../logisches-modell/">Logisches Modell</a></strong> – Datenmodell</li>
+<li><strong><a href="../uml-sequenz/">Sequenzdiagramme</a></strong> – Ablaufbeschreibungen</li>
+<li><strong><a href="../api/">API-Dokumentation</a></strong> – REST-Endpunkte</li>
+</ul>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      
+      <script id="__config" type="application/json">{"annotate": null, "base": "../..", "features": ["navigation.instant", "navigation.tabs", "navigation.tabs.sticky", "navigation.expand", "toc.integrate", "content.code.copy", "search.suggest", "search.highlight"], "search": "../../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
+    
+    
+      <script src="../../assets/javascripts/bundle.79ae519e.min.js"></script>
+      
+    
+  </body>
+</html>
