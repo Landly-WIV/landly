@@ -2,7 +2,7 @@ import flet as ft
 import content as co
 import warenkorb as wk
 import requests
-from config import API_URL
+from config import API_URL, getProIco
 
 _proCac = None
 _bauCac = {}
@@ -52,21 +52,7 @@ def calDis(bauId):
     dis = {1: 12.5, 2: 23, 3: 5.2, 4: 40}
     return dis.get(bauId, 0)
 
-def getProIco(proArtBez):
-    ico = {
-        "gemüse": "🥕",
-        "obst": "🍎",
-        "fleisch": "🥩",
-        "eier": "🥚",
-        "milch": "🥛",
-        "brot": "🍞",
-        "käse": "🧀"
-    }
-    
-    if proArtBez:
-        key = proArtBez.lower()
-        return ico.get(key, "🛒")
-    return "🛒"
+
 
 def proSit(proDat, sit):
     def bacCli(e):
@@ -94,6 +80,30 @@ def proSit(proDat, sit):
     bauId = proDat.get('bauern_id') or proDat.get('bauer_id')
     bauNam = getBauNam(bauId) if bauId else "Unbekannt"
     
+    # Produktbild oder Emoji-Fallback
+    icoData = getProIco(proDat.get('name', ''))
+    if icoData.get("image"):
+        proImg = ft.Container(
+            content=ft.Image(
+                src=icoData["image"],
+                fit=ft.BoxFit.COVER,
+                width=float('inf'),
+                height=200,
+            ),
+            border_radius=12,
+            clip_behavior=ft.ClipBehavior.ANTI_ALIAS,
+            margin=ft.margin.symmetric(horizontal=20),
+        )
+    else:
+        proImg = ft.Container(
+            content=ft.Text(icoData["emoji"], size=80),
+            width=160,
+            height=160,
+            border_radius=80,
+            bgcolor=icoData["bg"],
+            alignment=ft.Alignment.CENTER,
+        )
+
     hea = ft.Row(controls=[
         ft.IconButton(icon=ft.Icons.ARROW_BACK, on_click=bacCli),
         ft.Text("Produkt Details")
@@ -106,6 +116,7 @@ def proSit(proDat, sit):
 
     bod = ft.Column(controls=[
         ft.Text(proDat['name'], theme_style=ft.TextThemeStyle.HEADLINE_LARGE),
+        proImg,
         ft.Text(f"von {bauNam}", size=14),
         ft.Text(proDat.get('beschreibung', ''), size=16),
         ft.Row(),
@@ -196,16 +207,23 @@ def proSeaRes(pro, sit):
         bauer = prd.get('bauer')
         bauNam = bauer.get('firmenname', 'Unbekannt') if bauer else 'Unbekannt'
         
-        ico = "🛒"
-        if prd.get('produktart'):
-            ico = getProIco(prd['produktart'].get('bezeichnung'))
+        icoData = getProIco(prd.get('name', ''))
+        
+        icoCont = ft.Container(
+            content=ft.Text(icoData["emoji"], size=32),
+            width=60,
+            height=60,
+            border_radius=30,
+            bgcolor=icoData["bg"],
+            alignment=ft.Alignment.CENTER,
+        )
         
         car = ft.Card(
             content=ft.Container(
                 content=ft.Column(controls=[
                     ft.Text(bauNam, size=12),
                     ft.Text(prd['name'], weight=ft.FontWeight.BOLD, size=14),
-                    ft.Text(ico, size=50),
+                    icoCont,
                     ft.Text(
                         prd.get('produktart', {}).get('bezeichnung', 'Produkt'), 
                         color=ft.Colors.GREY_700, 
