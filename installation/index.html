@@ -1,0 +1,2055 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+        <link rel="canonical" href="https://sitename.example/installation/">
+      
+      
+        <link rel="prev" href="..">
+      
+      
+        <link rel="next" href="../technische-dokumentation/">
+      
+      
+        
+      
+      
+      <link rel="icon" href="../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.4">
+    
+    
+      
+        <title>Installation & Quick Start - Dokumentation</title>
+      
+    
+    
+      <link rel="stylesheet" href="../assets/stylesheets/main.484c7ddc.min.css">
+      
+        
+        <link rel="stylesheet" href="../assets/stylesheets/palette.ab4e12ef.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Merriweather+Sans:300,300i,400,400i,700,700i%7CRed+Hat+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Merriweather Sans";--md-code-font:"Red Hat Mono"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="../styles/extra.css">
+    
+    <script>__md_scope=new URL("..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="green" data-md-color-accent="lime">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#installation-quick-start" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow md-header--lifted" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href=".." title="Dokumentation" class="md-header__button md-logo" aria-label="Dokumentation" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Dokumentation
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Installation & Quick Start
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="default" data-md-color-primary="green" data-md-color-accent="lime"  aria-label="Dunkelmodus"  type="radio" name="__palette" id="__palette_0">
+    
+      <label class="md-header__button md-icon" title="Dunkelmodus" for="__palette_1" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m17.75 4.09-2.53 1.94.91 3.06-2.63-1.81-2.63 1.81.91-3.06-2.53-1.94L12.44 4l1.06-3 1.06 3zm3.5 6.91-1.64 1.25.59 1.98-1.7-1.17-1.7 1.17.59-1.98L15.75 11l2.06-.05L18.5 9l.69 1.95zm-2.28 4.95c.83-.08 1.72 1.1 1.19 1.85-.32.45-.66.87-1.08 1.27C15.17 23 8.84 23 4.94 19.07c-3.91-3.9-3.91-10.24 0-14.14.4-.4.82-.76 1.27-1.08.75-.53 1.93.36 1.85 1.19-.27 2.86.69 5.83 2.89 8.02a9.96 9.96 0 0 0 8.02 2.89m-1.64 2.02a12.08 12.08 0 0 1-7.8-3.47c-2.17-2.19-3.33-5-3.49-7.82-2.81 3.14-2.7 7.96.31 10.98 3.02 3.01 7.84 3.12 10.98.31"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="slate" data-md-color-primary="green" data-md-color-accent="lime"  aria-label="Hellmodus"  type="radio" name="__palette" id="__palette_1">
+    
+      <label class="md-header__button md-icon" title="Hellmodus" for="__palette_0" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 7a5 5 0 0 1 5 5 5 5 0 0 1-5 5 5 5 0 0 1-5-5 5 5 0 0 1 5-5m0 2a3 3 0 0 0-3 3 3 3 0 0 0 3 3 3 3 0 0 0 3-3 3 3 0 0 0-3-3m0-7 2.39 3.42C13.65 5.15 12.84 5 12 5s-1.65.15-2.39.42zM3.34 7l4.16-.35A7.2 7.2 0 0 0 5.94 8.5c-.44.74-.69 1.5-.83 2.29zm.02 10 1.76-3.77a7.131 7.131 0 0 0 2.38 4.14zM20.65 7l-1.77 3.79a7.02 7.02 0 0 0-2.38-4.15zm-.01 10-4.14.36c.59-.51 1.12-1.14 1.54-1.86.42-.73.69-1.5.83-2.29zM12 22l-2.41-3.44c.74.27 1.55.44 2.41.44.82 0 1.63-.17 2.37-.44z"/></svg>
+      </label>
+    
+  
+</form>
+      
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+        <div class="md-search__suggest" data-md-component="search-suggest"></div>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+  </nav>
+  
+    
+      
+<nav class="md-tabs" aria-label="Tabs" data-md-component="tabs">
+  <div class="md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href=".." class="md-tabs__link">
+        
+  
+  
+    
+  
+  Home
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+    
+  
+  
+    <li class="md-tabs__item md-tabs__item--active">
+      <a href="./" class="md-tabs__link">
+        
+  
+  
+    
+  
+  Installation & Quick Start
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../technische-dokumentation/" class="md-tabs__link">
+        
+  
+  
+    
+  
+  Technische Dokumentation
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../user/einfuehrung/" class="md-tabs__link">
+          
+  
+  
+  Nutzungshandbuch
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../dev/technische-uebersicht/" class="md-tabs__link">
+          
+  
+  
+  Technische Strategie
+
+        </a>
+      </li>
+    
+  
+
+      
+    </ul>
+  </div>
+</nav>
+    
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+  
+
+
+  
+
+<nav class="md-nav md-nav--primary md-nav--lifted md-nav--integrated" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href=".." title="Dokumentation" class="md-nav__button md-logo" aria-label="Dokumentation" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    Dokumentation
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href=".." class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Home
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Installation & Quick Start
+  
+
+    
+  </span>
+  
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Installation & Quick Start
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#voraussetzungen" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        📋 Voraussetzungen
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="📋 Voraussetzungen">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#laufzeitumgebungen" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Laufzeitumgebungen
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#datenbanksysteme" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Datenbanksysteme
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#sonstige-abhangigkeiten" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Sonstige Abhängigkeiten
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#schritt-fur-schritt-anleitung" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        🚀 Schritt-für-Schritt-Anleitung
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="🚀 Schritt-für-Schritt-Anleitung">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#schritt-1-repository-klonen" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Schritt 1: Repository klonen
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#schritt-2-virtuelle-umgebung-erstellen" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Schritt 2: Virtuelle Umgebung erstellen
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#schritt-3-abhangigkeiten-installieren" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Schritt 3: Abhängigkeiten installieren
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#schritt-4-umgebungsvariablen-konfigurieren" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Schritt 4: Umgebungsvariablen konfigurieren
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#schritt-5-datenbank-initialisieren" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Schritt 5: Datenbank initialisieren
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#schritt-6-backend-starten" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Schritt 6: Backend starten
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#schritt-7-frontend-starten" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Schritt 7: Frontend starten
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#konfiguration" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        🔧 Konfiguration
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="🔧 Konfiguration">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#env-datei" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        .env-Datei
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label=".env-Datei">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#relevante-parameter" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Relevante Parameter
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Relevante Parameter">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#datenbank" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Datenbank
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#api-server" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        API-Server
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#authentifizierung" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Authentifizierung
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#logging" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Logging
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#umgebung" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Umgebung
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#sicherheitshinweise" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Sicherheitshinweise
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#konfiguration-validieren" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Konfiguration validieren
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#testen-der-installation" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        🧪 Testen der Installation
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="🧪 Testen der Installation">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1-backend-api-testen" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1. Backend-API testen
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2-frontend-testen" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2. Frontend testen
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#3-testdaten-laden-optional" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3. Testdaten laden (optional)
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#troubleshooting" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        🐛 Troubleshooting
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="🐛 Troubleshooting">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#problem-modulenotfounderror" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Problem: ModuleNotFoundError
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#problem-port-bereits-belegt-8000" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Problem: Port bereits belegt (8000)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#problem-datenbank-fehler" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Problem: Datenbank-Fehler
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#problem-permission-denied-beim-aktivieren-ps1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Problem: "Permission denied" beim Aktivieren (.ps1)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#problem-frontend-offnet-sich-nicht" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Problem: Frontend öffnet sich nicht
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#nachste-schritte" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        📚 Nächste Schritte
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#tipps" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        💡 Tipps
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#support" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        📞 Support
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../technische-dokumentation/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Technische Dokumentation
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_4" >
+        
+          
+          <label class="md-nav__link" for="__nav_4" id="__nav_4_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Nutzungshandbuch
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Nutzungshandbuch
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../user/einfuehrung/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Einführung
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../user/registrierung-login/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Registrierung & Login
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../user/produkte-suchen/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Produkte suchen
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../user/bestellung/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Bestellung aufgeben
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../user/abholung/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Abholung
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../user/mein-konto/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Mein Konto
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../user/faq/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    FAQ
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_5" >
+        
+          
+          <label class="md-nav__link" for="__nav_5" id="__nav_5_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Technische Strategie
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_5_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_5">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Technische Strategie
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../dev/technische-uebersicht/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Übersicht
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../dev/setup/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Setup & Installation
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../dev/konfiguration/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Konfiguration
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../dev/testdaten/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Test-Accounts & Demo
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../dev/technische-strategie/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Technische Entscheidungen
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../dev/logisches-modell/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Logisches Modell
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../dev/datenbankschema/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Datenbankschema
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../dev/api/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    API-Dokumentation
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_5_9" >
+        
+          
+          <label class="md-nav__link" for="__nav_5_9" id="__nav_5_9_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    UML-Diagramme
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_5_9_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_5_9">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    UML-Diagramme
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../dev/uml-usecase/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Use-Case-Diagramm
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../dev/uml-klassen/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Klassendiagramm
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../dev/uml-sequenz/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Sequenzdiagramme
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+
+<h1 id="installation-quick-start">⚙️ Installation &amp; Quick Start<a class="headerlink" href="#installation-quick-start" title="Permanent link">&para;</a></h1>
+<p>Diese Anleitung ermöglicht es, Landly <strong>ohne Rückfragen</strong> auf einem lokalen System zu starten.</p>
+<hr />
+<h2 id="voraussetzungen">📋 Voraussetzungen<a class="headerlink" href="#voraussetzungen" title="Permanent link">&para;</a></h2>
+<h3 id="laufzeitumgebungen">Laufzeitumgebungen<a class="headerlink" href="#laufzeitumgebungen" title="Permanent link">&para;</a></h3>
+<table>
+<thead>
+<tr>
+<th>Software</th>
+<th>Minimale Version</th>
+<th>Empfohlene Version</th>
+<th>Download</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Python</strong></td>
+<td>3.10</td>
+<td>3.11+</td>
+<td><a href="https://www.python.org/downloads/">python.org</a></td>
+</tr>
+<tr>
+<td><strong>Git</strong></td>
+<td>2.30+</td>
+<td>Latest</td>
+<td><a href="https://git-scm.com/downloads">git-scm.com</a></td>
+</tr>
+<tr>
+<td><strong>pip</strong></td>
+<td>23.0+</td>
+<td>Latest</td>
+<td>(mit Python installiert)</td>
+</tr>
+</tbody>
+</table>
+<div class="admonition tip">
+<p class="admonition-title">Python-Version prüfen</p>
+<div class="highlight"><pre><span></span><code>python<span class="w"> </span>--version
+<span class="c1"># oder</span>
+python3<span class="w"> </span>--version
+</code></pre></div>
+</div>
+<hr />
+<h3 id="datenbanksysteme">Datenbanksysteme<a class="headerlink" href="#datenbanksysteme" title="Permanent link">&para;</a></h3>
+<p><strong>Entwicklung:</strong> SQLite (keine Installation nötig)
+- Wird automatisch mit Python installiert
+- Datei-basiert, keine Konfiguration erforderlich</p>
+<p><strong>Produktion (optional):</strong> PostgreSQL
+- Version 13+
+- <a href="https://www.postgresql.org/download/">postgresql.org/download</a></p>
+<div class="admonition info">
+<p class="admonition-title">SQLite vs. PostgreSQL</p>
+<p>Für <strong>lokale Entwicklung</strong> reicht SQLite vollkommen aus. PostgreSQL wird nur für das Production-Deployment benötigt.</p>
+</div>
+<hr />
+<h3 id="sonstige-abhangigkeiten">Sonstige Abhängigkeiten<a class="headerlink" href="#sonstige-abhangigkeiten" title="Permanent link">&para;</a></h3>
+<p><strong>Alle Python-Pakete</strong> sind in <code>requirements.txt</code> definiert:</p>
+<ul>
+<li><strong>Flet</strong> (0.24.x) - Frontend-Framework</li>
+<li><strong>FastAPI</strong> (0.110.x) - Backend-Framework</li>
+<li><strong>Uvicorn</strong> (0.27.x) - ASGI-Server</li>
+<li><strong>SQLAlchemy</strong> (2.0.x) - ORM</li>
+<li><strong>Pydantic</strong> (2.0.x) - Datenvalidierung</li>
+<li><strong>python-jose</strong> (3.3.x) - JWT-Authentifizierung</li>
+<li><strong>passlib</strong> (1.7.x) - Passwort-Hashing</li>
+<li><strong>python-dotenv</strong> (1.0.x) - Umgebungsvariablen</li>
+</ul>
+<p>Diese werden automatisch im nächsten Schritt installiert.</p>
+<hr />
+<h2 id="schritt-fur-schritt-anleitung">🚀 Schritt-für-Schritt-Anleitung<a class="headerlink" href="#schritt-fur-schritt-anleitung" title="Permanent link">&para;</a></h2>
+<h3 id="schritt-1-repository-klonen">Schritt 1: Repository klonen<a class="headerlink" href="#schritt-1-repository-klonen" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code>git<span class="w"> </span>clone<span class="w"> </span>https://github.com/<span class="o">[</span>ORGANIZATION<span class="o">]</span>/landly.git
+<span class="nb">cd</span><span class="w"> </span>landly
+</code></pre></div>
+<div class="admonition note">
+<p class="admonition-title">GitHub URL anpassen</p>
+<p>Ersetze <code>[ORGANIZATION]</code> durch euren GitHub-Organisationsnamen.</p>
+</div>
+<hr />
+<h3 id="schritt-2-virtuelle-umgebung-erstellen">Schritt 2: Virtuelle Umgebung erstellen<a class="headerlink" href="#schritt-2-virtuelle-umgebung-erstellen" title="Permanent link">&para;</a></h3>
+<p><strong>Windows (PowerShell):</strong>
+<div class="highlight"><pre><span></span><code><span class="n">python</span> <span class="n">-m</span> <span class="n">venv</span> <span class="p">.</span><span class="n">venv</span>
+<span class="p">.</span><span class="n">venv</span><span class="p">\</span><span class="n">Scripts</span><span class="p">\</span><span class="n">Activate</span><span class="p">.</span><span class="n">ps1</span>
+</code></pre></div></p>
+<p><strong>Windows (CMD):</strong>
+<div class="highlight"><pre><span></span><code>python -m venv .venv
+.venv\Scripts\activate.bat
+</code></pre></div></p>
+<p><strong>Linux / macOS:</strong>
+<div class="highlight"><pre><span></span><code>python3<span class="w"> </span>-m<span class="w"> </span>venv<span class="w"> </span>.venv
+<span class="nb">source</span><span class="w"> </span>.venv/bin/activate
+</code></pre></div></p>
+<div class="admonition success">
+<p class="admonition-title">Aktivierung erfolgreich</p>
+<p>Der Prompt sollte jetzt <code>(.venv)</code> am Anfang zeigen.</p>
+</div>
+<hr />
+<h3 id="schritt-3-abhangigkeiten-installieren">Schritt 3: Abhängigkeiten installieren<a class="headerlink" href="#schritt-3-abhangigkeiten-installieren" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code>pip<span class="w"> </span>install<span class="w"> </span>--upgrade<span class="w"> </span>pip
+pip<span class="w"> </span>install<span class="w"> </span>-r<span class="w"> </span>requirements.txt
+</code></pre></div>
+<p><strong>Erwartete Dauer:</strong> 1-3 Minuten</p>
+<div class="admonition tip">
+<p class="admonition-title">Bei Fehlern</p>
+<p>Falls Fehler auftreten, versuche:
+<div class="highlight"><pre><span></span><code>pip<span class="w"> </span>install<span class="w"> </span>--upgrade<span class="w"> </span>pip<span class="w"> </span>setuptools<span class="w"> </span>wheel
+pip<span class="w"> </span>install<span class="w"> </span>-r<span class="w"> </span>requirements.txt
+</code></pre></div></p>
+</div>
+<hr />
+<h3 id="schritt-4-umgebungsvariablen-konfigurieren">Schritt 4: Umgebungsvariablen konfigurieren<a class="headerlink" href="#schritt-4-umgebungsvariablen-konfigurieren" title="Permanent link">&para;</a></h3>
+<p>Kopiere die Beispiel-Konfiguration:</p>
+<div class="highlight"><pre><span></span><code><span class="c1"># Windows (PowerShell)</span>
+Copy-Item<span class="w"> </span>.env.example<span class="w"> </span>.env
+
+<span class="c1"># Linux / macOS</span>
+cp<span class="w"> </span>.env.example<span class="w"> </span>.env
+</code></pre></div>
+<p>Öffne <code>.env</code> in einem Texteditor und <strong>passe mindestens</strong> den <code>SECRET_KEY</code> an:</p>
+<div class="highlight"><pre><span></span><code><span class="c1"># WICHTIG: Neuen Secret Key generieren!</span>
+python<span class="w"> </span>-c<span class="w"> </span><span class="s2">&quot;import secrets; print(secrets.token_urlsafe(32))&quot;</span>
+</code></pre></div>
+<p>Kopiere den generierten Key in die <code>.env</code>-Datei bei <code>SECRET_KEY=...</code></p>
+<div class="admonition warning">
+<p class="admonition-title">Sicherheit</p>
+<p>Der Secret Key muss <strong>geheim</strong> bleiben und darf <strong>nie</strong> in Git committed werden!</p>
+</div>
+<hr />
+<h3 id="schritt-5-datenbank-initialisieren">Schritt 5: Datenbank initialisieren<a class="headerlink" href="#schritt-5-datenbank-initialisieren" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code>python<span class="w"> </span>src/backend/db.py
+</code></pre></div>
+<p><strong>Erwartete Ausgabe:</strong>
+<div class="highlight"><pre><span></span><code>Database initialized successfully!
+Tables created.
+</code></pre></div></p>
+<p>Die Datenbankdatei wird erstellt unter: <code>storage/data/landly.db</code></p>
+<hr />
+<h3 id="schritt-6-backend-starten">Schritt 6: Backend starten<a class="headerlink" href="#schritt-6-backend-starten" title="Permanent link">&para;</a></h3>
+<p><strong>Terminal 1 - Backend:</strong>
+<div class="highlight"><pre><span></span><code>python<span class="w"> </span>src/backend/main.py
+</code></pre></div></p>
+<p><strong>Erwartete Ausgabe:</strong>
+<div class="highlight"><pre><span></span><code>INFO:     Started server process
+INFO:     Uvicorn running on http://127.0.0.1:8000
+</code></pre></div></p>
+<div class="admonition success">
+<p class="admonition-title">Backend läuft</p>
+<p>API ist erreichbar unter: <a href="http://localhost:8000">http://localhost:8000</a><br />
+API-Docs: <a href="http://localhost:8000/docs">http://localhost:8000/docs</a></p>
+</div>
+<hr />
+<h3 id="schritt-7-frontend-starten">Schritt 7: Frontend starten<a class="headerlink" href="#schritt-7-frontend-starten" title="Permanent link">&para;</a></h3>
+<p><strong>Terminal 2 - Frontend</strong> (neues Terminal öffnen!):</p>
+<div class="highlight"><pre><span></span><code><span class="c1"># Virtuelle Umgebung aktivieren</span>
+.venv<span class="se">\S</span>cripts<span class="se">\A</span>ctivate.ps1<span class="w">  </span><span class="c1"># Windows</span>
+<span class="nb">source</span><span class="w"> </span>.venv/bin/activate<span class="w">    </span><span class="c1"># Linux/Mac</span>
+
+<span class="c1"># Frontend starten</span>
+python<span class="w"> </span>src/main.py
+</code></pre></div>
+<p>Die Flet-App öffnet sich automatisch im Browser oder als Desktop-Anwendung.</p>
+<div class="admonition success">
+<p class="admonition-title">Fertig! 🎉</p>
+<p>Landly läuft jetzt lokal und ist einsatzbereit.</p>
+</div>
+<hr />
+<h2 id="konfiguration">🔧 Konfiguration<a class="headerlink" href="#konfiguration" title="Permanent link">&para;</a></h2>
+<h3 id="env-datei">.env-Datei<a class="headerlink" href="#env-datei" title="Permanent link">&para;</a></h3>
+<p>Die <code>.env</code>-Datei im Projektroot enthält alle wichtigen Konfigurationsparameter.</p>
+<h4 id="relevante-parameter">Relevante Parameter<a class="headerlink" href="#relevante-parameter" title="Permanent link">&para;</a></h4>
+<h5 id="datenbank">Datenbank<a class="headerlink" href="#datenbank" title="Permanent link">&para;</a></h5>
+<div class="highlight"><pre><span></span><code><span class="na">DATABASE_URL</span><span class="o">=</span><span class="s">sqlite:///./storage/data/landly.db</span>
+</code></pre></div>
+<p><strong>Beschreibung:</strong> Verbindungsstring zur Datenbank<br />
+<strong>Standard:</strong> SQLite-Datei im <code>storage/</code>-Ordner<br />
+<strong>Produktion:</strong> <code>postgresql://user:password@host:5432/landly</code></p>
+<hr />
+<h5 id="api-server">API-Server<a class="headerlink" href="#api-server" title="Permanent link">&para;</a></h5>
+<div class="highlight"><pre><span></span><code><span class="na">API_URL</span><span class="o">=</span><span class="s">http://localhost:8000</span>
+<span class="na">CORS_ORIGINS</span><span class="o">=</span><span class="s">http://localhost:5000,http://localhost:8080</span>
+<span class="na">DEBUG</span><span class="o">=</span><span class="s">True</span>
+</code></pre></div>
+<ul>
+<li><strong>API_URL</strong>: Backend-Adresse (für Frontend-Zugriff)</li>
+<li><strong>CORS_ORIGINS</strong>: Erlaubte Frontend-URLs (Komma-getrennt)</li>
+<li><strong>DEBUG</strong>: Aktiviert Debug-Ausgaben (nur in Entwicklung!)</li>
+</ul>
+<hr />
+<h5 id="authentifizierung">Authentifizierung<a class="headerlink" href="#authentifizierung" title="Permanent link">&para;</a></h5>
+<div class="highlight"><pre><span></span><code><span class="na">SECRET_KEY</span><span class="o">=</span><span class="s">your-super-secret-key-change-this-in-production</span>
+<span class="na">ALGORITHM</span><span class="o">=</span><span class="s">HS256</span>
+<span class="na">ACCESS_TOKEN_EXPIRE_MINUTES</span><span class="o">=</span><span class="s">30</span>
+</code></pre></div>
+<ul>
+<li><strong>SECRET_KEY</strong>: ⚠️ <strong>WICHTIGSTER PARAMETER!</strong> Geheimer Schlüssel für JWT-Signierung  </li>
+<li>Mindestens 32 Zeichen</li>
+<li>Niemals in Git committen</li>
+<li>
+<p>In Produktion: Zufällig generiert und sicher gespeichert</p>
+</li>
+<li>
+<p><strong>ALGORITHM</strong>: Verschlüsselungsalgorithmus (Standard: HS256)</p>
+</li>
+<li>
+<p><strong>ACCESS_TOKEN_EXPIRE_MINUTES</strong>: Token-Gültigkeit in Minuten</p>
+</li>
+</ul>
+<hr />
+<h5 id="logging">Logging<a class="headerlink" href="#logging" title="Permanent link">&para;</a></h5>
+<div class="highlight"><pre><span></span><code><span class="na">LOG_LEVEL</span><span class="o">=</span><span class="s">INFO</span>
+<span class="na">LOG_FILE</span><span class="o">=</span><span class="s">storage/logs/landly.log</span>
+</code></pre></div>
+<ul>
+<li><strong>LOG_LEVEL</strong>: DEBUG, INFO, WARNING, ERROR, CRITICAL</li>
+<li><strong>LOG_FILE</strong>: Pfad zur Log-Datei</li>
+</ul>
+<hr />
+<h5 id="umgebung">Umgebung<a class="headerlink" href="#umgebung" title="Permanent link">&para;</a></h5>
+<div class="highlight"><pre><span></span><code><span class="na">ENVIRONMENT</span><span class="o">=</span><span class="s">development</span>
+</code></pre></div>
+<p><strong>Optionen:</strong>
+- <code>development</code> - Entwicklung (SQLite, Debug aktiv)
+- <code>testing</code> - Tests (separate Test-DB)
+- <code>production</code> - Produktion (PostgreSQL, Debug aus)</p>
+<hr />
+<h3 id="sicherheitshinweise">Sicherheitshinweise<a class="headerlink" href="#sicherheitshinweise" title="Permanent link">&para;</a></h3>
+<div class="admonition danger">
+<p class="admonition-title">NIEMALS in Git committen</p>
+<ul>
+<li><code>.env</code>-Datei (steht in <code>.gitignore</code>)</li>
+<li>Secret Keys</li>
+<li>Passwörter</li>
+<li>API-Keys</li>
+<li>Produktive Zugangsdaten</li>
+</ul>
+</div>
+<div class="admonition warning">
+<p class="admonition-title">Secret Key generieren</p>
+<div class="highlight"><pre><span></span><code><span class="c1"># Sicheren Key generieren</span>
+python<span class="w"> </span>-c<span class="w"> </span><span class="s2">&quot;import secrets; print(secrets.token_urlsafe(32))&quot;</span>
+
+<span class="c1"># Oder in Python</span>
+import<span class="w"> </span>secrets
+secrets.token_urlsafe<span class="o">(</span><span class="m">32</span><span class="o">)</span>
+</code></pre></div>
+</div>
+<div class="admonition danger">
+<p class="admonition-title">Produktion</p>
+<p>In Produktion:
+- <code>DEBUG=False</code> setzen
+- Starken Secret Key verwenden
+- PostgreSQL statt SQLite
+- HTTPS aktivieren
+- CORS_ORIGINS einschränken</p>
+</div>
+<hr />
+<h3 id="konfiguration-validieren">Konfiguration validieren<a class="headerlink" href="#konfiguration-validieren" title="Permanent link">&para;</a></h3>
+<p>Prüfe, ob alle Einstellungen korrekt geladen werden:</p>
+<div class="highlight"><pre><span></span><code>python<span class="w"> </span>-c<span class="w"> </span><span class="s2">&quot;from src.config import settings; print(f&#39;Database: {settings.DATABASE_URL}&#39;); print(f&#39;Environment: {settings.ENVIRONMENT}&#39;)&quot;</span>
+</code></pre></div>
+<hr />
+<h2 id="testen-der-installation">🧪 Testen der Installation<a class="headerlink" href="#testen-der-installation" title="Permanent link">&para;</a></h2>
+<h3 id="1-backend-api-testen">1. Backend-API testen<a class="headerlink" href="#1-backend-api-testen" title="Permanent link">&para;</a></h3>
+<p>Öffne im Browser: <a href="http://localhost:8000/docs">http://localhost:8000/docs</a></p>
+<p>Dort findest du die interaktive API-Dokumentation (Swagger UI).</p>
+<p><strong>Teste einen Endpunkt:</strong>
+1. Öffne <code>/api/products</code> (GET)
+2. Klicke "Try it out"
+3. Klicke "Execute"
+4. Erwartete Antwort: <code>200 OK</code> mit leerer Produktliste</p>
+<hr />
+<h3 id="2-frontend-testen">2. Frontend testen<a class="headerlink" href="#2-frontend-testen" title="Permanent link">&para;</a></h3>
+<ol>
+<li><strong>Registrierung</strong>: Erstelle einen Test-Account</li>
+<li><strong>Login</strong>: Melde dich an</li>
+<li><strong>Produktsuche</strong>: Gebe eine PLZ ein (z.B. 12345)</li>
+</ol>
+<p><strong>Oder nutze Test-Accounts:</strong></p>
+<table>
+<thead>
+<tr>
+<th>Rolle</th>
+<th>E-Mail</th>
+<th>Passwort</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Kunde</td>
+<td>kunde@landly.de</td>
+<td>Test123!</td>
+</tr>
+<tr>
+<td>Landwirt</td>
+<td>landwirt@landly.de</td>
+<td>Test123!</td>
+</tr>
+<tr>
+<td>Admin</td>
+<td>admin@landly.de</td>
+<td>Admin123!</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h3 id="3-testdaten-laden-optional">3. Testdaten laden (optional)<a class="headerlink" href="#3-testdaten-laden-optional" title="Permanent link">&para;</a></h3>
+<p>Falls vorhanden, lade Beispieldaten:</p>
+<div class="highlight"><pre><span></span><code>python<span class="w"> </span>scripts/load_testdata.py
+</code></pre></div>
+<p>Dies erstellt Demo-Produkte, Höfe und Bestellungen zum Testen.</p>
+<hr />
+<h2 id="troubleshooting">🐛 Troubleshooting<a class="headerlink" href="#troubleshooting" title="Permanent link">&para;</a></h2>
+<h3 id="problem-modulenotfounderror">Problem: <code>ModuleNotFoundError</code><a class="headerlink" href="#problem-modulenotfounderror" title="Permanent link">&para;</a></h3>
+<p><strong>Lösung:</strong>
+<div class="highlight"><pre><span></span><code><span class="c1"># Prüfe, ob virtuelle Umgebung aktiv ist</span>
+<span class="c1"># Sollte (.venv) im Prompt zeigen</span>
+
+<span class="c1"># Abhängigkeiten neu installieren</span>
+pip<span class="w"> </span>install<span class="w"> </span>-r<span class="w"> </span>requirements.txt
+</code></pre></div></p>
+<hr />
+<h3 id="problem-port-bereits-belegt-8000">Problem: Port bereits belegt (8000)<a class="headerlink" href="#problem-port-bereits-belegt-8000" title="Permanent link">&para;</a></h3>
+<p><strong>Lösung:</strong></p>
+<p><strong>Option 1:</strong> Anderen Port verwenden
+<div class="highlight"><pre><span></span><code><span class="c1"># In src/backend/main.py ändern</span>
+<span class="n">uvicorn</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">app</span><span class="p">,</span> <span class="n">host</span><span class="o">=</span><span class="s2">&quot;0.0.0.0&quot;</span><span class="p">,</span> <span class="n">port</span><span class="o">=</span><span class="mi">8001</span><span class="p">)</span>
+</code></pre></div></p>
+<p><strong>Option 2:</strong> Prozess beenden
+<div class="highlight"><pre><span></span><code><span class="c1"># Windows</span>
+netstat<span class="w"> </span>-ano<span class="w"> </span><span class="p">|</span><span class="w"> </span>findstr<span class="w"> </span>:8000
+taskkill<span class="w"> </span>/PID<span class="w"> </span><span class="o">[</span>PID<span class="o">]</span><span class="w"> </span>/F
+
+<span class="c1"># Linux/Mac</span>
+lsof<span class="w"> </span>-ti:8000<span class="w"> </span><span class="p">|</span><span class="w"> </span>xargs<span class="w"> </span><span class="nb">kill</span><span class="w"> </span>-9
+</code></pre></div></p>
+<hr />
+<h3 id="problem-datenbank-fehler">Problem: Datenbank-Fehler<a class="headerlink" href="#problem-datenbank-fehler" title="Permanent link">&para;</a></h3>
+<p><strong>Lösung:</strong>
+<div class="highlight"><pre><span></span><code><span class="c1"># Datenbank löschen und neu erstellen</span>
+rm<span class="w"> </span>storage/data/landly.db
+python<span class="w"> </span>src/backend/db.py
+</code></pre></div></p>
+<hr />
+<h3 id="problem-permission-denied-beim-aktivieren-ps1">Problem: "Permission denied" beim Aktivieren (.ps1)<a class="headerlink" href="#problem-permission-denied-beim-aktivieren-ps1" title="Permanent link">&para;</a></h3>
+<p><strong>Lösung (Windows PowerShell):</strong>
+<div class="highlight"><pre><span></span><code><span class="nb">Set-ExecutionPolicy</span> <span class="n">-ExecutionPolicy</span> <span class="n">RemoteSigned</span> <span class="n">-Scope</span> <span class="n">CurrentUser</span>
+<span class="p">.</span><span class="n">venv</span><span class="p">\</span><span class="n">Scripts</span><span class="p">\</span><span class="n">Activate</span><span class="p">.</span><span class="n">ps1</span>
+</code></pre></div></p>
+<hr />
+<h3 id="problem-frontend-offnet-sich-nicht">Problem: Frontend öffnet sich nicht<a class="headerlink" href="#problem-frontend-offnet-sich-nicht" title="Permanent link">&para;</a></h3>
+<p><strong>Lösung:</strong>
+<div class="highlight"><pre><span></span><code><span class="c1"># Web-Version explizit starten</span>
+flet<span class="w"> </span>run<span class="w"> </span>--web<span class="w"> </span>src/main.py
+</code></pre></div></p>
+<hr />
+<h2 id="nachste-schritte">📚 Nächste Schritte<a class="headerlink" href="#nachste-schritte" title="Permanent link">&para;</a></h2>
+<p>Nach erfolgreicher Installation:</p>
+<ul>
+<li><strong><a href="../dev/testdaten/">Test-Accounts &amp; Demo-Daten</a></strong> - Vordefinierte Test-Accounts nutzen</li>
+<li><strong><a href="../dev/api/">API-Dokumentation</a></strong> - Backend-Endpunkte erkunden</li>
+<li><strong><a href="../dev/technische-uebersicht/">Entwickler-Dokumentation</a></strong> - Technische Details verstehen</li>
+<li><strong><a href="../user/einfuehrung/">User-Dokumentation</a></strong> - Anwendung aus User-Sicht kennenlernen</li>
+</ul>
+<hr />
+<h2 id="tipps">💡 Tipps<a class="headerlink" href="#tipps" title="Permanent link">&para;</a></h2>
+<div class="admonition tip">
+<p class="admonition-title">Hot Reload</p>
+<ul>
+<li><strong>Backend</strong>: Uvicorn erkennt Code-Änderungen automatisch (mit <code>--reload</code>)</li>
+<li><strong>Frontend</strong>: Flet unterstützt Hot Reload nativ</li>
+</ul>
+</div>
+<div class="admonition tip">
+<p class="admonition-title">Mehrere Terminals</p>
+<p>Nutze separate Terminals für Backend und Frontend, damit du beide Logs gleichzeitig siehst.</p>
+</div>
+<div class="admonition tip">
+<p class="admonition-title">IDE Setup</p>
+<p><strong>VS Code Extensions:</strong>
+- Python (Microsoft)
+- Pylance
+- SQLite Viewer
+- REST Client</p>
+</div>
+<div class="admonition tip">
+<p class="admonition-title">Dokumentation lokal</p>
+<p>Starte die Dokumentation lokal:
+<div class="highlight"><pre><span></span><code>mkdocs<span class="w"> </span>serve
+</code></pre></div>
+Öffne: <a href="http://127.0.0.1:8000">http://127.0.0.1:8000</a></p>
+</div>
+<hr />
+<h2 id="support">📞 Support<a class="headerlink" href="#support" title="Permanent link">&para;</a></h2>
+<p>Bei Problemen:</p>
+<ul>
+<li><strong>Dokumentation</strong>: Siehe <a href="../dev/technische-uebersicht/">Entwickler-Dokumentation</a></li>
+<li><strong>Issues</strong>: GitHub Issues erstellen</li>
+<li><strong>E-Mail</strong>: dev@landly.de</li>
+</ul>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      
+      <script id="__config" type="application/json">{"annotate": null, "base": "..", "features": ["navigation.instant", "navigation.tabs", "navigation.tabs.sticky", "navigation.expand", "toc.integrate", "content.code.copy", "search.suggest", "search.highlight"], "search": "../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
+    
+    
+      <script src="../assets/javascripts/bundle.79ae519e.min.js"></script>
+      
+    
+  </body>
+</html>
