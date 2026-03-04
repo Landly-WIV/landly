@@ -37,9 +37,9 @@
 !!! tip "Direkt loslegen"
     
     **Entwickler:**  
-    → [Setup & Installation](dev/setup.md) – Projekt lokal starten  
+    → [Installation & Quick Start](installation.md) – Projekt lokal starten  
     → [Test-Accounts](dev/testdaten.md) – Sofort mit Demo-Daten testen  
-    → [API-Dokumentation](dev/api.md) – Backend-Endpunkte erkunden
+    → [Technische Dokumentation](technische-dokumentation.md) – Architektur verstehen
     
     **User:**  
     → [Einführung](user/einfuehrung.md) – Erste Schritte mit Landly  
@@ -75,14 +75,17 @@ Die Plattform wird mit folgenden Technologien entwickelt:
 
 !!! info "Dokumentationsbereiche"
     
-    **[👤 User-Dokumentation](user/einfuehrung.md)**  
+    **[⚙️ Installation & Quick Start](installation.md)**  
+    Schritt-für-Schritt-Anleitung zum Aufsetzen des Projekts
+    
+    **[👨‍💻 Technische Dokumentation](technische-dokumentation.md)**  
+    Architektur, Datenbankmodell und API-Referenz
+    
+    **[📖 Nutzungshandbuch](user/einfuehrung.md)**  
     Anleitung zur Benutzung der Plattform (Registrierung, Produktsuche, Bestellung)
     
-    **[👨‍💻 Entwickler-Dokumentation](dev/technische-uebersicht.md)**  
-    Technische Details, Setup, Architektur, UML-Diagramme und API
-    
-    **[📦 Projekt](projekt/projektidee.md)**  
-    Projektidee, MoSCoW-Priorisierung und Systemübersicht
+    **[🎯 Technische Strategie](dev/technische-uebersicht.md)**  
+    Detaillierte technische Details, Setup, UML-Diagramme und Entscheidungen
     
     **[📅 Projektorganisation](organisation/weeklys-uebersicht.md)**  
     Wöchentliche Entwicklungsdokumentation und Teamorganisation

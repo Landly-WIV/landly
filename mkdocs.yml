@@ -34,7 +34,9 @@ nav:
   
   - Installation & Quick Start: installation.md
   
-  - User-Dokumentation:
+  - Technische Dokumentation: technische-dokumentation.md
+  
+  - Nutzungshandbuch:
       - Einführung: user/einfuehrung.md
       - Registrierung & Login: user/registrierung-login.md
       - Produkte suchen: user/produkte-suchen.md
@@ -43,12 +45,12 @@ nav:
       - Mein Konto: user/mein-konto.md
       - FAQ: user/faq.md
   
-  - Entwickler-Dokumentation:
+  - Technische Strategie:
       - Übersicht: dev/technische-uebersicht.md
       - Setup & Installation: dev/setup.md
       - Konfiguration: dev/konfiguration.md
       - Test-Accounts & Demo: dev/testdaten.md
-      - Technische Strategie: dev/technische-strategie.md
+      - Technische Entscheidungen: dev/technische-strategie.md
       - Logisches Modell: dev/logisches-modell.md
       - Datenbankschema: dev/datenbankschema.md
       - API-Dokumentation: dev/api.md
@@ -56,6 +58,14 @@ nav:
           - Use-Case-Diagramm: dev/uml-usecase.md
           - Klassendiagramm: dev/uml-klassen.md
           - Sequenzdiagramme: dev/uml-sequenz.md
+  
+  - Projektorganisation:
+      - Weeklys Übersicht: organisation/weeklys-uebersicht.md
+      - KW01 - Lucas: organisation/weeklys/kw01-lucas.md
+  
+  - Sonstiges:
+      - Steckbrief: steckbrief.md
+      - Code-Beispiele: code-examples.md
   
   - Projektorganisation:
       - Weeklys Übersicht: organisation/weeklys-uebersicht.md
