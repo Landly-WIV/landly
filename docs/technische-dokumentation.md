@@ -4,11 +4,11 @@ Diese Seite bietet einen technischen Überblick über die Architektur und Strukt
 
 ---
 
-## 🏗️ Architekturdiagramm
+## 🏗️ Aktivitätsdiagramm
 
 Das Aktivitätsdiagramm zeigt den Ablauf und die Interaktionen im System:
 
-![Aktivitätsdiagramm](images/aktivitätsdiagramm.png){: style="max-width: 800px; width: 100%;"}
+![Aktivitätsdiagramm](images/aktivitätsdiagramm.png){: style="max-width: 600px; width: 100%;"}
 
 **Beschreibung:**
 
@@ -27,7 +27,7 @@ Das Diagramm visualisiert die Hauptaktivitäten und Entscheidungspunkte im Syste
 
 Das Sequenzdiagramm zeigt die zeitliche Abfolge der Interaktionen zwischen Komponenten:
 
-![Sequenzdiagramm](images/sequenzdiagramm.png){: style="max-width: 800px; width: 100%;"}
+![Sequenzdiagramm](images/sequenzdiagramm.png){: style="max-width: 600px; width: 100%;"}
 
 **Beschreibung:**
 
@@ -46,9 +46,9 @@ Dieses Diagramm illustriert die Kommunikation zwischen Frontend, Backend und Dat
 
 Das Klassendiagramm zeigt die Objektstruktur und Beziehungen im System:
 
-<div align="center">
-  <img src="images/klassendiagramm.png" alt="Klassendiagramm" style="max-width: 800px; width: 100%;">
-![Klassendiagramm](images/klassendiagramm.png){: style="max-width: 800px; width: 100%;"}hreibung:**
+![Klassendiagramm](images/klassendiagramm.png){: style="max-width: 600px; width: 100%;"}
+
+**Beschreibung:**
 
 Das Klassendiagramm definiert die Hauptentitäten des Systems und deren Beziehungen. Es bildet die Grundlage für das Datenbankmodell und die Backend-Logik.
 
