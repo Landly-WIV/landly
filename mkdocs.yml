@@ -32,10 +32,7 @@ theme:
 nav:
   - Startseite: index.md
   
-  - Projekt:
-      - Projektidee: projekt/projektidee.md
-      - MoSCoW-Priorisierung: projekt/moscow.md
-      - Systemübersicht: projekt/systemuebersicht.md
+  - Installation & Quick Start: installation.md
   
   - User-Dokumentation:
       - Einführung: user/einfuehrung.md

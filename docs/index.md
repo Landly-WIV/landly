@@ -1,13 +1,15 @@
 <div align="center">
   <img src="images/logo.png" alt="Landly Logo" width="200"/>
   <h1>Landly – Regionale Onlineplattform</h1>
-  
-  ![Python](https://img.shields.io/badge/Python-3.10+-blue.svg)
-  ![Flet](https://img.shields.io/badge/Flet-0.24-green.svg)
-  ![FastAPI](https://img.shields.io/badge/FastAPI-0.110-teal.svg)
-  ![License](https://img.shields.io/badge/License-MIT-yellow.svg)
-  ![Status](https://img.shields.io/badge/Status-In%20Development-orange.svg)
 </div>
+
+<p align="center">
+  <img src="https://img.shields.io/badge/Python-3.10+-blue.svg" alt="Python">
+  <img src="https://img.shields.io/badge/Flet-0.24-green.svg" alt="Flet">
+  <img src="https://img.shields.io/badge/FastAPI-0.110-teal.svg" alt="FastAPI">
+  <img src="https://img.shields.io/badge/License-MIT-yellow.svg" alt="License">
+  <img src="https://img.shields.io/badge/Status-In%20Development-orange.svg" alt="Status">
+</p>
 
 ---
 
