@@ -2,24 +2,7 @@ import flet as ft
 import content as co
 import products as pr
 import requests
-from config import API_URL
-
-def getProIco(proArtBez):
-    """Icon für Produktart zurückgeben"""
-    ico = {
-        "gemüse": "🥕",
-        "obst": "🍎",
-        "fleisch": "🥩",
-        "eier": "🥚",
-        "milch": "🥛",
-        "brot": "🍞",
-        "käse": "🧀",
-        "honig": "🍯",
-    }
-    if proArtBez:
-        key = proArtBez.lower()
-        return ico.get(key, "🛒")
-    return "🛒"
+from config import API_URL, getProIco
 
 def getBauernProdukte(bauerId):
     """Produkte eines Bauern aus der API laden"""
@@ -113,7 +96,7 @@ def bauSit(bau, site):
             "name": p.get('name', 'Unbekannt'),
             "price": f"{p.get('preis', 0):.2f} €",
             "unit": p.get('einheit', 'Stück'),
-            "image": getProIco(proArt.get('bezeichnung', '')),
+            "image": getProIco(p.get('name', '')),
             "preis": p.get('preis', 0),
             "einheit": p.get('einheit', 'Stück'),
             "bauern_id": p.get('bauern_id'),
@@ -200,7 +183,14 @@ def bauSit(bau, site):
         tile = ft.Container(
             content=ft.Column(
                 [
-                    ft.Text(product["image"], size=30),
+                    ft.Container(
+                        content=ft.Text(product["image"]["emoji"], size=24),
+                        width=45,
+                        height=45,
+                        border_radius=22,
+                        bgcolor=product["image"]["bg"],
+                        alignment=ft.Alignment.CENTER,
+                    ),
                     ft.Text(
                         product["name"],
                         size=10,
