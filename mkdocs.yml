@@ -30,7 +30,7 @@ theme:
     - search.highlight
 
 nav:
-  - Startseite: index.md
+  - Home: index.md
   
   - Installation & Quick Start: installation.md
   
@@ -58,22 +58,6 @@ nav:
           - Use-Case-Diagramm: dev/uml-usecase.md
           - Klassendiagramm: dev/uml-klassen.md
           - Sequenzdiagramme: dev/uml-sequenz.md
-  
-  - Projektorganisation:
-      - Weeklys Übersicht: organisation/weeklys-uebersicht.md
-      - KW01 - Lucas: organisation/weeklys/kw01-lucas.md
-  
-  - Sonstiges:
-      - Steckbrief: steckbrief.md
-      - Code-Beispiele: code-examples.md
-  
-  - Projektorganisation:
-      - Weeklys Übersicht: organisation/weeklys-uebersicht.md
-      - KW01 - Lucas: organisation/weeklys/kw01-lucas.md
-  
-  - Sonstiges:
-      - Steckbrief: steckbrief.md
-      - Code-Beispiele: code-examples.md
 
 markdown_extensions:
   - admonition

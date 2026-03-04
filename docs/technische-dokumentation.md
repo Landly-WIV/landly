@@ -68,9 +68,33 @@ Das Klassendiagramm definiert die Hauptentitäten des Systems und deren Beziehun
 
 ---
 
-## 🗄️ Datenbankmodell
+## 🗄️ Logisches Datenbankmodell (ER-Diagramm)
 
-### Entitätsbeziehungsmodell
+Das Entity-Relationship-Diagramm zeigt die logische Struktur der Datenbank:
+
+![ER-Modell](images/ER%20modell.png){: style="max-width: 600px; width: 100%;"}
+
+**Beschreibung:**
+
+Das ER-Diagramm modelliert die Entitäten und ihre Beziehungen auf konzeptioneller Ebene, bevor sie in das physische Datenbankschema überführt werden.
+
+**Hauptentitäten:**
+- **Bauern**: Landwirte mit Hofprofil
+- **Kunden**: Konsumenten der Plattform  
+- **Produkte**: Angebotene Produkte
+- **Bestellungen**: Kundenaufträge
+- **Standorte**: Geografische Informationen
+- **Ort**: PLZ-Zuordnung
+
+**Kardinalitäten:**
+- Ein Bauer kann mehrere Produkte anbieten (1:n)
+- Ein Kunde kann mehrere Bestellungen aufgeben (1:n)
+- Eine Bestellung enthält mehrere Bestellpositionen (1:n)
+- Ein Produkt kann in mehreren Bestellpositionen vorkommen (n:m über Bestellposition)
+
+---
+
+## 📋 Physisches Datenbankmodell
 
 Das System basiert auf einem relationalen Datenbankmodell mit folgenden Haupttabellen:
 
