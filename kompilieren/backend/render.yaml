@@ -1,0 +1,14 @@
+# render.yaml - Infrastructure as Code für render.com
+# Siehe: https://render.com/docs/blueprint-spec
+
+services:
+  - type: web
+    name: landly-api
+    runtime: python
+    buildCommand: pip install -r requirements.txt
+    startCommand: uvicorn render_app:app --host 0.0.0.0 --port $PORT
+    envVars:
+      - key: DATABASE_URL
+        sync: false # Manuell in render.com Dashboard setzen!
+      - key: PYTHON_VERSION
+        value: "3.11"

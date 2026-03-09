@@ -1,0 +1,143 @@
+import flet as ft
+
+def land():
+    # Farben
+    PRIMARY_GREEN = "#2D5016"
+    LIGHT_GREEN = "#6B8E23"
+    ACCENT_GREEN = "#90C040"
+    WHITE = "#FFFFFF"
+    LIGHT_GRAY = "#F5F5F5"
+    
+    # Dummy-Neuigkeiten
+    news = [
+        {
+            "title": "Englisch Review",
+            "date": "25. Februar 2026",
+            "image": "https://images.unsplash.com/photo-1610813328519-0ade655c40c1?q=80&w=1932&auto=format&fit=crop"
+        },
+        {
+            "title": "Herbsternte beginnt",
+            "date": "10. Oktober 2024",
+            "image": "https://images.unsplash.com/photo-1569511850437-6dfab062c00b?q=80&w=759&auto=format&fit=crop"
+        },
+        {
+            "title": "Neues Hofladen-Café eröffnet",
+            "date": "1. September 2024",
+            "image": "https://plus.unsplash.com/premium_photo-1674327105074-46dd8319164b?q=80&w=1170&auto=format&fit=crop"
+        },
+        {
+            "title": "Sommerferien-Öffnungszeiten",
+            "date": "20. Juli 2024",
+            "image": "https://plus.unsplash.com/premium_photo-1682535209719-839f625f8770?q=80&w=692&auto=format&fit=crop"
+        },
+        {
+            "title": "Frühjahrsmarkt auf dem Hof",
+            "date": "5. Mai 2024",
+            "image": "https://images.unsplash.com/photo-1683511997653-6be0fc990ec9?q=80&w=715&auto=format&fit=crop"
+        },
+    ]
+    
+    # Header
+    header = ft.Container(
+        content=ft.Row(
+            [
+                ft.Icon(ft.Icons.AGRICULTURE, color=WHITE, size=30),
+                ft.Text(
+                    "Willkommen",
+                    size=18,
+                    weight=ft.FontWeight.BOLD,
+                    color=WHITE
+                ),
+            ],
+            alignment=ft.MainAxisAlignment.CENTER,
+        ),
+        bgcolor=PRIMARY_GREEN,
+        padding=20,
+    )
+    
+    # Neuigkeiten-Überschrift
+    news_header = ft.Container(
+        content=ft.Text(
+            "Neuigkeiten",
+            size=20,
+            weight=ft.FontWeight.BOLD,
+            color=PRIMARY_GREEN,
+        ),
+        padding=ft.Padding.only(left=20, top=30, bottom=20),
+    )
+    
+    # Nachrichtenkacheln
+    news_items = []
+    for article in news:
+        item = ft.Container(
+            content=ft.Stack(
+                [
+                    # Background Image
+                    ft.Image(
+                        src=article["image"],
+                        fit=ft.BoxFit.COVER,
+                        width=float('inf'),
+                        height=150,
+                    ),
+                    # Dark overlay
+                    ft.Container(
+                        width=float('inf'),
+                        height=150,
+                        bgcolor=ft.Colors.with_opacity(0.4, "#000000"),
+                    ),
+                    # Text content
+                    ft.Row(
+                        controls=[
+                            ft.Column(),
+                            ft.Column(
+                                [
+                                    ft.Text(
+                                        article["title"],
+                                        size=12,
+                                        weight=ft.FontWeight.BOLD,
+                                        color=WHITE,
+                                    ),
+                                    ft.Text(
+                                        article["date"],
+                                        size=12,
+                                        color=ACCENT_GREEN,
+                                    ),
+                                    ft.Row()
+                                ],
+                                spacing=8,
+                                alignment=ft.MainAxisAlignment.END,
+                            )
+                        ]
+                    ),
+                ],
+                width=float('inf'),
+                height=150,
+            ),
+            width=float('inf'),
+            height=150,
+            border_radius=10,
+            clip_behavior=ft.ClipBehavior.HARD_EDGE,
+            margin=ft.Margin.only(bottom=15),
+            ink=True,
+        )
+        news_items.append(item)
+    
+    # News-Container
+    news_list = ft.Container(
+        content=ft.Column(
+            news_items,
+            spacing=0,
+        ),
+        padding=ft.Padding.only(left=20, right=20, bottom=40),
+    )
+    
+    # Zusammensetzen der Seite
+    return ft.Column(
+        [
+            header,
+            news_header,
+            news_list,
+        ],
+        spacing=0,
+        scroll=ft.ScrollMode.AUTO,
+    )
