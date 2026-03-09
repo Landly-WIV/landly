@@ -36,7 +36,7 @@ def sub(e, fie, page):
                         fie[7].value = f"Login erfolgreich für: {fie[4].value}"
                         fie[7].color = ft.Colors.GREEN
                         page.update()
-                        au.updVie(page)
+                        au.updVie(page, goto_profile=True)
                     else:
                         fie[7].value = "Email oder Passwort falsch!"
                         fie[7].color = ft.Colors.RED
@@ -59,7 +59,7 @@ def sub(e, fie, page):
                             fie[7].value = f"Registrierung erfolgreich für: {fie[4].value}"
                             fie[7].color = ft.Colors.GREEN
                             page.update()
-                            au.updVie(page)
+                            au.updVie(page, goto_profile=True)
                         else:
                             fie[7].value = "Email bereits registriert!"
                             fie[7].color = ft.Colors.RED
@@ -81,7 +81,7 @@ def sub(e, fie, page):
                             fie[7].value = f"Registrierung erfolgreich für: {fie[4].value}"
                             fie[7].color = ft.Colors.GREEN
                             page.update()
-                            au.updVie(page)
+                            au.updVie(page, goto_profile=True)
                         else:
                             fie[7].value = "Email bereits registriert!"
                             fie[7].color = ft.Colors.RED
