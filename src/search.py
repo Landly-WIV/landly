@@ -219,27 +219,39 @@ def bauSeaMas(site):
         overlay_color=ft.Colors.GREEN_100,
         on_change=lambda e: sf.sliEnt(e, disTex, site),
         label=None,
-        disabled=site.seaSta.showAll  # Deaktiviert wenn "Alle anzeigen" aktiv
     )
     
-    def onShowAllChange(e):
-        site.seaSta.showAll = e.control.value
-        disSli.disabled = e.control.value
-        disTex.visible = not e.control.value
-        disSli.visible = not e.control.value
+    # Container für Suchoptionen (Entfernungsslider)
+    searchOptionsContainer = ft.Container(
+        content=ft.Column(
+            controls=[
+                disTex,
+                disSli,
+            ],
+            horizontal_alignment=ft.CrossAxisAlignment.CENTER,
+        ),
+        visible=not site.seaSta.showAll,
+    )
+    
+    def onToggleChange(e):
+        site.seaSta.showAll = not e.control.value
+        searchOptionsContainer.visible = e.control.value
         site.page.update()
     
-    showAllChk = ft.Checkbox(
-        label="Alle anzeigen",
-        value=site.seaSta.showAll,
-        on_change=onShowAllChange,
-        active_color=ft.Colors.GREEN
+    # Toggle Switch: Alle anzeigen <-> Suchoptionen (gleich wie Produktsuche)
+    modeToggle = ft.Row(
+        controls=[
+            ft.Text("Alle anzeigen", size=14, color=ft.Colors.GREY_700 if not site.seaSta.showAll else ft.Colors.GREEN_700),
+            ft.Switch(
+                value=not site.seaSta.showAll,
+                active_color=ft.Colors.GREEN,
+                on_change=onToggleChange,
+            ),
+            ft.Text("Suchoptionen", size=14, color=ft.Colors.GREEN_700 if not site.seaSta.showAll else ft.Colors.GREY_700),
+        ],
+        alignment=ft.MainAxisAlignment.CENTER,
+        spacing=10,
     )
-    
-    # Slider initial ausblenden wenn showAll aktiv
-    if site.seaSta.showAll:
-        disTex.visible = False
-        disSli.visible = False
     
     seaBut = ft.ElevatedButton(
         "Suchen",
@@ -265,11 +277,10 @@ def bauSeaMas(site):
             ft.Divider(),
             ft.Row(height=20),
             seaFie,
+            ft.Row(height=15),
+            modeToggle,
             ft.Row(height=10),
-            showAllChk,
-            ft.Row(height=10),
-            disTex,
-            disSli,
+            searchOptionsContainer,
             ft.Row(height=30),
             seaBut
         ],

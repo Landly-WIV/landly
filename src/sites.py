@@ -2,8 +2,8 @@ import flet as ft
 import navbar as nb
 import content as co
 
-def appSite(page):
-    ind = 2
+def appSite(page, start_index=2):
+    ind = start_index  # Standardmäßig Landingpage, kann aber überschrieben werden
     
     navRow = ft.Row(
         spacing = 0,
