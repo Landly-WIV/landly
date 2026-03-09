@@ -84,18 +84,20 @@ def logUse(emaVal, pasWor):
     return False
 
 
-def sitVie(page):
-    """Gibt die passende Seite zurück (App oder Login)."""
+def sitVie(page, start_index=2):
     if isLog():
         import sites as si
-        return si.appSite(page)
+        return si.appSite(page, start_index)
     else:
         import logreg as lr
         return lr.logRegPag(page)
 
 
-def updVie(page):
-    """Aktualisiert die angezeigte Seite nach Login/Logout."""
+def updVie(page, goto_profile=False):
+    """Update View - wenn goto_profile=True, gehe zum Profil nach Login"""
     page.controls.clear()
-    page.add(sitVie(page))
+    if goto_profile:
+        page.add(sitVie(page, start_index=4))  # Index 4 = Profil
+    else:
+        page.add(sitVie(page))
     page.update()

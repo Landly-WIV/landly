@@ -55,17 +55,31 @@ def calDis(bauId):
 
 
 def proSit(proDat, sit):
+    # State für die Menge
+    current_menge = {"value": 1}
+    
     def bacCli(e):
         sit.seaSta.seaEna = True
         co.updatePage(sit)
     
     def addToCarCli(e):
-        wk.addToWarenkorb(proDat, menge=1)
+        wk.addToWarenkorb(proDat, menge=current_menge["value"])
         sit.page.snack_bar = ft.SnackBar(
-            content=ft.Text(f"{proDat['name']} zum Warenkorb hinzugefügt"),
+            content=ft.Text(f"{current_menge['value']}x {proDat['name']} zum Warenkorb hinzugefügt"),
             bgcolor="#90C040"
         )
         sit.page.snack_bar.open = True
+        sit.page.update()
+    
+    def menge_minus(e):
+        if current_menge["value"] > 1:
+            current_menge["value"] -= 1
+            menge_text.value = str(current_menge["value"])
+            sit.page.update()
+    
+    def menge_plus(e):
+        current_menge["value"] += 1
+        menge_text.value = str(current_menge["value"])
         sit.page.update()
 
     # Produkt-ID ermitteln (unterstützt beide Formate)
@@ -128,11 +142,61 @@ def proSit(proDat, sit):
 
     if labTex:
         bod.controls.insert(3, ft.Text(f"Labels: {labTex}", size=12, color=ft.Colors.GREEN))
+    
+    # Mengen-Counter (wie im Warenkorb)
+    menge_text = ft.Text(
+        str(current_menge["value"]), 
+        size=18, 
+        weight=ft.FontWeight.BOLD,
+        text_align=ft.TextAlign.CENTER,
+    )
+    
+    mengen_steuerung = ft.Container(
+        content=ft.Row(
+            controls=[
+                ft.IconButton(
+                    icon=ft.Icons.REMOVE,
+                    on_click=menge_minus,
+                    icon_color=ft.Colors.GREEN_700,
+                    icon_size=22,
+                ),
+                ft.Container(
+                    content=menge_text,
+                    width=50,
+                    alignment=ft.Alignment.CENTER,
+                ),
+                ft.IconButton(
+                    icon=ft.Icons.ADD,
+                    on_click=menge_plus,
+                    icon_color=ft.Colors.GREEN_700,
+                    icon_size=22,
+                ),
+            ],
+            spacing=5,
+        ),
+        border=ft.border.all(2, ft.Colors.GREEN_700),
+        border_radius=8,
+        padding=5,
+        width=180,
+    )
 
-    foo = ft.Row(controls=[
-        ft.Button("In den Warenkorb", on_click=addToCarCli, bgcolor=ft.Colors.GREEN, color=ft.Colors.WHITE),
-    ],
-    alignment=ft.MainAxisAlignment.CENTER)
+    foo = ft.Column(
+        controls=[
+            ft.Text("Menge:", size=14, weight=ft.FontWeight.BOLD),
+            mengen_steuerung,
+            ft.Container(height=15),
+            ft.Button(
+                "In den Warenkorb", 
+                on_click=addToCarCli, 
+                bgcolor=ft.Colors.GREEN, 
+                color=ft.Colors.WHITE,
+                width=250,
+                height=45,
+            ),
+        ],
+        horizontal_alignment=ft.CrossAxisAlignment.CENTER,
+        spacing=8,
+    )
 
     return ft.Column(controls=[
         ft.Row(),

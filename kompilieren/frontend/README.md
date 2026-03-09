@@ -2,6 +2,7 @@ uv sync
 
 # Zum Testen
 uv run flet main.py
+uv run flet run --web main.py
 - Backend sollte laufen 
 - config.py ist auf lokal gestellt
 
