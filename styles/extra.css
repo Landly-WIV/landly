@@ -1,0 +1,101 @@
+/* Custom CSS für Landly Dokumentation */
+
+:root {
+  --md-primary-fg-color: #4caf50;
+  --md-accent-fg-color: #cddc39;
+}
+
+/* Navigation Tabs mittig setzen */
+.md-tabs__list {
+  justify-content: center;
+}
+
+/* Kompaktere Darstellung: Schriftgröße und Abstände reduzieren */
+.md-content {
+  font-size: 0.85rem;
+  line-height: 1.5;
+}
+
+/* Überschriften kompakter */
+.md-content h1 {
+  font-size: 1.8rem;
+  margin-top: 1rem;
+  margin-bottom: 0.8rem;
+}
+
+.md-content h2 {
+  font-size: 1.4rem;
+  margin-top: 1.2rem;
+  margin-bottom: 0.6rem;
+}
+
+.md-content h3 {
+  font-size: 1.15rem;
+  margin-top: 1rem;
+  margin-bottom: 0.5rem;
+}
+
+.md-content h4 {
+  font-size: 1rem;
+  margin-top: 0.8rem;
+  margin-bottom: 0.4rem;
+}
+
+/* Absätze kompakter */
+.md-content p {
+  margin-bottom: 0.7rem;
+}
+
+/* Listen kompakter */
+.md-content ul,
+.md-content ol {
+  margin-bottom: 0.7rem;
+  padding-left: 1.5rem;
+}
+
+.md-content li {
+  margin-bottom: 0.3rem;
+}
+
+/* Tabellen kompakter */
+.md-content table {
+  font-size: 0.8rem;
+  margin-bottom: 1rem;
+}
+
+.md-content th,
+.md-content td {
+  padding: 0.4rem 0.6rem;
+}
+
+/* Code-Blöcke kompakter */
+.md-content pre {
+  margin-bottom: 0.8rem;
+  font-size: 0.8rem;
+}
+
+.md-content code {
+  font-size: 0.85em;
+}
+
+/* Admonition Boxen kompakter */
+.md-content .admonition {
+  border-radius: 6px;
+  margin-bottom: 0.8rem;
+  font-size: 0.85rem;
+}
+
+.md-content .admonition-title {
+  padding: 0.5rem 0.8rem;
+  font-size: 0.9rem;
+}
+
+.md-content .admonition p {
+  margin: 0.4rem 0;
+}
+
+/* Verbesserte Code-Block Darstellung */
+.highlight pre {
+  border-radius: 8px;
+  padding: 0.8rem;
+}
