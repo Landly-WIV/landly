@@ -50,3 +50,18 @@ services:
       - key: API_URL
         sync: false          # ← Im Dashboard eintragen: https://landly-backend.onrender.com
     healthCheckPath: /
+
+
+  # ─────────────────────────────────────────
+  # 3) alte version
+  # ─────────────────────────────────────────
+  - type: web
+    name: landly-api
+    runtime: python
+    buildCommand: pip install -r requirements.txt
+    startCommand: uvicorn render_app:app --host 0.0.0.0 --port $PORT
+    envVars:
+      - key: DATABASE_URL
+        sync: false # Manuell in render.com Dashboard setzen!
+      - key: PYTHON_VERSION
+        value: "3.11"
