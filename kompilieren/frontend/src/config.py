@@ -7,7 +7,7 @@ import os
 # Wird automatisch aus der Umgebungsvariable API_URL gelesen.
 # Lokal:  http://localhost:8000
 # Render: Im Dashboard API_URL = https://landly-backend.onrender.com eintragen.
-API_URL = os.environ.get("API_URL", "http://localhost:8000")
+API_URL = os.environ.get("API_URL", "https://landly-0ulq.onrender.com/")
 
 
 # ========================
