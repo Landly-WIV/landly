@@ -7,10 +7,17 @@ import os
 import sys
 from pathlib import Path
 
-# src/ in den Python-Suchpfad aufnehmen
+# src/ in den Python-Suchpfad aufnehmen – MUSS vor allen lokalen Importen stehen
 ROOT = Path(__file__).parent
 sys.path.insert(0, str(ROOT / "src"))
 
+# Umgebungsvariablen beim Start ausgeben (hilfreich für Debugging in Render Logs)
+api_url = os.environ.get("API_URL", "http://localhost:8000")
+port = int(os.environ.get("PORT", 8080))
+print(f"🌐 API_URL  = {api_url}")
+print(f"🔌 PORT     = {port}")
+
+# Lokale Module erst NACH sys.path-Setup importieren
 import flet as ft
 import sites as si
 import maptest as mt
@@ -38,11 +45,11 @@ def main(page: ft.Page):
     thread.start()
 
 
-if __name__ == "__main__":
-    port = int(os.environ.get("PORT", 8080))
-    ft.app(
-        target=main,
-        view=ft.AppView.WEB_BROWSER,
-        port=port,
-        host="0.0.0.0",
-    )
+# ft.app() wird IMMER ausgeführt – nicht nur wenn __main__
+# Render startet das Skript direkt mit "python render_app.py"
+ft.app(
+    target=main,
+    view=ft.AppView.WEB_BROWSER,
+    port=port,
+    host="0.0.0.0",
+)
