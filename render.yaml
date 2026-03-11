@@ -1,14 +1,52 @@
-# render.yaml - Infrastructure as Code für render.com
-# Siehe: https://render.com/docs/blueprint-spec
+# render.yaml – Landly Blueprint (beide Services auf einmal deployen)
+# Docs: https://render.com/docs/blueprint-spec
+#
+# Verwendung:
+#   1. Dieses File liegt im Root des Repos (landly/).
+#   2. In render.com → "New Blueprint Instance" → Repo auswählen.
+#   3. Render erkennt dieses File automatisch und erstellt beide Services.
+#   4. DATABASE_URL und API_URL müssen anschließend manuell im Dashboard gesetzt werden.
 
 services:
+
+  # ─────────────────────────────────────────
+  # 1) BACKEND  (FastAPI)
+  # ─────────────────────────────────────────
   - type: web
-    name: landly-api
+    name: landly-backend
     runtime: python
+    rootDir: kompilieren/backend
     buildCommand: pip install -r requirements.txt
     startCommand: uvicorn render_app:app --host 0.0.0.0 --port $PORT
     envVars:
-      - key: DATABASE_URL
-        sync: false # Manuell in render.com Dashboard setzen!
       - key: PYTHON_VERSION
         value: "3.11"
+      - key: DATABASE_URL
+        sync: false          # ← Im Dashboard eintragen: postgresql://user:pw@host:5432/db
+      - key: SECRET_KEY
+        generateValue: true  # Render generiert automatisch einen sicheren Zufallswert
+      - key: ALGORITHM
+        value: HS256
+      - key: ACCESS_TOKEN_EXPIRE_MINUTES
+        value: "30"
+      - key: ENVIRONMENT
+        value: production
+      - key: LOG_LEVEL
+        value: INFO
+    healthCheckPath: /
+
+  # ─────────────────────────────────────────
+  # 2) FRONTEND  (Flet Web)
+  # ─────────────────────────────────────────
+  - type: web
+    name: landly-frontend
+    runtime: python
+    rootDir: kompilieren/frontend
+    buildCommand: pip install -r requirements.txt
+    startCommand: python render_app.py
+    envVars:
+      - key: PYTHON_VERSION
+        value: "3.11"
+      - key: API_URL
+        sync: false          # ← Im Dashboard eintragen: https://landly-backend.onrender.com
+    healthCheckPath: /

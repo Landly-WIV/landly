@@ -1,0 +1,20 @@
+# render.yaml – Frontend Service für render.com
+# Docs: https://render.com/docs/blueprint-spec
+#
+# Deployment:
+#   Dieses File liegt in: landly/kompilieren/frontend/
+#   Root Directory in Render auf "kompilieren/frontend" setzen.
+
+services:
+  - type: web
+    name: landly-frontend
+    runtime: python
+    rootDir: kompilieren/frontend         # Pfad ab Repo-Wurzel
+    buildCommand: pip install -r requirements.txt
+    startCommand: python render_app.py
+    envVars:
+      - key: PYTHON_VERSION
+        value: "3.11"
+      - key: API_URL
+        sync: false      # URL des Backend-Services eintragen, z.B. https://landly-backend.onrender.com
+    healthCheckPath: /

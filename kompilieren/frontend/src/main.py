@@ -12,6 +12,7 @@ Starten:
 import flet as ft
 import sys
 from pathlib import Path
+import os
 
 # Sicherstellen, dass src/ im Suchpfad liegt
 SRC_DIR = Path(__file__).parent
@@ -44,4 +45,9 @@ def main(page: ft.Page):
     thread.start()
 
 
-ft.run(main)
+ft.app(
+    target=main,
+    view=ft.AppView.WEB_BROWSER,
+    host="0.0.0.0",
+    port=int(os.environ.get("PORT", 8080)),
+)

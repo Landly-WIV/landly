@@ -1,14 +1,30 @@
-# render.yaml - Infrastructure as Code für render.com
-# Siehe: https://render.com/docs/blueprint-spec
+# render.yaml – Backend Service für render.com
+# Docs: https://render.com/docs/blueprint-spec
+#
+# Deployment:
+#   Dieses File liegt in: landly/kompilieren/backend/
+#   Root Directory in Render auf "kompilieren/backend" setzen.
 
 services:
   - type: web
-    name: landly-api
+    name: landly-backend
     runtime: python
+    rootDir: kompilieren/backend          # Pfad ab Repo-Wurzel
     buildCommand: pip install -r requirements.txt
     startCommand: uvicorn render_app:app --host 0.0.0.0 --port $PORT
     envVars:
-      - key: DATABASE_URL
-        sync: false # Manuell in render.com Dashboard setzen!
       - key: PYTHON_VERSION
         value: "3.11"
+      - key: DATABASE_URL
+        sync: false      # Manuell im Render Dashboard eintragen!
+      - key: SECRET_KEY
+        generateValue: true   # Render generiert automatisch einen sicheren Wert
+      - key: ALGORITHM
+        value: HS256
+      - key: ACCESS_TOKEN_EXPIRE_MINUTES
+        value: "30"
+      - key: ENVIRONMENT
+        value: production
+      - key: LOG_LEVEL
+        value: INFO
+    healthCheckPath: /

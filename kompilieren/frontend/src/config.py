@@ -1,13 +1,13 @@
 """
 Zentrale Konfiguration für Landly App
 """
+import os
 
 # API Backend URL
-# Für Produktion (Render):
-# API_URL = "https://landly-ex2r.onrender.com"
-
-# Für lokale Entwicklung auskommentieren:
-API_URL = "http://localhost:8000"
+# Wird automatisch aus der Umgebungsvariable API_URL gelesen.
+# Lokal:  http://localhost:8000
+# Render: Im Dashboard API_URL = https://landly-backend.onrender.com eintragen.
+API_URL = os.environ.get("API_URL", "http://localhost:8000")
 
 
 # ========================
