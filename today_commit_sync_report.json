@@ -1,0 +1,106 @@
+{
+  "since": "2026-03-16 00:00:00",
+  "commit_count": 4,
+  "commits": [
+    {
+      "hash": "d8c843b0f5d8049994daadc11799ffc29b194157",
+      "date": "2026-03-16 14:03:39 +0100",
+      "subject": "login&umsatzübersicht-fixes",
+      "files": [
+        "src/logreg.py",
+        "src/umsatzuebersicht.py"
+      ]
+    },
+    {
+      "hash": "79822e4f93d4cff18cca405dd3d3512733eb4f86",
+      "date": "2026-03-16 13:51:12 +0100",
+      "subject": "map fixes - InfoFlag beim antippen, anzeige bei neu laden",
+      "files": [
+        "src/maptest.py"
+      ]
+    },
+    {
+      "hash": "fb3f50cacb80e00f59b87c1e07f83556309cf88a",
+      "date": "2026-03-16 12:32:34 +0100",
+      "subject": "Suche, Produkte und Warenkorb anzeige - fix",
+      "files": [
+        "src/backend/searchFunctions.py",
+        "src/config.py",
+        "src/products.py",
+        "src/search.py"
+      ]
+    },
+    {
+      "hash": "a7cb38bd7b7e5b655ddf546a4e41027bd924eba3",
+      "date": "2026-03-16 10:56:42 +0100",
+      "subject": "Landingpage clickable und optik angepasst",
+      "files": [
+        "src/assets/Landly.png",
+        "src/landingpage.py",
+        "src/navbar.py"
+      ]
+    }
+  ],
+  "checked_pairs": [
+    {
+      "src": "src/assets/Landly.png",
+      "target": "kompilieren/frontend/src/assets/Landly.png",
+      "kind": "frontend-asset",
+      "status": "missing-target"
+    },
+    {
+      "src": "src/backend/searchFunctions.py",
+      "target": "kompilieren/backend/src/backend/searchFunctions.py",
+      "kind": "backend",
+      "status": "missing-target"
+    },
+    {
+      "src": "src/config.py",
+      "target": "kompilieren/frontend/src/config.py",
+      "kind": "frontend",
+      "status": "synced"
+    },
+    {
+      "src": "src/landingpage.py",
+      "target": "kompilieren/frontend/src/landingpage.py",
+      "kind": "frontend",
+      "status": "synced"
+    },
+    {
+      "src": "src/logreg.py",
+      "target": "kompilieren/frontend/src/logreg.py",
+      "kind": "frontend",
+      "status": "synced"
+    },
+    {
+      "src": "src/maptest.py",
+      "target": "kompilieren/frontend/src/maptest.py",
+      "kind": "frontend",
+      "status": "synced"
+    },
+    {
+      "src": "src/navbar.py",
+      "target": "kompilieren/frontend/src/navbar.py",
+      "kind": "frontend",
+      "status": "different"
+    },
+    {
+      "src": "src/products.py",
+      "target": "kompilieren/frontend/src/products.py",
+      "kind": "frontend",
+      "status": "synced"
+    },
+    {
+      "src": "src/search.py",
+      "target": "kompilieren/frontend/src/search.py",
+      "kind": "frontend",
+      "status": "synced"
+    },
+    {
+      "src": "src/umsatzuebersicht.py",
+      "target": "kompilieren/frontend/src/umsatzuebersicht.py",
+      "kind": "frontend",
+      "status": "synced"
+    }
+  ]
+}

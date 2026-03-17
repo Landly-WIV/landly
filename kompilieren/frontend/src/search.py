@@ -2,7 +2,7 @@ import flet as ft
 import products as pr
 import farmer as fa
 import searchFunctions as sf
-import httpx
+import requests
 from config import API_URL
 
 def seaSel(site):
@@ -75,28 +75,68 @@ def proSeaMas(site, lab):
         width=400
     )
 
-    sel = []
-    opt = []
+    all_labels = list(lab)
+
+    selectedLabelsHeader = ft.Text(
+        "Ausgewählte Kategorien",
+        size=14,
+        weight=ft.FontWeight.BOLD,
+        color=ft.Colors.GREY_800,
+        visible=False,
+    )
 
     selRow = ft.Row(
-        controls=sel,
-        width=300,
-        wrap=True)
+        controls=[],
+        width=400,
+        wrap=True,
+        spacing=8,
+    )
 
-    for i in lab:
-        opt.append(ft.dropdown.Option(i))
-    
-    def on_dropdown_change(e):
-        sf.selLab(e, site, sel, lab, selRow, catDro)
-    
+    def refresh_label_selection():
+        selected_labels = list(site.seaSta.lab)
+        available_labels = [label_text for label_text in all_labels if label_text not in selected_labels]
+
+        selectedLabelsHeader.visible = len(selected_labels) > 0
+
+        selRow.controls.clear()
+        for label_text in selected_labels:
+            selRow.controls.append(
+                ft.FilledTonalButton(
+                    content=label_text,
+                    icon=ft.Icons.CLOSE_SHARP,
+                    on_click=lambda e, lbl=label_text: remove_label(lbl),
+                )
+            )
+
+        catDro.options.clear()
+        for label_text in available_labels:
+            catDro.options.append(ft.dropdown.Option(label_text))
+
+        catDro.value = None
+
+    def remove_label(label_name: str):
+        if label_name in site.seaSta.lab:
+            site.seaSta.lab.remove(label_name)
+            refresh_label_selection()
+            site.page.update()
+
+    def on_dropdown_select(e):
+        selected_label = e.data if hasattr(e, "data") and e.data else e.control.value
+        if selected_label and selected_label not in site.seaSta.lab:
+            site.seaSta.lab.append(selected_label)
+            refresh_label_selection()
+        site.page.update()
+
     catDro = ft.Dropdown(
         label="Kategorie",
         width=400,
-        options=opt,
+        options=[],
     )
-    catDro.on_change = on_dropdown_change
+
+    catDro.on_select = on_dropdown_select
+    refresh_label_selection()
     
-    seaBut = ft.Button(
+    seaBut = ft.ElevatedButton(
         "Suchen",
         icon=ft.Icons.SEARCH,
         on_click=lambda e: sf.seaCli(e, site, seaFie),
@@ -146,6 +186,7 @@ def proSeaMas(site, lab):
     searchOptionsContainer = ft.Container(
         content=ft.Column(
             controls=[
+                selectedLabelsHeader,
                 selRow,
                 ft.Row(height=10),
                 catDro,
@@ -164,6 +205,14 @@ def proSeaMas(site, lab):
     def onToggleChange(e):
         site.seaSta.showAllProducts = not e.control.value
         searchOptionsContainer.visible = e.control.value
+        if site.seaSta.showAllProducts:
+            site.seaSta.lab = []
+            site.seaSta.priSta = 0
+            site.seaSta.priEnd = 50
+            priSli.start_value = 0
+            priSli.end_value = 50
+            priTex.value = "Preisspanne 0,00€ - 50,00€"
+            refresh_label_selection()
         site.page.update()
     
     # Toggle Switch: Alle anzeigen <-> Suchoptionen
@@ -253,7 +302,7 @@ def bauSeaMas(site):
         spacing=10,
     )
     
-    seaBut = ft.Button(
+    seaBut = ft.ElevatedButton(
         "Suchen",
         icon=ft.Icons.SEARCH,
         on_click=lambda e: sf.seaCli(e, site, seaFie, disSli),
@@ -297,7 +346,7 @@ def shoSea(site):
 
             # url = "http://localhost:8000"
 
-            # res = httpx.get(
+            # res = requests.get(
             #     f"{url}/api/products", 
             #     params={
             #         "search": site.seaSta.seaTex, 
@@ -335,7 +384,7 @@ def shoSea(site):
                 try:
                     # Wenn "Alle anzeigen" aktiv, einfache Bauern-Liste laden
                     if site.seaSta.showAll:
-                        res = httpx.get(f"{API_URL}/bauern")
+                        res = requests.get(f"{API_URL}/bauern")
                         
                         if res.status_code == 200:
                             jsoBau = res.json()
@@ -370,7 +419,7 @@ def shoSea(site):
                         if site.seaSta.seaTex:
                             params["search"] = site.seaSta.seaTex
 
-                        res = httpx.get(f"{API_URL}/bauern/search/advanced", params=params)
+                        res = requests.get(f"{API_URL}/bauern/search/advanced", params=params)
                         
                         if res.status_code == 200:
                             jsoBau = res.json()
