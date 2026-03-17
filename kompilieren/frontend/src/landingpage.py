@@ -1,4 +1,5 @@
 import flet as ft
+from pathlib import Path
 
 def land():
     # Farben
@@ -9,31 +10,96 @@ def land():
     LIGHT_GRAY = "#F5F5F5"
     
     # Dummy-Neuigkeiten
+    assets_dir = Path(__file__).parent / "assets"
+
+    def resolve_image_source(image_value: str) -> str:
+        if image_value.startswith("http://") or image_value.startswith("https://"):
+            return image_value
+
+        # Erlaubt sowohl "icon.png" als auch "assets/icon.png".
+        candidate = Path(image_value)
+        if not candidate.is_absolute():
+            direct_candidate = (Path(__file__).parent / image_value).resolve()
+            if direct_candidate.exists():
+                return str(direct_candidate)
+
+            assets_candidate = (assets_dir / image_value).resolve()
+            if assets_candidate.exists():
+                return str(assets_candidate)
+
+        return image_value
+
+    fullscreen_image = ft.Image(
+        src="",
+        fit=ft.BoxFit.CONTAIN,
+        width=float('inf'),
+        height=float('inf'),
+    )
+
+    def close_fullscreen(e):
+        fullscreen_overlay.visible = False
+        e.page.update()
+
+    def open_fullscreen(image_src: str):
+        def _handler(e):
+            fullscreen_image.src = image_src
+            fullscreen_overlay.visible = True
+            e.page.update()
+        return _handler
+
+    fullscreen_overlay = ft.Container(
+        visible=False,
+        expand=True,
+        bgcolor="#FFFFFF",
+        content=ft.Stack(
+            [
+                ft.Container(
+                    content=fullscreen_image,
+                    padding=20,
+                    alignment=ft.Alignment.CENTER,
+                    expand=True,
+                ),
+                ft.Container(
+                    content=ft.IconButton(
+                        icon=ft.Icons.CLOSE,
+                        icon_color="#222222",
+                        icon_size=30,
+                        tooltip="Schließen",
+                        on_click=close_fullscreen,
+                    ),
+                    top=12,
+                    right=12,
+                ),
+            ],
+            expand=True,
+        ),
+    )
+
     news = [
         {
-            "title": "Englisch Review",
-            "date": "25. Februar 2026",
-            "image": "https://images.unsplash.com/photo-1610813328519-0ade655c40c1?q=80&w=1932&auto=format&fit=crop"
+            "title": "Willkommen bei Landly",
+            "date": "19. März 2026",
+            "image": "Landly.png"
         },
         {
-            "title": "Herbsternte beginnt",
-            "date": "10. Oktober 2024",
-            "image": "https://images.unsplash.com/photo-1569511850437-6dfab062c00b?q=80&w=759&auto=format&fit=crop"
+            "title": "Die Spargelzeit kommt",
+            "date": "10. März 2026",
+            "image": "https://images.unsplash.com/photo-1603309288666-421bc2a729db?q=80&w=1170&auto=format&fit=crop"
         },
         {
             "title": "Neues Hofladen-Café eröffnet",
-            "date": "1. September 2024",
+            "date": "1. Februar 2025",
             "image": "https://plus.unsplash.com/premium_photo-1674327105074-46dd8319164b?q=80&w=1170&auto=format&fit=crop"
         },
         {
-            "title": "Sommerferien-Öffnungszeiten",
-            "date": "20. Juli 2024",
-            "image": "https://plus.unsplash.com/premium_photo-1682535209719-839f625f8770?q=80&w=692&auto=format&fit=crop"
+            "title": "Wintergemüse",
+            "date": "17. Dezember 2025",
+            "image": "https://images.unsplash.com/photo-1605279682024-5a25531582dc?q=80&w=1171&auto=format&fit=crop"
         },
         {
-            "title": "Frühjahrsmarkt auf dem Hof",
-            "date": "5. Mai 2024",
-            "image": "https://images.unsplash.com/photo-1683511997653-6be0fc990ec9?q=80&w=715&auto=format&fit=crop"
+            "title": "Der Herbst ist da",
+            "date": "5. Oktober 2025",
+            "image": "https://images.unsplash.com/photo-1509622905150-fa66d3906e09?q=80&w=735&auto=format&fit=crop"
         },
     ]
     
@@ -63,18 +129,19 @@ def land():
             weight=ft.FontWeight.BOLD,
             color=PRIMARY_GREEN,
         ),
-        padding=ft.Padding.only(left=20, top=30, bottom=20),
+        padding=ft.padding.only(left=20, top=30, bottom=20),
     )
     
     # Nachrichtenkacheln
     news_items = []
     for article in news:
+        image_src = resolve_image_source(article["image"])
         item = ft.Container(
             content=ft.Stack(
                 [
                     # Background Image
                     ft.Image(
-                        src=article["image"],
+                        src=image_src,
                         fit=ft.BoxFit.COVER,
                         width=float('inf'),
                         height=150,
@@ -117,8 +184,9 @@ def land():
             height=150,
             border_radius=10,
             clip_behavior=ft.ClipBehavior.HARD_EDGE,
-            margin=ft.Margin.only(bottom=15),
+            margin=ft.margin.only(bottom=15),
             ink=True,
+            on_click=open_fullscreen(image_src),
         )
         news_items.append(item)
     
@@ -128,16 +196,22 @@ def land():
             news_items,
             spacing=0,
         ),
-        padding=ft.Padding.only(left=20, right=20, bottom=40),
+        padding=ft.padding.only(left=20, right=20, bottom=40),
     )
     
     # Zusammensetzen der Seite
-    return ft.Column(
-        [
-            header,
-            news_header,
-            news_list,
+    return ft.Stack(
+        controls=[
+            ft.Column(
+                [
+                    header,
+                    news_header,
+                    news_list,
+                ],
+                spacing=0,
+                scroll=ft.ScrollMode.AUTO,
+            ),
+            fullscreen_overlay,
         ],
-        spacing=0,
-        scroll=ft.ScrollMode.AUTO,
+        expand=True,
     )

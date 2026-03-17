@@ -1,0 +1,49 @@
+{
+  "frontend_clean": {
+    "label": "frontend_clean",
+    "same": 4,
+    "diff": [
+      "config.py",
+      "content.py",
+      "farmer.py",
+      "hofseite.py",
+      "landingpage.py",
+      "logreg.py",
+      "main.py",
+      "maptest.py",
+      "navbar.py",
+      "products.py",
+      "search.py",
+      "umsatzuebersicht.py",
+      "warenkorb.py"
+    ],
+    "only_src": [
+      "assets\\Landly.png"
+    ],
+    "only_kompilieren": [
+      "auth.py",
+      "searchFunctions.py"
+    ],
+    "total": 20
+  },
+  "backend_clean": {
+    "label": "backend_clean",
+    "same": 2,
+    "diff": [
+      "auth.py",
+      "bauernabfrage.py",
+      "crud.py",
+      "db.py",
+      "main.py",
+      "models.py",
+      "profilFunctions.py",
+      "warenkorbFunctions.py"
+    ],
+    "only_src": [
+      "logRegAuth.py",
+      "searchFunctions.py"
+    ],
+    "only_kompilieren": [],
+    "total": 12
+  }
+}

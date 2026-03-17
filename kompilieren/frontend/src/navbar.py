@@ -27,7 +27,7 @@ def navButton(icon, label, i, site):
         expand = True,
         on_click = click,
         alignment = ft.Alignment.CENTER,
-        padding = ft.Padding.symmetric(vertical = 8),
+        padding = ft.padding.symmetric(vertical = 8),
     )
 
 

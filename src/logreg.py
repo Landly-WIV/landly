@@ -150,6 +150,12 @@ def updRolFie(fie, page):
 
 def logRegPag(page):
     log = True
+    fie = []
+
+    def on_enter_submit(e):
+        # Enter soll nur im Login-Modus direkt anmelden.
+        if fie and fie[0] is True:
+            sub(e, fie, page)
 
     emaReg = r"^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$"
     pasReg = r"^[a-zA-Z0-9?!_-]{8,16}$"
@@ -167,7 +173,8 @@ def logRegPag(page):
         error=None,
         border_color = ft.Colors.GREY_400,
         on_change=lambda e: inpVal(e, emaReg),
-        on_blur=lambda e: bluVal(e, emaReg)
+        on_blur=lambda e: bluVal(e, emaReg),
+        on_submit=on_enter_submit,
     )
     
     pasFie = ft.TextField(
@@ -183,7 +190,8 @@ def logRegPag(page):
         error=None,
         border_color = ft.Colors.GREY_400,
         on_change=lambda e: inpVal(e, pasReg),
-        on_blur=lambda e: bluVal(e, pasReg)
+        on_blur=lambda e: bluVal(e, pasReg),
+        on_submit=on_enter_submit,
     )
     
     pasConFie = ft.TextField(
@@ -262,8 +270,6 @@ def logRegPag(page):
         on_change=lambda e: inpVal(e, namReg),
         on_blur=lambda e: bluVal(e, namReg)
     )
-
-    fie = []
 
     radGro = ft.RadioGroup(
         value="kunde",

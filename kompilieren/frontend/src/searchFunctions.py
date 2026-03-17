@@ -96,7 +96,7 @@ def updLab(site, sel, lab, selRow, catDro):
     selRow.controls.clear()
     for label_text in sel:
         but = ft.Button(
-            text=label_text,
+            content=label_text,
             icon=ft.Icons.CLOSE_SHARP,
             on_click=lambda e, lbl=label_text: remLabByName(e, lbl, site, sel, lab, selRow, catDro)
         )

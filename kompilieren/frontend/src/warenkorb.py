@@ -1,5 +1,5 @@
 import flet as ft
-import auth as logRegAut
+import backend.logRegAuth as logRegAut
 #import backend.bestellungFunctions as besFun
 
 _warenkorb = None
@@ -215,7 +215,7 @@ def warenkorbItem(item, site):
             color=ft.Colors.with_opacity(0.08, "#000000"),
             offset=ft.Offset(0, 2),
         ),
-        margin=ft.Margin.only(bottom=12, left=15, right=15),
+        margin=ft.margin.only(bottom=12, left=15, right=15),
     )
 
 def warenkorbPage(site):
@@ -280,8 +280,8 @@ def warenkorbPage(site):
                 f"Möchtest du die Bestellung über {getGesamtpreis():.2f} € wirklich aufgeben?"
             ),
             actions=[
-                ft.Button("Abbrechen", on_click=besDiaAbr),
-                ft.Button(
+                ft.TextButton("Abbrechen", on_click=besDiaAbr),
+                ft.ElevatedButton(
                     "Jetzt bestellen",
                     on_click=besDurFue,
                     bgcolor=PRIMARY_GREEN,
@@ -311,7 +311,7 @@ def warenkorbPage(site):
         ),
         bgcolor=PRIMARY_GREEN,
         padding=20,
-        margin=ft.Margin.only(bottom=20),
+        margin=ft.margin.only(bottom=20),
     )
     
     # Warenkorb-Items
@@ -372,13 +372,13 @@ def warenkorbPage(site):
                         alignment=ft.MainAxisAlignment.SPACE_BETWEEN,
                     ),
                     ft.Row(height=20),
-                    ft.Button(
+                    ft.TextButton(
                         "Warenkorb leeren",
                         icon=ft.Icons.DELETE_OUTLINE,
                         on_click=clear_click,
                         style=ft.ButtonStyle(color="#FF0000"),
                     ),
-                    ft.Button(
+                    ft.ElevatedButton(
                         "Jetzt bestellen",
                         icon=ft.Icons.CHECK_CIRCLE_OUTLINE,
                         on_click=bstAbsClick,
@@ -397,7 +397,7 @@ def warenkorbPage(site):
             padding=20,
             bgcolor=LIGHT_GRAY,
             border_radius=10,
-            margin=ft.Margin.only(top=20),
+            margin=ft.margin.only(top=20),
         )
         items_column.controls.append(footer)
     

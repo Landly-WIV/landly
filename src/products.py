@@ -1,4 +1,6 @@
 import flet as ft
+import asyncio
+import threading
 import content as co
 import warenkorb as wk
 import requests
@@ -57,6 +59,9 @@ def calDis(bauId):
 def proSit(proDat, sit):
     # State für die Menge
     current_menge = {"value": 1}
+    add_btn_ref = {"btn": None}
+    toast_ref = {"container": None, "text": None}
+    reset_timer_ref = {"timer": None}
     
     def bacCli(e):
         sit.seaSta.seaEna = True
@@ -64,11 +69,45 @@ def proSit(proDat, sit):
     
     def addToCarCli(e):
         wk.addToWarenkorb(proDat, menge=current_menge["value"])
-        sit.page.snack_bar = ft.SnackBar(
-            content=ft.Text(f"{current_menge['value']}x {proDat['name']} zum Warenkorb hinzugefügt"),
-            bgcolor="#90C040"
-        )
-        sit.page.snack_bar.open = True
+
+        if add_btn_ref["btn"] is not None:
+            add_btn_ref["btn"].text = "Hinzugefügt ✓"
+            add_btn_ref["btn"].disabled = True
+
+        if toast_ref["text"] is not None and toast_ref["container"] is not None:
+            toast_ref["text"].value = f"{current_menge['value']}x {proDat['name']} im Warenkorb"
+            toast_ref["container"].visible = True
+
+        sit.page.update()
+
+        try:
+            sit.page.run_task(reset_add_button_feedback)
+        except Exception:
+            if reset_timer_ref["timer"] is not None:
+                reset_timer_ref["timer"].cancel()
+
+            reset_timer_ref["timer"] = threading.Timer(1.4, reset_add_button_feedback_sync)
+            reset_timer_ref["timer"].daemon = True
+            reset_timer_ref["timer"].start()
+
+    def reset_add_button_feedback_sync():
+        if add_btn_ref["btn"] is not None:
+            add_btn_ref["btn"].text = "In den Warenkorb"
+            add_btn_ref["btn"].disabled = False
+        if toast_ref["container"] is not None:
+            toast_ref["container"].visible = False
+        try:
+            sit.page.update()
+        except Exception:
+            pass
+
+    async def reset_add_button_feedback():
+        await asyncio.sleep(1.2)
+        if add_btn_ref["btn"] is not None:
+            add_btn_ref["btn"].text = "In den Warenkorb"
+            add_btn_ref["btn"].disabled = False
+        if toast_ref["container"] is not None:
+            toast_ref["container"].visible = False
         sit.page.update()
     
     def menge_minus(e):
@@ -164,6 +203,7 @@ def proSit(proDat, sit):
                     content=menge_text,
                     width=50,
                     alignment=ft.Alignment.CENTER,
+                    padding=ft.padding.symmetric(horizontal=0),
                 ),
                 ft.IconButton(
                     icon=ft.Icons.ADD,
@@ -172,42 +212,82 @@ def proSit(proDat, sit):
                     icon_size=22,
                 ),
             ],
-            spacing=5,
+            spacing=0,
+            alignment=ft.MainAxisAlignment.CENTER,
         ),
         border=ft.border.all(2, ft.Colors.GREEN_700),
         border_radius=8,
-        padding=5,
-        width=180,
+        padding=ft.padding.symmetric(horizontal=10, vertical=5),
+        width=170,
+        alignment=ft.Alignment.CENTER,
     )
+
+    add_to_cart_button = ft.Button(
+        "In den Warenkorb",
+        on_click=addToCarCli,
+        bgcolor=ft.Colors.GREEN,
+        color=ft.Colors.WHITE,
+        width=250,
+        height=45,
+    )
+    add_btn_ref["btn"] = add_to_cart_button
+
+    toast_text = ft.Text(
+        "",
+        size=13,
+        color=ft.Colors.WHITE,
+        weight=ft.FontWeight.W_600,
+    )
+    toast_container = ft.Container(
+        content=ft.Row(
+            controls=[
+                ft.Icon(ft.Icons.CHECK_CIRCLE, color=ft.Colors.WHITE, size=18),
+                toast_text,
+            ],
+            spacing=8,
+            tight=True,
+        ),
+        bgcolor=ft.Colors.GREEN_700,
+        border_radius=12,
+        padding=ft.padding.symmetric(horizontal=12, vertical=10),
+        right=16,
+        bottom=16,
+        visible=False,
+    )
+    toast_ref["text"] = toast_text
+    toast_ref["container"] = toast_container
 
     foo = ft.Column(
         controls=[
             ft.Text("Menge:", size=14, weight=ft.FontWeight.BOLD),
             mengen_steuerung,
             ft.Container(height=15),
-            ft.Button(
-                "In den Warenkorb", 
-                on_click=addToCarCli, 
-                bgcolor=ft.Colors.GREEN, 
-                color=ft.Colors.WHITE,
-                width=250,
-                height=45,
-            ),
+            add_to_cart_button,
         ],
         horizontal_alignment=ft.CrossAxisAlignment.CENTER,
         spacing=8,
     )
 
-    return ft.Column(controls=[
-        ft.Row(),
-        hea,
-        ft.Divider(),
-        bod,
-        ft.Divider(),
-        foo,
-        ft.Divider()
-    ],
-    scroll=ft.ScrollMode.AUTO)
+    main_content = ft.Column(
+        controls=[
+            ft.Row(),
+            hea,
+            ft.Divider(),
+            bod,
+            ft.Divider(),
+            foo,
+            ft.Divider(),
+        ],
+        scroll=ft.ScrollMode.AUTO,
+    )
+
+    return ft.Stack(
+        controls=[
+            main_content,
+            toast_container,
+        ],
+        expand=True,
+    )
 
 def bacCli(e, sit):
     sit.seaSta.mode = None
@@ -231,13 +311,13 @@ def proSeaRes(pro, sit):
     else:
         filPro = pro
     
-    if hasattr(sit.seaSta, 'priSta') and hasattr(sit.seaSta, 'priEnd'):
+    if not getattr(sit.seaSta, 'showAllProducts', False) and hasattr(sit.seaSta, 'priSta') and hasattr(sit.seaSta, 'priEnd'):
         filPro = [
             p for p in filPro 
             if sit.seaSta.priSta <= p['preis'] <= sit.seaSta.priEnd
         ]
     
-    if hasattr(sit.seaSta, 'lab') and sit.seaSta.lab:
+    if not getattr(sit.seaSta, 'showAllProducts', False) and hasattr(sit.seaSta, 'lab') and sit.seaSta.lab:
         filPro = [
             p for p in filPro
             if any(

@@ -1,0 +1,15 @@
+﻿=== SUMMARY ===
+frontend same= diff=0 only_src=0 only_kompilieren=0 total=
+backend same= diff=0 only_src=0 only_kompilieren=0 total=
+
+=== FRONTEND DIFFERENT ===
+
+=== FRONTEND ONLY SRC ===
+
+=== FRONTEND ONLY KOMPILIEREN ===
+
+=== BACKEND DIFFERENT ===
+
+=== BACKEND ONLY SRC ===
+
+=== BACKEND ONLY KOMPILIEREN ===
