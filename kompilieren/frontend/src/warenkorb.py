@@ -1,5 +1,5 @@
 import flet as ft
-import backend.logRegAuth as logRegAut
+import auth as au
 #import backend.bestellungFunctions as besFun
 
 _warenkorb = None
@@ -248,13 +248,13 @@ def warenkorbPage(site):
         site.page.update()
 
     def bstAbsClick(e):
-        if not logRegAut.isLog():
+        if not au.isLog():
             import logreg as lr
             site.cont.content = lr.logRegPag(site.page)
             site.page.update()
             return
 
-        usrObj = logRegAut.getUseObj()
+        usrObj = au.getUseObj()
         if not usrObj or "user_id" not in usrObj:
             site.page.snack_bar = ft.SnackBar(
                 content=ft.Text("Bitte erneut anmelden."),
