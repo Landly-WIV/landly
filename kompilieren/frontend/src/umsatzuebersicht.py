@@ -1,5 +1,5 @@
 import flet as ft
-import backend.logRegAuth as au
+import auth as au
 
 
 def getUmsatzContent(site, username, PRIMARY_GREEN, ACCENT_GREEN, WHITE):
