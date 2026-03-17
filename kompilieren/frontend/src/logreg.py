@@ -1,5 +1,5 @@
 import flet as ft
-import backend.logRegAuth as au
+import auth as au
 import re
 
 def inpVal(e, regStr):
