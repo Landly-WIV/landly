@@ -79,7 +79,7 @@ def land():
         {
             "title": "Willkommen bei Landly",
             "date": "19. März 2026",
-            "image": "Landly.png"
+            "image": "https://github.com/Landly-WIV/landly/blob/main/kompilieren/frontend/src/assets/Landly.png"
         },
         {
             "title": "Die Spargelzeit kommt",
