@@ -126,6 +126,7 @@ class ProduktDetailed(Produkt):
 class ProduktListe(Produkt):
     bauer: Optional[Bauer] = None
     produktart: Optional[Produktart] = None
+    labels: List[Label] = []
     
     class Config:
         from_attributes = True

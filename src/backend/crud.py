@@ -11,7 +11,8 @@ def get_produkte(db: Session, skip: int = 0, limit: int = 100) -> List[models.Pr
     return db.query(models.Produkt)\
         .options(
             joinedload(models.Produkt.bauer),
-            joinedload(models.Produkt.produktart)
+            joinedload(models.Produkt.produktart),
+            joinedload(models.Produkt.labels)
         )\
         .offset(skip).limit(limit).all()
 

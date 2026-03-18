@@ -8,6 +8,43 @@ from config import API_URL, getProIco
 
 _proCac = None
 _bauCac = {}
+_proDetCac = {}
+
+def _norm_label(value):
+    return str(value or "").strip().casefold()
+
+def _extract_label_names(product_data):
+    labels = (product_data or {}).get('labels') or []
+    result = []
+
+    for label_item in labels:
+        if isinstance(label_item, dict):
+            label_name = label_item.get('bezeichnung') or label_item.get('name') or label_item.get('label')
+        else:
+            label_name = str(label_item)
+
+        if label_name:
+            result.append(label_name)
+
+    return result
+
+def _get_product_labels_with_fallback(product_data):
+    product_id = (product_data or {}).get('produkt_id') or (product_data or {}).get('proId')
+    label_names = _extract_label_names(product_data)
+
+    if label_names or not product_id:
+        return label_names
+
+    if product_id not in _proDetCac:
+        _proDetCac[product_id] = getProDet(product_id) or {}
+
+    details = _proDetCac.get(product_id) or {}
+    detail_label_names = _extract_label_names(details)
+
+    if detail_label_names:
+        product_data['labels'] = [{"bezeichnung": name} for name in detail_label_names]
+
+    return detail_label_names
 
 def getBauNam(bauId):
     global _bauCac
@@ -318,11 +355,20 @@ def proSeaRes(pro, sit):
         ]
     
     if not getattr(sit.seaSta, 'showAllProducts', False) and hasattr(sit.seaSta, 'lab') and sit.seaSta.lab:
+        selected_labels = {
+            _norm_label(label_name)
+            for label_name in sit.seaSta.lab
+            if _norm_label(label_name)
+        }
+
         filPro = [
             p for p in filPro
-            if any(
-                lab['bezeichnung'] in sit.seaSta.lab 
-                for lab in p.get('labels', [])
+            if selected_labels.intersection(
+                {
+                    _norm_label(label_name)
+                    for label_name in _get_product_labels_with_fallback(p)
+                    if _norm_label(label_name)
+                }
             )
         ]
     

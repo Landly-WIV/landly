@@ -134,6 +134,7 @@ def proSeaMas(site, lab):
     )
 
     catDro.on_select = on_dropdown_select
+    catDro.on_change = on_dropdown_select
     refresh_label_selection()
     
     seaBut = ft.ElevatedButton(
@@ -145,6 +146,7 @@ def proSeaMas(site, lab):
         width=200,
         height=45
     )
+    seaFie.on_submit = lambda e: sf.seaCli(e, site, seaFie)
     
     header = ft.Row(
         controls=[
@@ -311,6 +313,7 @@ def bauSeaMas(site):
         width=200,
         height=45
     )
+    seaFie.on_submit = lambda e: sf.seaCli(e, site, seaFie, disSli)
     
     header = ft.Row(
         controls=[
