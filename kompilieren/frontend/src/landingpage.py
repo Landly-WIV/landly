@@ -11,23 +11,30 @@ def land():
     
     # Dummy-Neuigkeiten
     assets_dir = Path(__file__).parent / "assets"
+    asset_name_lookup = {
+        p.name.lower(): p.name
+        for p in assets_dir.iterdir()
+        if p.is_file()
+    }
 
     def resolve_image_source(image_value: str) -> str:
         if image_value.startswith("http://") or image_value.startswith("https://"):
             return image_value
 
-        # Erlaubt sowohl "icon.png" als auch "assets/icon.png".
-        candidate = Path(image_value)
-        if not candidate.is_absolute():
-            direct_candidate = (Path(__file__).parent / image_value).resolve()
-            if direct_candidate.exists():
-                return str(direct_candidate)
+        normalized = str(image_value or "").replace("\\", "/").strip()
+        if normalized.startswith("assets/"):
+            normalized = normalized.split("/", 1)[1]
 
-            assets_candidate = (assets_dir / image_value).resolve()
-            if assets_candidate.exists():
-                return str(assets_candidate)
+        direct_candidate = Path(normalized)
+        if direct_candidate.name.lower() in asset_name_lookup:
+            # Bei gesetztem assets_dir reicht der Dateiname als src aus.
+            return asset_name_lookup[direct_candidate.name.lower()]
 
-        return image_value
+        assets_candidate = assets_dir / normalized
+        if assets_candidate.exists():
+            return assets_candidate.name
+
+        return normalized
 
     fullscreen_image = ft.Image(
         src="",
@@ -79,7 +86,7 @@ def land():
         {
             "title": "Willkommen bei Landly",
             "date": "19. März 2026",
-            "image": "https://github.com/Landly-WIV/landly/blob/main/kompilieren/frontend/src/assets/Landly.png"
+            "image": "landly.png"
         },
         {
             "title": "Die Spargelzeit kommt",

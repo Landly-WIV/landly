@@ -52,4 +52,5 @@ ft.app(
     view=ft.AppView.WEB_BROWSER,
     port=port,
     host="0.0.0.0",
+    assets_dir=str(ROOT / "src" / "assets"),
 )
