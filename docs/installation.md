@@ -434,13 +434,3 @@ Nach erfolgreicher Installation:
     mkdocs serve
     ```
     Öffne: [http://127.0.0.1:8000](http://127.0.0.1:8000)
-
----
-
-## 📞 Support
-
-Bei Problemen:
-
-- **Dokumentation**: Siehe [Technische Strategie](dev/technische-strategie.md)
-- **Issues**: GitHub Issues erstellen
-- **E-Mail**: dev@landly.de
