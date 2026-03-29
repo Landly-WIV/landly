@@ -126,23 +126,3 @@ Nur du und die Landwirte, bei denen du bestellst, sehen deine Kontaktdaten (Name
 ### Kann ich mein Konto löschen?
 
 Ja, unter **"Mein Konto" → "Sicherheit" → "Konto löschen"**. Alle Daten werden unwiderruflich gelöscht.
-
----
-
-## Support
-
-### Wie erreiche ich den Support?
-
-**E-Mail:** support@landly.de  
-**Erreichbarkeit:** Mo-Fr, 9:00-17:00 Uhr
-
-### Wie schnell bekomme ich eine Antwort?
-
-Wir antworten in der Regel innerhalb von 24 Stunden.
-
----
-
-## Weitere Fragen?
-
-!!! question "Noch Fragen?"
-    Wenn du hier keine Antwort gefunden hast, kontaktiere uns gerne per E-Mail: **support@landly.de**
