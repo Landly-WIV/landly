@@ -8,7 +8,7 @@
   <img src="https://img.shields.io/badge/Flet-0.24-green.svg" alt="Flet">
   <img src="https://img.shields.io/badge/FastAPI-0.110-teal.svg" alt="FastAPI">
   <img src="https://img.shields.io/badge/License-MIT-yellow.svg" alt="License">
-  <img src="https://img.shields.io/badge/Status-In%20Development-orange.svg" alt="Status">
+    <img src="https://img.shields.io/badge/Status-Abgeschlossen-brightgreen.svg" alt="Status">
 </p>
 
 ---
