@@ -33,9 +33,8 @@ Diese User-Dokumentation ist in folgende Bereiche unterteilt:
 ### Für Landwirt:innen
 
 - **[Registrierung als Landwirt](registrierung-login.md#registrierung-als-landwirt)** – Hofprofil anlegen
-- **[Produkte verwalten](landwirt-produkte.md)** – Produkte anlegen, bearbeiten, löschen
-- **[Bestellungen verwalten](landwirt-bestellungen.md)** – Eingehende Bestellungen bearbeiten
-- **[Hofprofil verwalten](landwirt-profil.md)** – Informationen zum Hof pflegen
+- **[Mein Konto](mein-konto.md)** – Profil und persönliche Daten verwalten
+- **[FAQ](faq.md)** – Antworten auf häufige Fragen für Kund:innen und Landwirt:innen
 
 ---
 
