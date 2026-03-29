@@ -428,7 +428,7 @@ Nach erfolgreicher Installation:
 
 - **[Test-Accounts & Demo-Daten](dev/testdaten.md)** - Vordefinierte Test-Accounts nutzen
 - **[API-Dokumentation](dev/api.md)** - Backend-Endpunkte erkunden
-- **[Entwickler-Dokumentation](dev/technische-uebersicht.md)** - Technische Details verstehen
+- **[Technische Strategie](dev/technische-strategie.md)** - Technologieentscheidungen und Workarounds verstehen
 - **[User-Dokumentation](user/einfuehrung.md)** - Anwendung aus User-Sicht kennenlernen
 
 ---
@@ -462,6 +462,6 @@ Nach erfolgreicher Installation:
 
 Bei Problemen:
 
-- **Dokumentation**: Siehe [Entwickler-Dokumentation](dev/technische-uebersicht.md)
+- **Dokumentation**: Siehe [Technische Strategie](dev/technische-strategie.md)
 - **Issues**: GitHub Issues erstellen
 - **E-Mail**: dev@landly.de

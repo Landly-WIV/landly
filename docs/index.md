@@ -84,8 +84,8 @@ Die Plattform wird mit folgenden Technologien entwickelt:
     **[📖 Nutzungshandbuch](user/einfuehrung.md)**  
     Anleitung zur Benutzung der Plattform (Registrierung, Produktsuche, Bestellung)
     
-    **[🎯 Technische Strategie](dev/technische-uebersicht.md)**  
-    Detaillierte technische Details, Setup, UML-Diagramme und Entscheidungen
+    **[🎯 Technische Strategie](dev/technische-strategie.md)**  
+    Methodische Technologieentscheidungen mit Alternativen, Skalierbarkeit, Wartbarkeit, Performance und Workarounds
     
     **[📅 Projektorganisation](organisation/weeklys-uebersicht.md)**  
     Wöchentliche Entwicklungsdokumentation und Teamorganisation
