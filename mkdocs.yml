@@ -46,11 +46,10 @@ nav:
       - FAQ: user/faq.md
   
   - Technische Strategie:
-      - Übersicht: dev/technische-uebersicht.md
+      - Technische Strategie: dev/technische-strategie.md
       - Setup & Installation: dev/setup.md
       - Konfiguration: dev/konfiguration.md
       - Test-Accounts & Demo: dev/testdaten.md
-      - Technische Entscheidungen: dev/technische-strategie.md
       - Logisches Modell: dev/logisches-modell.md
       - Datenbankschema: dev/datenbankschema.md
       - API-Dokumentation: dev/api.md
