@@ -46,17 +46,6 @@ Antworten auf die wichtigsten Fragen findest du hier:
 
 ---
 
-## 📞 Support
-
-Bei Problemen oder Fragen kannst du dich an unser Support-Team wenden:
-
-!!! question "Kontakt"
-    
-    **E-Mail:** support@landly.de  
-    **Erreichbarkeit:** Mo-Fr, 9:00-17:00 Uhr
-
----
-
 ## 🚀 Los geht's!
 
 !!! success "Nächste Schritte"

@@ -332,26 +332,6 @@ Dort findest du die interaktive API-Dokumentation (Swagger UI).
 2. **Login**: Melde dich an
 3. **Produktsuche**: Gebe eine PLZ ein (z.B. 12345)
 
-**Oder nutze Test-Accounts:**
-
-| Rolle | E-Mail | Passwort |
-|-------|--------|----------|
-| Kunde | kunde@landly.de | Test123! |
-| Landwirt | landwirt@landly.de | Test123! |
-| Admin | admin@landly.de | Admin123! |
-
----
-
-### 3. Testdaten laden (optional)
-
-Falls vorhanden, lade Beispieldaten:
-
-```bash
-python scripts/load_testdata.py
-```
-
-Dies erstellt Demo-Produkte, Höfe und Bestellungen zum Testen.
-
 ---
 
 ## 🐛 Troubleshooting
@@ -426,7 +406,6 @@ flet run --web src/main.py
 
 Nach erfolgreicher Installation:
 
-- **[Test-Accounts & Demo-Daten](dev/testdaten.md)** - Vordefinierte Test-Accounts nutzen
 - **[API-Dokumentation](dev/api.md)** - Backend-Endpunkte erkunden
 - **[Technische Strategie](dev/technische-strategie.md)** - Technologieentscheidungen und Workarounds verstehen
 - **[User-Dokumentation](user/einfuehrung.md)** - Anwendung aus User-Sicht kennenlernen
