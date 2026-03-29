@@ -1,0 +1,2244 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+        <link rel="canonical" href="https://sitename.example/technische-dokumentation/">
+      
+      
+        <link rel="prev" href="../installation/">
+      
+      
+        <link rel="next" href="../user/einfuehrung/">
+      
+      
+        
+      
+      
+      <link rel="icon" href="../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.6">
+    
+    
+      
+        <title>Technische Dokumentation - Dokumentation</title>
+      
+    
+    
+      <link rel="stylesheet" href="../assets/stylesheets/main.484c7ddc.min.css">
+      
+        
+        <link rel="stylesheet" href="../assets/stylesheets/palette.ab4e12ef.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Merriweather+Sans:300,300i,400,400i,700,700i%7CRed+Hat+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Merriweather Sans";--md-code-font:"Red Hat Mono"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="../styles/extra.css">
+    
+    <script>__md_scope=new URL("..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="green" data-md-color-accent="lime">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#technische-dokumentation" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow md-header--lifted" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href=".." title="Dokumentation" class="md-header__button md-logo" aria-label="Dokumentation" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Dokumentation
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Technische Dokumentation
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="default" data-md-color-primary="green" data-md-color-accent="lime"  aria-label="Dunkelmodus"  type="radio" name="__palette" id="__palette_0">
+    
+      <label class="md-header__button md-icon" title="Dunkelmodus" for="__palette_1" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m17.75 4.09-2.53 1.94.91 3.06-2.63-1.81-2.63 1.81.91-3.06-2.53-1.94L12.44 4l1.06-3 1.06 3zm3.5 6.91-1.64 1.25.59 1.98-1.7-1.17-1.7 1.17.59-1.98L15.75 11l2.06-.05L18.5 9l.69 1.95zm-2.28 4.95c.83-.08 1.72 1.1 1.19 1.85-.32.45-.66.87-1.08 1.27C15.17 23 8.84 23 4.94 19.07c-3.91-3.9-3.91-10.24 0-14.14.4-.4.82-.76 1.27-1.08.75-.53 1.93.36 1.85 1.19-.27 2.86.69 5.83 2.89 8.02a9.96 9.96 0 0 0 8.02 2.89m-1.64 2.02a12.08 12.08 0 0 1-7.8-3.47c-2.17-2.19-3.33-5-3.49-7.82-2.81 3.14-2.7 7.96.31 10.98 3.02 3.01 7.84 3.12 10.98.31"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="slate" data-md-color-primary="green" data-md-color-accent="lime"  aria-label="Hellmodus"  type="radio" name="__palette" id="__palette_1">
+    
+      <label class="md-header__button md-icon" title="Hellmodus" for="__palette_0" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 7a5 5 0 0 1 5 5 5 5 0 0 1-5 5 5 5 0 0 1-5-5 5 5 0 0 1 5-5m0 2a3 3 0 0 0-3 3 3 3 0 0 0 3 3 3 3 0 0 0 3-3 3 3 0 0 0-3-3m0-7 2.39 3.42C13.65 5.15 12.84 5 12 5s-1.65.15-2.39.42zM3.34 7l4.16-.35A7.2 7.2 0 0 0 5.94 8.5c-.44.74-.69 1.5-.83 2.29zm.02 10 1.76-3.77a7.131 7.131 0 0 0 2.38 4.14zM20.65 7l-1.77 3.79a7.02 7.02 0 0 0-2.38-4.15zm-.01 10-4.14.36c.59-.51 1.12-1.14 1.54-1.86.42-.73.69-1.5.83-2.29zM12 22l-2.41-3.44c.74.27 1.55.44 2.41.44.82 0 1.63-.17 2.37-.44z"/></svg>
+      </label>
+    
+  
+</form>
+      
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+        <div class="md-search__suggest" data-md-component="search-suggest"></div>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+  </nav>
+  
+    
+      
+<nav class="md-tabs" aria-label="Tabs" data-md-component="tabs">
+  <div class="md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href=".." class="md-tabs__link">
+        
+  
+  
+    
+  
+  Home
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../installation/" class="md-tabs__link">
+        
+  
+  
+    
+  
+  Installation & Quick Start
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+    
+  
+  
+    <li class="md-tabs__item md-tabs__item--active">
+      <a href="./" class="md-tabs__link">
+        
+  
+  
+    
+  
+  Technische Dokumentation
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../user/einfuehrung/" class="md-tabs__link">
+          
+  
+  
+  Nutzungshandbuch
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../dev/technische-strategie/" class="md-tabs__link">
+          
+  
+  
+  Technische Strategie
+
+        </a>
+      </li>
+    
+  
+
+      
+    </ul>
+  </div>
+</nav>
+    
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+  
+
+
+  
+
+<nav class="md-nav md-nav--primary md-nav--lifted md-nav--integrated" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href=".." title="Dokumentation" class="md-nav__button md-logo" aria-label="Dokumentation" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    Dokumentation
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href=".." class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Home
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../installation/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Installation & Quick Start
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Technische Dokumentation
+  
+
+    
+  </span>
+  
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Technische Dokumentation
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#aktivitatsdiagramm" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        🏗️ Aktivitätsdiagramm
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#sequenzdiagramm" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        🔄 Sequenzdiagramm
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#klassendiagramm" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        🏛️ Klassendiagramm
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#logisches-datenbankmodell-er-diagramm" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        🗄️ Logisches Datenbankmodell (ER-Diagramm)
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#physisches-datenbankmodell" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        📋 Physisches Datenbankmodell
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="📋 Physisches Datenbankmodell">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#tabelle-users" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Tabelle: users
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#tabelle-farmers" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Tabelle: farmers
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#tabelle-products" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Tabelle: products
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#tabelle-orders" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Tabelle: orders
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#tabelle-order_items" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Tabelle: order_items
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#datenbank-indizes" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Datenbank-Indizes
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#api-referenz" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        🔌 API-Referenz
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="🔌 API-Referenz">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#ubersicht" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Übersicht
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#hauptendpunkte" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Hauptendpunkte
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Hauptendpunkte">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#authentifizierung" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Authentifizierung
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#produkte" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Produkte
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#bestellungen" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Bestellungen
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#landwirte" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Landwirte
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#suche" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Suche
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#benutzer" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Benutzer
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#wichtige-datenstrukturen" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Wichtige Datenstrukturen
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Wichtige Datenstrukturen">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#product-response" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Product (Response)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#order-response" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Order (Response)
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#weiterfuhrende-dokumentation" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        📖 Weiterführende Dokumentation
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#architekturprinzipien" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        🎯 Architekturprinzipien
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="🎯 Architekturprinzipien">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#separation-of-concerns" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Separation of Concerns
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#stateless-api" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Stateless API
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#restful-design" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        RESTful Design
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#security-first" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Security First
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#externe-dokumentation" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        🔗 Externe Dokumentation
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_4" >
+        
+          
+          <label class="md-nav__link" for="__nav_4" id="__nav_4_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Nutzungshandbuch
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Nutzungshandbuch
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../user/einfuehrung/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Einführung
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../user/registrierung-login/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Registrierung & Login
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../user/produkte-suchen/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Produkte suchen
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../user/bestellung/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Bestellung aufgeben
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../user/abholung/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Abholung
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../user/mein-konto/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Mein Konto
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../user/faq/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    FAQ
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_5" >
+        
+          
+          <label class="md-nav__link" for="__nav_5" id="__nav_5_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Technische Strategie
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_5_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_5">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Technische Strategie
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../dev/technische-strategie/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Technische Strategie
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../dev/setup/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Setup & Installation
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../dev/konfiguration/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Konfiguration
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../dev/testdaten/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Test-Accounts & Demo
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../dev/logisches-modell/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Logisches Modell
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../dev/datenbankschema/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Datenbankschema
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../dev/api/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    API-Dokumentation
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_5_8" >
+        
+          
+          <label class="md-nav__link" for="__nav_5_8" id="__nav_5_8_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    UML-Diagramme
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_5_8_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_5_8">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    UML-Diagramme
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../dev/uml-usecase/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Use-Case-Diagramm
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../dev/uml-klassen/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Klassendiagramm
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../dev/uml-sequenz/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Sequenzdiagramme
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+
+<h1 id="technische-dokumentation">👨‍💻 Technische Dokumentation<a class="headerlink" href="#technische-dokumentation" title="Permanent link">&para;</a></h1>
+<p>Diese Seite bietet einen technischen Überblick über die Architektur und Struktur von Landly.</p>
+<hr />
+<h2 id="aktivitatsdiagramm">🏗️ Aktivitätsdiagramm<a class="headerlink" href="#aktivitatsdiagramm" title="Permanent link">&para;</a></h2>
+<p>Das Aktivitätsdiagramm zeigt den Ablauf und die Interaktionen im System:</p>
+<p><img alt="Aktivitätsdiagramm" src="../images/aktivit%C3%A4tsdiagramm.png" style="max-width: 600px; width: 100%;" /></p>
+<p><strong>Beschreibung:</strong></p>
+<p>Das Diagramm visualisiert die Hauptaktivitäten und Entscheidungspunkte im System. Es zeigt, wie Benutzer durch verschiedene Prozesse navigieren - von der Registrierung über die Produktsuche bis zur Bestellung.</p>
+<p><strong>Kernkomponenten:</strong>
+- Benutzer-Authentifizierung
+- Produktsuche und Filterung
+- Warenkorb-Verwaltung
+- Bestellprozess
+- Admin- und Landwirt-Funktionen</p>
+<hr />
+<h2 id="sequenzdiagramm">🔄 Sequenzdiagramm<a class="headerlink" href="#sequenzdiagramm" title="Permanent link">&para;</a></h2>
+<p>Das Sequenzdiagramm zeigt die zeitliche Abfolge der Interaktionen zwischen Komponenten:</p>
+<p><img alt="Sequenzdiagramm" src="../images/sequenzdiagramm.png" style="max-width: 600px; width: 100%;" /></p>
+<p><strong>Beschreibung:</strong></p>
+<p>Dieses Diagramm illustriert die Kommunikation zwischen Frontend, Backend und Datenbank während eines typischen Anwendungsfalls. Es zeigt den Nachrichtenfluss und die Reihenfolge der Operationen.</p>
+<p><strong>Dargestellte Prozesse:</strong>
+- API-Requests und Responses
+- Datenbank-Abfragen
+- Authentifizierungs-Flow
+- Datenvalidierung
+- Fehlerbehandlung</p>
+<hr />
+<h2 id="klassendiagramm">🏛️ Klassendiagramm<a class="headerlink" href="#klassendiagramm" title="Permanent link">&para;</a></h2>
+<p>Das Klassendiagramm zeigt die Objektstruktur und Beziehungen im System:</p>
+<p><img alt="Klassendiagramm" src="../images/klassendiagramm.png" style="max-width: 600px; width: 100%;" /></p>
+<p><strong>Beschreibung:</strong></p>
+<p>Das Klassendiagramm definiert die Hauptentitäten des Systems und deren Beziehungen. Es bildet die Grundlage für das Datenbankmodell und die Backend-Logik.</p>
+<p><strong>Hauptklassen:</strong>
+- <strong>User</strong>: Benutzer (Kunde, Landwirt, Admin)
+- <strong>Farmer</strong>: Erweiterte Landwirt-Informationen
+- <strong>Product</strong>: Produkte der Landwirte
+- <strong>Order</strong>: Bestellungen
+- <strong>OrderItem</strong>: Bestellpositionen</p>
+<p><strong>Beziehungen:</strong>
+- User ↔ Farmer (1:1)
+- User ↔ Order (1:n)
+- Farmer ↔ Product (1:n)
+- Order ↔ OrderItem (1:n)
+- Product ↔ OrderItem (n:m)</p>
+<hr />
+<h2 id="logisches-datenbankmodell-er-diagramm">🗄️ Logisches Datenbankmodell (ER-Diagramm)<a class="headerlink" href="#logisches-datenbankmodell-er-diagramm" title="Permanent link">&para;</a></h2>
+<p>Das Entity-Relationship-Diagramm zeigt die logische Struktur der Datenbank:</p>
+<p><img alt="ER-Modell" src="../images/ER%20modell.png" style="max-width: 600px; width: 100%;" /></p>
+<p><strong>Beschreibung:</strong></p>
+<p>Das ER-Diagramm modelliert die Entitäten und ihre Beziehungen auf konzeptioneller Ebene, bevor sie in das physische Datenbankschema überführt werden.</p>
+<p><strong>Hauptentitäten:</strong>
+- <strong>Bauern</strong>: Landwirte mit Hofprofil
+- <strong>Kunden</strong>: Konsumenten der Plattform<br />
+- <strong>Produkte</strong>: Angebotene Produkte
+- <strong>Bestellungen</strong>: Kundenaufträge
+- <strong>Standorte</strong>: Geografische Informationen
+- <strong>Ort</strong>: PLZ-Zuordnung</p>
+<p><strong>Kardinalitäten:</strong>
+- Ein Bauer kann mehrere Produkte anbieten (1:n)
+- Ein Kunde kann mehrere Bestellungen aufgeben (1:n)
+- Eine Bestellung enthält mehrere Bestellpositionen (1:n)
+- Ein Produkt kann in mehreren Bestellpositionen vorkommen (n:m über Bestellposition)</p>
+<hr />
+<h2 id="physisches-datenbankmodell">📋 Physisches Datenbankmodell<a class="headerlink" href="#physisches-datenbankmodell" title="Permanent link">&para;</a></h2>
+<p>Das System basiert auf einem relationalen Datenbankmodell mit folgenden Haupttabellen:</p>
+<h4 id="tabelle-users">Tabelle: users<a class="headerlink" href="#tabelle-users" title="Permanent link">&para;</a></h4>
+<p>Speichert alle Benutzer des Systems.</p>
+<table>
+<thead>
+<tr>
+<th>Feld</th>
+<th>Typ</th>
+<th>Beschreibung</th>
+<th>Constraints</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>id</code></td>
+<td>INTEGER</td>
+<td>Primärschlüssel</td>
+<td>PK, AUTO_INCREMENT</td>
+</tr>
+<tr>
+<td><code>email</code></td>
+<td>VARCHAR(255)</td>
+<td>E-Mail-Adresse</td>
+<td>UNIQUE, NOT NULL</td>
+</tr>
+<tr>
+<td><code>password_hash</code></td>
+<td>VARCHAR(255)</td>
+<td>Gehashtes Passwort</td>
+<td>NOT NULL</td>
+</tr>
+<tr>
+<td><code>first_name</code></td>
+<td>VARCHAR(100)</td>
+<td>Vorname</td>
+<td>NOT NULL</td>
+</tr>
+<tr>
+<td><code>last_name</code></td>
+<td>VARCHAR(100)</td>
+<td>Nachname</td>
+<td>NOT NULL</td>
+</tr>
+<tr>
+<td><code>role</code></td>
+<td>VARCHAR(20)</td>
+<td>Rolle (customer/farmer/admin)</td>
+<td>NOT NULL</td>
+</tr>
+<tr>
+<td><code>street</code></td>
+<td>VARCHAR(255)</td>
+<td>Straße</td>
+<td>NOT NULL</td>
+</tr>
+<tr>
+<td><code>plz</code></td>
+<td>VARCHAR(10)</td>
+<td>Postleitzahl</td>
+<td>NOT NULL</td>
+</tr>
+<tr>
+<td><code>city</code></td>
+<td>VARCHAR(100)</td>
+<td>Stadt</td>
+<td>NOT NULL</td>
+</tr>
+<tr>
+<td><code>phone</code></td>
+<td>VARCHAR(50)</td>
+<td>Telefonnummer</td>
+<td>NULL</td>
+</tr>
+<tr>
+<td><code>created_at</code></td>
+<td>DATETIME</td>
+<td>Erstellungsdatum</td>
+<td>DEFAULT NOW()</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Anmerkungen:</strong>
+- E-Mail ist eindeutig und dient als Login
+- Passwort wird mit bcrypt gehasht
+- Rolle bestimmt Zugriffsrechte im System</p>
+<hr />
+<h4 id="tabelle-farmers">Tabelle: farmers<a class="headerlink" href="#tabelle-farmers" title="Permanent link">&para;</a></h4>
+<p>Erweiterte Informationen für Landwirte.</p>
+<table>
+<thead>
+<tr>
+<th>Feld</th>
+<th>Typ</th>
+<th>Beschreibung</th>
+<th>Constraints</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>id</code></td>
+<td>INTEGER</td>
+<td>Primärschlüssel</td>
+<td>PK, AUTO_INCREMENT</td>
+</tr>
+<tr>
+<td><code>user_id</code></td>
+<td>INTEGER</td>
+<td>Referenz zu users</td>
+<td>FK, UNIQUE, NOT NULL</td>
+</tr>
+<tr>
+<td><code>farm_name</code></td>
+<td>VARCHAR(255)</td>
+<td>Name des Hofes</td>
+<td>NOT NULL</td>
+</tr>
+<tr>
+<td><code>description</code></td>
+<td>TEXT</td>
+<td>Hofbeschreibung</td>
+<td>NULL</td>
+</tr>
+<tr>
+<td><code>farm_street</code></td>
+<td>VARCHAR(255)</td>
+<td>Straße des Hofes</td>
+<td>NOT NULL</td>
+</tr>
+<tr>
+<td><code>farm_plz</code></td>
+<td>VARCHAR(10)</td>
+<td>PLZ des Hofes</td>
+<td>NOT NULL</td>
+</tr>
+<tr>
+<td><code>farm_city</code></td>
+<td>VARCHAR(100)</td>
+<td>Stadt des Hofes</td>
+<td>NOT NULL</td>
+</tr>
+<tr>
+<td><code>bio_certified</code></td>
+<td>BOOLEAN</td>
+<td>Bio-Zertifizierung</td>
+<td>DEFAULT FALSE</td>
+</tr>
+<tr>
+<td><code>is_approved</code></td>
+<td>BOOLEAN</td>
+<td>Admin-Freigabe</td>
+<td>DEFAULT FALSE</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Anmerkungen:</strong>
+- Ein User kann nur ein Farmer-Profil haben
+- <code>is_approved</code> muss <code>TRUE</code> sein, damit Produkte angelegt werden können
+- <code>farm_plz</code> wird für Umkreissuche verwendet (indiziert)</p>
+<hr />
+<h4 id="tabelle-products">Tabelle: products<a class="headerlink" href="#tabelle-products" title="Permanent link">&para;</a></h4>
+<p>Produkte der Landwirte.</p>
+<table>
+<thead>
+<tr>
+<th>Feld</th>
+<th>Typ</th>
+<th>Beschreibung</th>
+<th>Constraints</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>id</code></td>
+<td>INTEGER</td>
+<td>Primärschlüssel</td>
+<td>PK, AUTO_INCREMENT</td>
+</tr>
+<tr>
+<td><code>farmer_id</code></td>
+<td>INTEGER</td>
+<td>Referenz zu farmers</td>
+<td>FK, NOT NULL</td>
+</tr>
+<tr>
+<td><code>name</code></td>
+<td>VARCHAR(255)</td>
+<td>Produktname</td>
+<td>NOT NULL</td>
+</tr>
+<tr>
+<td><code>description</code></td>
+<td>TEXT</td>
+<td>Produktbeschreibung</td>
+<td>NULL</td>
+</tr>
+<tr>
+<td><code>category</code></td>
+<td>VARCHAR(100)</td>
+<td>Kategorie</td>
+<td>NOT NULL</td>
+</tr>
+<tr>
+<td><code>price</code></td>
+<td>DECIMAL(10,2)</td>
+<td>Preis pro Einheit</td>
+<td>NOT NULL</td>
+</tr>
+<tr>
+<td><code>unit</code></td>
+<td>VARCHAR(50)</td>
+<td>Einheit (kg, Stück, etc.)</td>
+<td>NOT NULL</td>
+</tr>
+<tr>
+<td><code>bio</code></td>
+<td>BOOLEAN</td>
+<td>Bio-Qualität</td>
+<td>DEFAULT FALSE</td>
+</tr>
+<tr>
+<td><code>available</code></td>
+<td>BOOLEAN</td>
+<td>Verfügbarkeit</td>
+<td>DEFAULT TRUE</td>
+</tr>
+<tr>
+<td><code>created_at</code></td>
+<td>DATETIME</td>
+<td>Erstellungsdatum</td>
+<td>DEFAULT NOW()</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Anmerkungen:</strong>
+- Kategorie für Filterung (z.B. "Gemüse", "Obst", "Milchprodukte")
+- Preis wird in Euro gespeichert
+- <code>available</code> = <code>FALSE</code> graut Produkt aus (nicht mehr bestellbar)</p>
+<hr />
+<h4 id="tabelle-orders">Tabelle: orders<a class="headerlink" href="#tabelle-orders" title="Permanent link">&para;</a></h4>
+<p>Bestellungen von Kunden.</p>
+<table>
+<thead>
+<tr>
+<th>Feld</th>
+<th>Typ</th>
+<th>Beschreibung</th>
+<th>Constraints</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>id</code></td>
+<td>INTEGER</td>
+<td>Primärschlüssel</td>
+<td>PK, AUTO_INCREMENT</td>
+</tr>
+<tr>
+<td><code>customer_id</code></td>
+<td>INTEGER</td>
+<td>Referenz zu users</td>
+<td>FK, NOT NULL</td>
+</tr>
+<tr>
+<td><code>farmer_id</code></td>
+<td>INTEGER</td>
+<td>Referenz zu farmers</td>
+<td>FK, NOT NULL</td>
+</tr>
+<tr>
+<td><code>status</code></td>
+<td>VARCHAR(20)</td>
+<td>Status der Bestellung</td>
+<td>NOT NULL</td>
+</tr>
+<tr>
+<td><code>total_price</code></td>
+<td>DECIMAL(10,2)</td>
+<td>Gesamtpreis</td>
+<td>NOT NULL</td>
+</tr>
+<tr>
+<td><code>pickup_date</code></td>
+<td>DATETIME</td>
+<td>Geplantes Abholdatum</td>
+<td>NULL</td>
+</tr>
+<tr>
+<td><code>created_at</code></td>
+<td>DATETIME</td>
+<td>Bestelldatum</td>
+<td>DEFAULT NOW()</td>
+</tr>
+<tr>
+<td><code>updated_at</code></td>
+<td>DATETIME</td>
+<td>Letzte Änderung</td>
+<td>DEFAULT NOW()</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Status-Werte:</strong>
+- <code>open</code> - Bestellung eingegangen
+- <code>confirmed</code> - Von Landwirt bestätigt
+- <code>picked_up</code> - Abgeholt
+- <code>cancelled</code> - Storniert</p>
+<p><strong>Anmerkungen:</strong>
+- Eine Bestellung gehört zu genau einem Landwirt
+- Total_price wird beim Erstellen berechnet und gespeichert
+- Status-Updates ändern <code>updated_at</code> automatisch</p>
+<hr />
+<h4 id="tabelle-order_items">Tabelle: order_items<a class="headerlink" href="#tabelle-order_items" title="Permanent link">&para;</a></h4>
+<p>Einzelne Positionen innerhalb einer Bestellung.</p>
+<table>
+<thead>
+<tr>
+<th>Feld</th>
+<th>Typ</th>
+<th>Beschreibung</th>
+<th>Constraints</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>id</code></td>
+<td>INTEGER</td>
+<td>Primärschlüssel</td>
+<td>PK, AUTO_INCREMENT</td>
+</tr>
+<tr>
+<td><code>order_id</code></td>
+<td>INTEGER</td>
+<td>Referenz zu orders</td>
+<td>FK, NOT NULL</td>
+</tr>
+<tr>
+<td><code>product_id</code></td>
+<td>INTEGER</td>
+<td>Referenz zu products</td>
+<td>FK, NOT NULL</td>
+</tr>
+<tr>
+<td><code>quantity</code></td>
+<td>INTEGER</td>
+<td>Menge</td>
+<td>NOT NULL</td>
+</tr>
+<tr>
+<td><code>unit_price</code></td>
+<td>DECIMAL(10,2)</td>
+<td>Preis zum Bestellzeitpunkt</td>
+<td>NOT NULL</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Anmerkungen:</strong>
+- <code>unit_price</code> speichert Preis zum Zeitpunkt der Bestellung (historische Genauigkeit)
+- Bei Produktlöschung bleibt OrderItem erhalten (ON DELETE RESTRICT)
+- Gesamtpreis eines Items = <code>quantity * unit_price</code></p>
+<hr />
+<h3 id="datenbank-indizes">Datenbank-Indizes<a class="headerlink" href="#datenbank-indizes" title="Permanent link">&para;</a></h3>
+<p>Für optimale Performance wurden folgende Indizes angelegt:</p>
+<div class="highlight"><pre><span></span><code><span class="k">CREATE</span><span class="w"> </span><span class="k">INDEX</span><span class="w"> </span><span class="n">idx_users_email</span><span class="w"> </span><span class="k">ON</span><span class="w"> </span><span class="n">users</span><span class="p">(</span><span class="n">email</span><span class="p">);</span>
+<span class="k">CREATE</span><span class="w"> </span><span class="k">INDEX</span><span class="w"> </span><span class="n">idx_farmers_plz</span><span class="w"> </span><span class="k">ON</span><span class="w"> </span><span class="n">farmers</span><span class="p">(</span><span class="n">farm_plz</span><span class="p">);</span>
+<span class="k">CREATE</span><span class="w"> </span><span class="k">INDEX</span><span class="w"> </span><span class="n">idx_products_category</span><span class="w"> </span><span class="k">ON</span><span class="w"> </span><span class="n">products</span><span class="p">(</span><span class="n">category</span><span class="p">);</span>
+<span class="k">CREATE</span><span class="w"> </span><span class="k">INDEX</span><span class="w"> </span><span class="n">idx_products_available</span><span class="w"> </span><span class="k">ON</span><span class="w"> </span><span class="n">products</span><span class="p">(</span><span class="n">available</span><span class="p">);</span>
+<span class="k">CREATE</span><span class="w"> </span><span class="k">INDEX</span><span class="w"> </span><span class="n">idx_orders_customer</span><span class="w"> </span><span class="k">ON</span><span class="w"> </span><span class="n">orders</span><span class="p">(</span><span class="n">customer_id</span><span class="p">);</span>
+<span class="k">CREATE</span><span class="w"> </span><span class="k">INDEX</span><span class="w"> </span><span class="n">idx_orders_farmer</span><span class="w"> </span><span class="k">ON</span><span class="w"> </span><span class="n">orders</span><span class="p">(</span><span class="n">farmer_id</span><span class="p">);</span>
+<span class="k">CREATE</span><span class="w"> </span><span class="k">INDEX</span><span class="w"> </span><span class="n">idx_orders_status</span><span class="w"> </span><span class="k">ON</span><span class="w"> </span><span class="n">orders</span><span class="p">(</span><span class="n">status</span><span class="p">);</span>
+</code></pre></div>
+<p><strong>Begründung:</strong>
+- <code>users.email</code>: Login-Vorgänge
+- <code>farmers.farm_plz</code>: Umkreissuche
+- <code>products.category</code>: Filterung nach Kategorie
+- <code>orders.*_id</code>: Zugriff auf Bestellungen nach Benutzer/Landwirt</p>
+<hr />
+<h2 id="api-referenz">🔌 API-Referenz<a class="headerlink" href="#api-referenz" title="Permanent link">&para;</a></h2>
+<h3 id="ubersicht">Übersicht<a class="headerlink" href="#ubersicht" title="Permanent link">&para;</a></h3>
+<p>Die REST-API basiert auf <strong>FastAPI</strong> und folgt RESTful-Prinzipien.</p>
+<p><strong>Base URL (lokal):</strong> <code>http://localhost:8000/api</code></p>
+<p><strong>Authentifizierung:</strong> JWT Bearer Token</p>
+<h3 id="hauptendpunkte">Hauptendpunkte<a class="headerlink" href="#hauptendpunkte" title="Permanent link">&para;</a></h3>
+<h4 id="authentifizierung">Authentifizierung<a class="headerlink" href="#authentifizierung" title="Permanent link">&para;</a></h4>
+<table>
+<thead>
+<tr>
+<th>Methode</th>
+<th>Endpunkt</th>
+<th>Beschreibung</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>POST</td>
+<td><code>/auth/register</code></td>
+<td>Neuen Benutzer registrieren</td>
+</tr>
+<tr>
+<td>POST</td>
+<td><code>/auth/login</code></td>
+<td>Anmelden und Token erhalten</td>
+</tr>
+</tbody>
+</table>
+<h4 id="produkte">Produkte<a class="headerlink" href="#produkte" title="Permanent link">&para;</a></h4>
+<table>
+<thead>
+<tr>
+<th>Methode</th>
+<th>Endpunkt</th>
+<th>Beschreibung</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>GET</td>
+<td><code>/products</code></td>
+<td>Alle Produkte abrufen (mit Filtern)</td>
+</tr>
+<tr>
+<td>GET</td>
+<td><code>/products/{id}</code></td>
+<td>Einzelnes Produkt abrufen</td>
+</tr>
+<tr>
+<td>POST</td>
+<td><code>/products</code></td>
+<td>Neues Produkt erstellen (Farmer)</td>
+</tr>
+<tr>
+<td>PUT</td>
+<td><code>/products/{id}</code></td>
+<td>Produkt aktualisieren (Farmer)</td>
+</tr>
+<tr>
+<td>DELETE</td>
+<td><code>/products/{id}</code></td>
+<td>Produkt löschen (Farmer)</td>
+</tr>
+</tbody>
+</table>
+<h4 id="bestellungen">Bestellungen<a class="headerlink" href="#bestellungen" title="Permanent link">&para;</a></h4>
+<table>
+<thead>
+<tr>
+<th>Methode</th>
+<th>Endpunkt</th>
+<th>Beschreibung</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>GET</td>
+<td><code>/orders</code></td>
+<td>Eigene Bestellungen abrufen</td>
+</tr>
+<tr>
+<td>GET</td>
+<td><code>/orders/{id}</code></td>
+<td>Einzelne Bestellung abrufen</td>
+</tr>
+<tr>
+<td>POST</td>
+<td><code>/orders</code></td>
+<td>Neue Bestellung erstellen</td>
+</tr>
+<tr>
+<td>PATCH</td>
+<td><code>/orders/{id}/status</code></td>
+<td>Bestellstatus ändern (Farmer)</td>
+</tr>
+</tbody>
+</table>
+<h4 id="landwirte">Landwirte<a class="headerlink" href="#landwirte" title="Permanent link">&para;</a></h4>
+<table>
+<thead>
+<tr>
+<th>Methode</th>
+<th>Endpunkt</th>
+<th>Beschreibung</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>GET</td>
+<td><code>/farmers/{id}</code></td>
+<td>Landwirt-Informationen</td>
+</tr>
+<tr>
+<td>GET</td>
+<td><code>/farmers/{id}/products</code></td>
+<td>Produkte eines Landwirts</td>
+</tr>
+<tr>
+<td>POST</td>
+<td><code>/farmers</code></td>
+<td>Farmer-Profil erstellen</td>
+</tr>
+</tbody>
+</table>
+<h4 id="suche">Suche<a class="headerlink" href="#suche" title="Permanent link">&para;</a></h4>
+<table>
+<thead>
+<tr>
+<th>Methode</th>
+<th>Endpunkt</th>
+<th>Beschreibung</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>GET</td>
+<td><code>/search?plz={plz}&amp;radius={km}</code></td>
+<td>Umkreissuche nach PLZ</td>
+</tr>
+</tbody>
+</table>
+<h4 id="benutzer">Benutzer<a class="headerlink" href="#benutzer" title="Permanent link">&para;</a></h4>
+<table>
+<thead>
+<tr>
+<th>Methode</th>
+<th>Endpunkt</th>
+<th>Beschreibung</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>GET</td>
+<td><code>/users/me</code></td>
+<td>Eigenes Profil abrufen</td>
+</tr>
+<tr>
+<td>PUT</td>
+<td><code>/users/me</code></td>
+<td>Eigenes Profil aktualisieren</td>
+</tr>
+</tbody>
+</table>
+<h3 id="wichtige-datenstrukturen">Wichtige Datenstrukturen<a class="headerlink" href="#wichtige-datenstrukturen" title="Permanent link">&para;</a></h3>
+<h4 id="product-response">Product (Response)<a class="headerlink" href="#product-response" title="Permanent link">&para;</a></h4>
+<div class="highlight"><pre><span></span><code><span class="p">{</span>
+<span class="w">  </span><span class="nt">&quot;id&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span>
+<span class="w">  </span><span class="nt">&quot;farmer_id&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">5</span><span class="p">,</span>
+<span class="w">  </span><span class="nt">&quot;farmer_name&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Hof Müller&quot;</span><span class="p">,</span>
+<span class="w">  </span><span class="nt">&quot;name&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Bio-Tomaten&quot;</span><span class="p">,</span>
+<span class="w">  </span><span class="nt">&quot;description&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Frische Tomaten aus biologischem Anbau&quot;</span><span class="p">,</span>
+<span class="w">  </span><span class="nt">&quot;category&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Gemüse&quot;</span><span class="p">,</span>
+<span class="w">  </span><span class="nt">&quot;price&quot;</span><span class="p">:</span><span class="w"> </span><span class="mf">3.50</span><span class="p">,</span>
+<span class="w">  </span><span class="nt">&quot;unit&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;kg&quot;</span><span class="p">,</span>
+<span class="w">  </span><span class="nt">&quot;bio&quot;</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span>
+<span class="w">  </span><span class="nt">&quot;available&quot;</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span>
+<span class="w">  </span><span class="nt">&quot;created_at&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;2026-02-01T10:00:00&quot;</span>
+<span class="p">}</span>
+</code></pre></div>
+<h4 id="order-response">Order (Response)<a class="headerlink" href="#order-response" title="Permanent link">&para;</a></h4>
+<div class="highlight"><pre><span></span><code><span class="p">{</span>
+<span class="w">  </span><span class="nt">&quot;id&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span>
+<span class="w">  </span><span class="nt">&quot;customer_id&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span>
+<span class="w">  </span><span class="nt">&quot;farmer_id&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">5</span><span class="p">,</span>
+<span class="w">  </span><span class="nt">&quot;farmer_name&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Hof Müller&quot;</span><span class="p">,</span>
+<span class="w">  </span><span class="nt">&quot;status&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;confirmed&quot;</span><span class="p">,</span>
+<span class="w">  </span><span class="nt">&quot;total_price&quot;</span><span class="p">:</span><span class="w"> </span><span class="mf">15.50</span><span class="p">,</span>
+<span class="w">  </span><span class="nt">&quot;pickup_date&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;2026-03-05T14:00:00&quot;</span><span class="p">,</span>
+<span class="w">  </span><span class="nt">&quot;created_at&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;2026-03-01T09:30:00&quot;</span><span class="p">,</span>
+<span class="w">  </span><span class="nt">&quot;items&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
+<span class="w">    </span><span class="p">{</span>
+<span class="w">      </span><span class="nt">&quot;product_name&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Bio-Tomaten&quot;</span><span class="p">,</span>
+<span class="w">      </span><span class="nt">&quot;quantity&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span>
+<span class="w">      </span><span class="nt">&quot;unit_price&quot;</span><span class="p">:</span><span class="w"> </span><span class="mf">3.50</span><span class="p">,</span>
+<span class="w">      </span><span class="nt">&quot;unit&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;kg&quot;</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="w">  </span><span class="p">]</span>
+<span class="p">}</span>
+</code></pre></div>
+<hr />
+<h2 id="weiterfuhrende-dokumentation">📖 Weiterführende Dokumentation<a class="headerlink" href="#weiterfuhrende-dokumentation" title="Permanent link">&para;</a></h2>
+<p>Für detaillierte Informationen siehe:</p>
+<ul>
+<li><strong><a href="../dev/api/">API-Dokumentation (vollständig)</a></strong> - Alle Endpunkte mit Request/Response-Beispielen</li>
+<li><strong><a href="../dev/datenbankschema/">Datenbankschema</a></strong> - SQL-Definitionen und Queries</li>
+<li><strong><a href="../dev/uml-usecase/">UML-Diagramme</a></strong> - Use-Case, Klassen, Sequenz</li>
+<li><strong><a href="../dev/technische-strategie/">Technische Strategie</a></strong> - Architektur-Entscheidungen</li>
+<li><strong><a href="../dev/setup/">Setup &amp; Installation</a></strong> - Entwicklungsumgebung einrichten</li>
+</ul>
+<hr />
+<h2 id="architekturprinzipien">🎯 Architekturprinzipien<a class="headerlink" href="#architekturprinzipien" title="Permanent link">&para;</a></h2>
+<p>Das System folgt diesen Prinzipien:</p>
+<h3 id="separation-of-concerns">Separation of Concerns<a class="headerlink" href="#separation-of-concerns" title="Permanent link">&para;</a></h3>
+<ul>
+<li>Frontend (Flet) → Präsentation</li>
+<li>Backend (FastAPI) → Business-Logik</li>
+<li>Datenbank (SQLite/PostgreSQL) → Persistenz</li>
+</ul>
+<h3 id="stateless-api">Stateless API<a class="headerlink" href="#stateless-api" title="Permanent link">&para;</a></h3>
+<ul>
+<li>Authentifizierung via JWT</li>
+<li>Kein Server-Side Session-State</li>
+<li>Horizontal skalierbar</li>
+</ul>
+<h3 id="restful-design">RESTful Design<a class="headerlink" href="#restful-design" title="Permanent link">&para;</a></h3>
+<ul>
+<li>Ressourcen-orientierte URLs</li>
+<li>HTTP-Methoden semantisch korrekt</li>
+<li>Standardisierte Error-Responses</li>
+</ul>
+<h3 id="security-first">Security First<a class="headerlink" href="#security-first" title="Permanent link">&para;</a></h3>
+<ul>
+<li>Passwörter werden gehasht (bcrypt)</li>
+<li>SQL-Injection-Schutz durch ORM</li>
+<li>CORS konfiguriert</li>
+<li>Input-Validierung mit Pydantic</li>
+</ul>
+<hr />
+<h2 id="externe-dokumentation">🔗 Externe Dokumentation<a class="headerlink" href="#externe-dokumentation" title="Permanent link">&para;</a></h2>
+<ul>
+<li><strong><a href="https://fastapi.tiangolo.com/">FastAPI Docs</a></strong></li>
+<li><strong><a href="https://flet.dev/docs/">Flet Docs</a></strong></li>
+<li><strong><a href="https://docs.sqlalchemy.org/">SQLAlchemy Docs</a></strong></li>
+</ul>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      
+      <script id="__config" type="application/json">{"annotate": null, "base": "..", "features": ["navigation.instant", "navigation.tabs", "navigation.tabs.sticky", "navigation.expand", "toc.integrate", "content.code.copy", "search.suggest", "search.highlight"], "search": "../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
+    
+    
+      <script src="../assets/javascripts/bundle.79ae519e.min.js"></script>
+      
+    
+  </body>
+</html>
